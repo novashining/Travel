@@ -52,9 +52,8 @@ PHOTOS.memorial = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/
 /* ================= Map stops ================= */
 var STOPS = {
   mia:        {n:"Miami Airport (MIA) & rental cars", lat:25.79691, lng:-80.26050, kind:"air"},
-  home1:      {n:"Our Doral hotel", lat:25.81063, lng:-80.36794, kind:"hotel"},
+  home1:      {n:"Our Kendall hotel", lat:25.73318, lng:-80.38265, kind:"hotel"},
   home2:      {n:"Our South Beach hotel", lat:25.77258, lng:-80.13311, kind:"hotel"},
-  cityplace:  {n:"CityPlace Doral", lat:25.80843, lng:-80.33137},
   shark:      {n:"Shark Valley, Everglades National Park", lat:25.75694, lng:-80.76538, ph:"gator"},
   coopertown: {n:"Coopertown Airboat Tours", lat:25.76064, lng:-80.56124, ph:"airboat"},
   dinnerkey:  {n:"Dinner Key Marina, Coconut Grove", lat:25.72664, lng:-80.23253, ph:"snorkel"},
@@ -91,14 +90,14 @@ function B(when, what, txt, stop) { return {when:when, what:what, txt:txt || "",
 function L_(p, m) { return {p:p, m:m}; }   // a leg: list of stop keys + mode (drive, uber, walk, bus, trolley, opt)
 var D = {
   arrive: {key:"arrive", label:"Arrive", theme:"Arrival", c:1, photo:"skylineSunset", place:"Hello, Miami",
-    title:"Touch down, _slow down._", sum:"Land, pick up the car and settle into Doral as the year turns over.",
+    title:"Touch down, _slow down._", sum:"Land, pick up the car and settle into Kendall as the year turns over.",
     start:"mia", end:"home1",
     blocks:[
       B("Daytime","Fly into Miami (MIA)","Pick up the rental car at the airport's rental car center.","mia"),
-      B("Afternoon","Check in at our Doral hotel","A suite with two queens and a sofa bed. Breakfast and parking are included.","home1"),
-      B("Evening","New Year's Eve","CityPlace Doral if it announces fireworks; otherwise dinner nearby and an early night before the Everglades.","cityplace")
+      B("Afternoon","Check in at our Kendall hotel","About 20 minutes from the airport. Every suite has a sofa bed; breakfast and parking are free.","home1"),
+      B("Evening","New Year's Eve","Dinner near the hotel and an early night before the Everglades, or local fireworks if any are announced.")
     ],
-    legs:[L_(["mia","home1"],"drive"), L_(["home1","cityplace"],"drive"), L_(["cityplace","home1"],"drive")], links:[]},
+    legs:[L_(["mia","home1"],"drive")], links:[]},
   everglades: {key:"everglades", label:"Everglades", theme:"Wild Florida", c:1, photo:"everglades", place:"Everglades National Park",
     title:"New year, _new neighbors._", sum:"Our big nature day. We start early, before Shark Valley gets busy.",
     start:"home1", end:"home1",
@@ -501,13 +500,13 @@ function popup(k, extra) {
 }
 
 /* Street-following route lines (OSRM via routing.openstreetmap.de), cached on this device */
-var RT_KEY = "miami27-routes-v1", rtCache = store(RT_KEY) || {}, rtPending = {};
+var RT_KEY = "miami27-routes-v2", rtCache = store(RT_KEY) || {}, rtPending = {};
 function routeFor(keys, mode) {
   var prof = mode === "walk" ? "routed-foot" : "routed-car";
-  var id = prof + ":" + keys.join(">");
+  var coords = keys.map(function (k) { return STOPS[k].lng + "," + STOPS[k].lat; }).join(";");
+  var id = prof + ":" + coords;   // keyed by coordinates, so moving a stop refreshes its route
   if (rtCache[id]) return Promise.resolve(rtCache[id]);
   if (rtPending[id]) return rtPending[id];
-  var coords = keys.map(function (k) { return STOPS[k].lng + "," + STOPS[k].lat; }).join(";");
   var url = "https://routing.openstreetmap.de/" + prof + "/route/v1/driving/" + coords + "?overview=full&geometries=geojson";
   rtPending[id] = fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (j) {
     var line = j.routes[0].geometry.coordinates.map(function (c) { return [+c[1].toFixed(5), +c[0].toFixed(5)]; });
@@ -743,7 +742,7 @@ ptabs.forEach(function (t, i) {
 });
 
 var BOOKINGS = [
-  {id:"springhill", n:"Doral hotel suite", url:"https://www.marriott.com/reservation/availabilitySearch.mi?propertyCode=MIAMS&isSearch=false&fromDate=12/31/2026&toDate=01/03/2027&numberOfRooms=1&numberOfAdults=2&childrenCount=2&childrenAges=10,13", d:"Dec 31 – Jan 3", w:"now", note:"2 queens + sofa bed. Free cancellation until 5:59 PM Dec 29."},
+  {id:"hotel1", n:"Kendall hotel", url:null, d:"Dec 31 – Jan 3", w:"booked", note:"Booked. Check the confirmation for the room type and the cancellation deadline."},
   {id:"biscayne", n:"Biscayne snorkel & island trip", url:"https://www.biscaynenationalparkinstitute.org/snorkel-and-island-visit-from-coconut-grove/", d:"Jan 2", w:"now", note:"Ages 8+. Refund or rebook up to 48 hours before; full refund if they cancel for weather."},
   {id:"car", n:"Rental car", url:"https://www.kayak.com/cars", d:"Dec 31 – Jan 3", w:"now", note:"Pick up and return at the MIA rental car center."},
   {id:"shark", n:"Shark Valley bikes or tram", url:"https://www.sharkvalleytramtours.com/", d:"Jan 1", w:"soon", note:"Go early; busiest 10 AM–3 PM."},
@@ -756,8 +755,9 @@ var BOOKINGS = [
   {id:"airboat", n:"Coopertown airboat", url:null, d:"Jan 1", w:"day", note:"No reservation needed. Open 9 AM–5 PM."},
   {id:"zoo", n:"Zoo Miami", sub:"Plan B", url:"https://shop.zoomiami.org/mainstore", d:"Jan 2", w:"back", note:"Only if the snorkel trip is off. Cheaper online."}
 ];
-var WIN = {now:["Book now","b-now"], soon:["1–3 weeks ahead","b-soon"], day:["On the day","b-day"], back:["Only if needed","b-back"]};
+var WIN = {booked:["Booked","b-day"], now:["Book now","b-now"], soon:["1–3 weeks ahead","b-soon"], day:["On the day","b-day"], back:["Only if needed","b-back"]};
 var booked = store("miami27-booked") || store("miami-ny-booked") || {};
+if (booked.hotel1 === undefined) booked.hotel1 = true;   // already booked
 var bkFilter = "all";
 $("#bk").innerHTML = '<div class="bk-row hdr"><span></span><span>Item</span><span>For</span><span>When to book</span><span>Notes</span></div>' +
   BOOKINGS.map(function (b) {
@@ -783,10 +783,9 @@ $$("#bk-filters button").forEach(function (b) { b.addEventListener("click", func
 bkUpdate();
 
 var KEYDATES = [
-  {due:"2026-11-30T23:59:00-05:00", label:"Late November", t:"Book the hotel, the snorkel trip and the car", m:"These three can sell out over the holidays."},
-  {due:"2026-12-12T23:59:00-05:00", label:"Early December", t:"Book Shark Valley and Vizcaya", m:"Also check whether CityPlace Doral announces New Year's Eve fireworks."},
+  {due:"2026-11-30T23:59:00-05:00", label:"Late November", t:"Book the snorkel trip and the car", m:"These three can sell out over the holidays."},
+  {due:"2026-12-12T23:59:00-05:00", label:"Early December", t:"Book Shark Valley and Vizcaya", m:"Also look for New Year's Eve fireworks near Kendall."},
   {due:"2026-12-22T23:59:00-05:00", label:"Mid December", t:"Buy Wynwood, Big Bus and Frost tickets", m:"Plus Luminosa if we want it. Pick the city day first."},
-  {due:"2026-12-29T17:59:00-05:00", label:"Dec 29, 5:59 PM", t:"Last free cancellation for the Doral hotel", m:"After this the stay is non-refundable."},
   {due:"2026-12-30T23:59:00-05:00", label:"Dec 29–30", t:"Check the marine forecast", m:"Use the snorkel check above, or the wind forecast for Biscayne Bay."},
   {due:"2026-12-31T09:00:00-05:00", label:"Dec 31, ~9 AM", t:"Final call on snorkeling", m:"The 48-hour refund window closes. Switch to Plan B if needed."},
   {due:"2027-01-01T08:00:00-05:00", label:"Jan 1, morning", t:"Buy the National Parks pass", m:"On Recreation.gov, before driving to Shark Valley."}
