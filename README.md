@@ -1,6 +1,6 @@
 # Miami, New Year (Dec 31, 2026 – Jan 7, 2027)
 
-## 👉 Website: https://novashining.github.io/travel/
+## 👉 Website: https://novashining.github.io/Travel/
 
 Share that link with family. It works on phones and computers.
 
