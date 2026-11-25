@@ -6,19 +6,21 @@
 <title>Miami, New Year · Dec 31 – Jan 7</title>
 <meta name="description" content="Family trip to Miami: the Everglades, Biscayne Bay and South Beach, Dec 31, 2026 – Jan 7, 2027.">
 <meta name="theme-color" content="#0E1A22">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="vendor/fonts/plus-jakarta-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="vendor/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://upload.wikimedia.org">
 <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
 <style>
+@font-face{font-family:"Jakarta";src:url(vendor/fonts/plus-jakarta-sans-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
+@font-face{font-family:"InterV";src:url(vendor/fonts/inter-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
 :root{
   --paper:#F6F3EE; --paper-2:#EEE8DF; --card:#FFFFFF;
   --ink:#0E1A22; --ink-2:#33434E; --muted:#6B7882; --line:#E3DCD1; --line-2:#D6CDBF;
   --coral:#E4572E; --coral-2:#FBE6DE; --coral-ink:#A93A1B;
   --teal:#0F7173; --teal-2:#DDEFEE; --teal-ink:#0A5254;
   --gold:#C9A227; --gold-2:#F6EDCF;
-  --serif:"Instrument Serif", "Iowan Old Style", Georgia, serif;
-  --sans:Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif:"Jakarta", "InterV", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sans:"InterV", system-ui, -apple-system, "Segoe UI", sans-serif;
   --r:14px; --r-lg:22px;
   --shadow:0 1px 2px rgba(14,26,34,.04), 0 12px 32px -18px rgba(14,26,34,.28);
 }
@@ -315,6 +317,80 @@ footer a{color:#fff}
   section{padding-top:32px}
   .pd-day{break-inside:avoid;border-top:1px solid #ccc;padding:12px 0}
 }
+/* ===== v3: type, photos, gallery ===== */
+h1,h2,h3{font-family:var(--serif)}
+.hero h1{font-weight:800;letter-spacing:-.04em;font-size:clamp(46px,7vw,96px);line-height:.98}
+.hero h1 em{font-style:normal}
+.head h2{font-weight:800;letter-spacing:-.035em;font-size:clamp(32px,4.2vw,50px);line-height:1.04}
+.stay h3{font-weight:700;letter-spacing:-.025em;font-size:26px;line-height:1.15}
+.panel h3{font-weight:800;letter-spacing:-.03em;font-size:clamp(26px,2.6vw,34px);line-height:1.1}
+.box h3,.tip h3{font-weight:700;letter-spacing:-.02em;font-size:21px;line-height:1.2}
+.tab .n{font-weight:800;font-size:26px;letter-spacing:-.03em}
+.clock b,.stat b,.norm b,.dw .tt{font-weight:700;letter-spacing:-.03em}
+.clock b{font-size:34px}.stat b{font-size:32px}.norm b{font-size:24px}.dw .tt{font-size:22px}
+.clock.msg{font-weight:700;font-size:24px;letter-spacing:-.02em}
+footer strong{font-weight:800;font-size:22px;letter-spacing:-.02em}
+.eyebrow,.kicker{letter-spacing:.16em}
+
+.hero-photo{position:absolute;inset:0;background:#0E1A22 url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ocean_Drive_in_the_Miami_Beach_Art_Deco_Historic_District.jpg/1280px-Ocean_Drive_in_the_Miami_Beach_Art_Deco_Historic_District.jpg") center 40%/cover no-repeat}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,20,27,.94) 0%,rgba(10,20,27,.78) 42%,rgba(10,20,27,.35) 100%),linear-gradient(0deg,rgba(10,20,27,.9) 0%,rgba(10,20,27,0) 35%)}
+.hero-art{opacity:.35}
+.hero-credit{position:absolute;right:18px;bottom:96px;font-size:11px;color:rgba(255,255,255,.55);text-decoration:none}
+.hero-credit:hover{color:#fff}
+.glance{background:rgba(10,20,27,.55);backdrop-filter:blur(10px)}
+
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:14px}
+.hl{position:relative;border:0;padding:0;margin:0;border-radius:var(--r-lg);overflow:hidden;cursor:pointer;background:#cfc6b8;text-align:left;color:#fff;box-shadow:var(--shadow)}
+.hl:first-child{grid-column:span 2;grid-row:span 2}
+.hl:last-child{grid-column:span 2}
+.hl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.hl:hover img,.hl:focus-visible img{transform:scale(1.06)}
+.hl::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,20,27,.82) 0%,rgba(10,20,27,.15) 55%,rgba(10,20,27,0) 100%)}
+.hl .cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:1}
+.hl .tagline{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.18);backdrop-filter:blur(6px);padding:4px 9px;border-radius:99px;margin-bottom:8px}
+.hl .ttl{display:block;font-family:var(--serif);font-weight:700;font-size:20px;letter-spacing:-.02em;line-height:1.15}
+.hl:first-child .ttl{font-size:32px}
+.hl .sub{display:block;font-size:14px;color:rgba(255,255,255,.85);margin-top:4px;max-width:520px}
+.hl:not(:first-child) .sub{display:none}
+
+.lb{border:0;padding:0;border-radius:22px;max-width:min(980px,94vw);width:100%;background:var(--card);color:var(--ink);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.lb::backdrop{background:rgba(10,20,27,.78);backdrop-filter:blur(4px)}
+.lb-fig{position:relative;margin:0;background:#0E1A22}
+.lb-fig img{display:block;width:100%;max-height:62vh;object-fit:cover}
+.lb-x{position:absolute;top:12px;right:12px;z-index:2;width:40px;height:40px;border-radius:50%;border:0;background:rgba(10,20,27,.6);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.9);display:grid;place-items:center;cursor:pointer}
+.lb-nav.prev{left:14px}.lb-nav.next{right:14px}
+.lb-body{padding:22px 28px 24px}
+.lb-meta{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-ink)}
+.lb-body h3{font-weight:800;font-size:28px;letter-spacing:-.03em;margin:6px 0 6px}
+.lb-body p{margin:0 0 16px;color:var(--ink-2)}
+.lb-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.lb-credit{font-size:12px;color:var(--muted)}
+
+.day-photo{position:relative;margin:-30px -32px 22px;aspect-ratio:16/7;overflow:hidden;background:#cfc6b8}
+.day-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.day-photo figcaption{position:absolute;right:10px;bottom:8px;font-size:11px;color:rgba(255,255,255,.85);background:rgba(10,20,27,.45);padding:2px 8px;border-radius:99px}
+.day-photo figcaption a{text-decoration:none}
+.panel{overflow:hidden}
+.pop-img{display:block;width:220px;height:120px;object-fit:cover;border-radius:8px;margin-bottom:8px}
+.leaflet-tile-pane{filter:saturate(.8) contrast(.98)}
+
+.credits{margin-top:14px}
+.credits summary{cursor:pointer;color:#fff}
+.credits ul{margin:10px 0 0;padding-left:18px;font-size:12px;line-height:1.7}
+@media (max-width:1000px){
+  .bento{grid-template-columns:1fr 1fr;grid-auto-rows:200px}
+  .hl:last-child{grid-column:span 2}
+  .day-photo{margin:-24px -20px 20px}
+}
+@media (max-width:640px){
+  .bento{grid-template-columns:1fr 1fr;grid-auto-rows:170px;gap:10px}
+  .hl:first-child{grid-column:span 2;grid-row:span 2}
+  .hl .ttl{font-size:16px}
+  .hl:first-child .ttl{font-size:24px}
+  .hero-credit{bottom:84px}
+}
+@media print{.bento,.lb,.day-photo,.hero-photo,.hero-credit{display:none!important}}
 </style>
 </head>
 <body>
@@ -349,6 +425,7 @@ footer a{color:#fff}
     </a>
     <nav aria-label="Sections">
       <a href="#overview">Overview</a>
+      <a href="#highlights">Highlights</a>
       <a href="#itinerary">Itinerary</a>
       <a href="#weather">Weather</a>
       <a href="#bookings">Bookings</a>
@@ -360,6 +437,7 @@ footer a{color:#fff}
 
 <!-- Hero -->
 <div class="hero">
+  <div class="hero-photo" aria-hidden="true"></div>
   <svg class="hero-art" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
     <defs>
       <radialGradient id="glow" cx="78%" cy="100%" r="60%"><stop offset="0" stop-color="#E4572E" stop-opacity=".32"/><stop offset="1" stop-color="#E4572E" stop-opacity="0"/></radialGradient>
@@ -398,6 +476,7 @@ footer a{color:#fff}
       <div class="stat"><b>4</b><span>beach afternoons</span></div>
     </div>
   </div>
+  <a class="hero-credit" href="https://commons.wikimedia.org/wiki/File:Ocean_Drive_in_the_Miami_Beach_Art_Deco_Historic_District.jpg" target="_blank" rel="noopener">Photo: Ocean Drive, Robbschultz69, CC BY-SA 4.0</a>
 </div>
 
 <main>
@@ -436,6 +515,31 @@ footer a{color:#fff}
     </div>
   </div>
 </section>
+
+<!-- Highlights -->
+<section id="highlights">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="eyebrow">Highlights</div>
+        <h2>What we'll see</h2>
+        <p>Tap a photo to see it larger and jump to that day in the itinerary.</p>
+      </div>
+    </div>
+    <div class="bento" id="bento"></div>
+  </div>
+</section>
+
+<dialog class="lb" id="lb" aria-label="Photo viewer">
+  <button class="lb-x" type="button" id="lb-x" aria-label="Close">&times;</button>
+  <figure class="lb-fig"><img id="lb-img" alt=""><button class="lb-nav prev" type="button" id="lb-prev" aria-label="Previous photo"><svg class="icon"><use href="#i-left"/></svg></button><button class="lb-nav next" type="button" id="lb-next" aria-label="Next photo"><svg class="icon"><use href="#i-right"/></svg></button></figure>
+  <div class="lb-body">
+    <div class="lb-meta" id="lb-meta"></div>
+    <h3 id="lb-title"></h3>
+    <p id="lb-text"></p>
+    <div class="lb-foot"><button class="btn primary" type="button" id="lb-go">See this day</button><a id="lb-credit" class="lb-credit" target="_blank" rel="noopener"></a></div>
+  </div>
+</dialog>
 
 <!-- Itinerary -->
 <section id="itinerary">
@@ -578,7 +682,8 @@ footer a{color:#fff}
 <footer>
   <div class="wrap">
     <div><strong>Miami, New Year.</strong>Dec 31, 2026 – Jan 7, 2027</div>
-    <div style="max-width:560px">Hours and details were checked in November 2026 and can change, so check the official links before you go. Map pins are approximate. Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors, tiles © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>. Forecast by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>.</div>
+    <div style="max-width:560px">Hours and details were checked in November 2026 and can change, so check the official links before you go. Map pins are approximate. Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors. Photos from Wikimedia Commons, used under their licenses. Forecast by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>.
+      <details class="credits"><summary>Photo credits</summary><ul id="credits"></ul></details></div>
   </div>
 </footer>
 
@@ -588,6 +693,149 @@ footer a{color:#fff}
 "use strict";
 
 /* =================== Data =================== */
+var PHOTOS = {
+"everglades": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Sunset_over_the_River_of_Grass%2C_NPSphoto%2C_G.Gardner_%289255157507%29.jpg/1280px-Sunset_over_the_River_of_Grass%2C_NPSphoto%2C_G.Gardner_%289255157507%29.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Sunset_over_the_River_of_Grass%2C_NPSphoto%2C_G.Gardner_%289255157507%29.jpg/500px-Sunset_over_the_River_of_Grass%2C_NPSphoto%2C_G.Gardner_%289255157507%29.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Sunset_over_the_River_of_Grass%2C_NPSphoto%2C_G.Gardner_%289255157507%29.jpg",
+"by": "Everglades NPS / G. Gardner",
+"lic": "Public domain"
+},
+"gator": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Shark_Valley_Alligator_-_panoramio.jpg/1280px-Shark_Valley_Alligator_-_panoramio.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Shark_Valley_Alligator_-_panoramio.jpg/500px-Shark_Valley_Alligator_-_panoramio.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Shark_Valley_Alligator_-_panoramio.jpg",
+"by": "DaSpader",
+"lic": "CC BY-SA 3.0"
+},
+"airboat": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Miami_everglades_airboat_tourism.JPG/1280px-Miami_everglades_airboat_tourism.JPG",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Miami_everglades_airboat_tourism.JPG/500px-Miami_everglades_airboat_tourism.JPG",
+"page": "https://commons.wikimedia.org/wiki/File:Miami_everglades_airboat_tourism.JPG",
+"by": "chensiyuan",
+"lic": "CC BY-SA 4.0"
+},
+"biscayne": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Biscayne_National_Park_H-snorkel_on_elkhorn.jpg/1280px-Biscayne_National_Park_H-snorkel_on_elkhorn.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Biscayne_National_Park_H-snorkel_on_elkhorn.jpg/500px-Biscayne_National_Park_H-snorkel_on_elkhorn.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Biscayne_National_Park_H-snorkel_on_elkhorn.jpg",
+"by": "National Park Service",
+"lic": "Public domain"
+},
+"mangrove": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Biscayne_National_Park_H-mangrove_shoreline.jpg/1280px-Biscayne_National_Park_H-mangrove_shoreline.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Biscayne_National_Park_H-mangrove_shoreline.jpg/500px-Biscayne_National_Park_H-mangrove_shoreline.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Biscayne_National_Park_H-mangrove_shoreline.jpg",
+"by": "National Park Service",
+"lic": "Public domain"
+},
+"zoo": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Flamingos_Miami_MetroZoo.jpg/1280px-Flamingos_Miami_MetroZoo.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Flamingos_Miami_MetroZoo.jpg/500px-Flamingos_Miami_MetroZoo.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Flamingos_Miami_MetroZoo.jpg",
+"by": "Averette",
+"lic": "CC BY 3.0"
+},
+"vizcaya": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Villa_Vizcaya_20110228.jpg/1280px-Villa_Vizcaya_20110228.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Villa_Vizcaya_20110228.jpg/500px-Villa_Vizcaya_20110228.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Villa_Vizcaya_20110228.jpg",
+"by": "Averette",
+"lic": "CC BY 3.0"
+},
+"havana": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Little_Havana_Dominos_Park.JPG/1280px-Little_Havana_Dominos_Park.JPG",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Little_Havana_Dominos_Park.JPG/500px-Little_Havana_Dominos_Park.JPG",
+"page": "https://commons.wikimedia.org/wiki/File:Little_Havana_Dominos_Park.JPG",
+"by": "Infrogmation of New Orleans",
+"lic": "CC BY-SA 3.0"
+},
+"deco": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg/1280px-Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg/500px-Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg",
+"by": "Jorge Láscar",
+"lic": "CC BY 2.0"
+},
+"deco2": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ocean_Drive_in_the_Miami_Beach_Art_Deco_Historic_District.jpg/1280px-Ocean_Drive_in_the_Miami_Beach_Art_Deco_Historic_District.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ocean_Drive_in_the_Miami_Beach_Art_Deco_Historic_District.jpg/500px-Ocean_Drive_in_the_Miami_Beach_Art_Deco_Historic_District.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Ocean_Drive_in_the_Miami_Beach_Art_Deco_Historic_District.jpg",
+"by": "Robbschultz69",
+"lic": "CC BY-SA 4.0"
+},
+"espanola": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg/1280px-Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg/500px-Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg",
+"by": "Phillip Pessar",
+"lic": "CC BY 4.0"
+},
+"wynwood": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Wynwood_Walls_Miami_Florida_October_2013.jpg/1280px-Wynwood_Walls_Miami_Florida_October_2013.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Wynwood_Walls_Miami_Florida_October_2013.jpg/500px-Wynwood_Walls_Miami_Florida_October_2013.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Wynwood_Walls_Miami_Florida_October_2013.jpg",
+"by": "Dan Lundberg",
+"lic": "CC BY-SA 2.0"
+},
+"downtown": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Downtown_Miami_from_north_20100129.jpg/1280px-Downtown_Miami_from_north_20100129.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Downtown_Miami_from_north_20100129.jpg/500px-Downtown_Miami_from_north_20100129.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Downtown_Miami_from_north_20100129.jpg",
+"by": "Averette",
+"lic": "CC BY 3.0"
+},
+"bayside": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Miami-Bayside.jpg/1280px-Miami-Bayside.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Miami-Bayside.jpg/500px-Miami-Bayside.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Miami-Bayside.jpg",
+"by": "Kolossos",
+"lic": "CC BY-SA 3.0"
+},
+"jungle": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Two_different_macaws_-Jungle_Island_-Miami-6a.jpg/1280px-Two_different_macaws_-Jungle_Island_-Miami-6a.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Two_different_macaws_-Jungle_Island_-Miami-6a.jpg/500px-Two_different_macaws_-Jungle_Island_-Miami-6a.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Two_different_macaws_-Jungle_Island_-Miami-6a.jpg",
+"by": "Keith Allison",
+"lic": "CC BY-SA 2.0"
+},
+"garden": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Miami_Beach_Botanical_Garden_-_IMG_8010.JPG/1280px-Miami_Beach_Botanical_Garden_-_IMG_8010.JPG",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Miami_Beach_Botanical_Garden_-_IMG_8010.JPG/500px-Miami_Beach_Botanical_Garden_-_IMG_8010.JPG",
+"page": "https://commons.wikimedia.org/wiki/File:Miami_Beach_Botanical_Garden_-_IMG_8010.JPG",
+"by": "Daderot",
+"lic": "Public domain"
+},
+"memorial": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Memoriale_dell%27olocausto_di_Miami_Beach.jpg/1280px-Memoriale_dell%27olocausto_di_Miami_Beach.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Memoriale_dell%27olocausto_di_Miami_Beach.jpg/500px-Memoriale_dell%27olocausto_di_Miami_Beach.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Memoriale_dell%27olocausto_di_Miami_Beach.jpg",
+"by": "Giu.gent93",
+"lic": "CC BY-SA 4.0"
+},
+"southpointe": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/South_Pointe_Park_Pier.jpg/1280px-South_Pointe_Park_Pier.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/South_Pointe_Park_Pier.jpg/500px-South_Pointe_Park_Pier.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:South_Pointe_Park_Pier.jpg",
+"by": "Visitor7",
+"lic": "CC BY-SA 3.0"
+},
+"lifeguard": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Lifeguard_stand%2C_Miami_Beach.jpg/1280px-Lifeguard_stand%2C_Miami_Beach.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Lifeguard_stand%2C_Miami_Beach.jpg/500px-Lifeguard_stand%2C_Miami_Beach.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Lifeguard_stand%2C_Miami_Beach.jpg",
+"by": "Radomianin",
+"lic": "CC BY-SA 4.0"
+},
+"lifeguard2": {
+"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Miami_-_Lifeguard_tower_and_flags_-_0497.jpg/1280px-Miami_-_Lifeguard_tower_and_flags_-_0497.jpg",
+"sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Miami_-_Lifeguard_tower_and_flags_-_0497.jpg/500px-Miami_-_Lifeguard_tower_and_flags_-_0497.jpg",
+"page": "https://commons.wikimedia.org/wiki/File:Miami_-_Lifeguard_tower_and_flags_-_0497.jpg",
+"by": "Jorge Royan",
+"lic": "CC BY-SA 3.0"
+}
+};
+var PHOTO_NAMES = {"everglades": "Everglades at sunset", "gator": "Alligator at Shark Valley", "airboat": "Airboat in the Everglades", "biscayne": "Snorkeling, Biscayne National Park", "mangrove": "Mangrove shoreline, Biscayne Bay", "zoo": "Flamingos, Zoo Miami", "vizcaya": "Vizcaya Museum & Gardens", "havana": "Domino Park, Little Havana", "deco": "Art Deco buildings, Ocean Drive", "deco2": "Ocean Drive, Art Deco Historic District", "espanola": "Española Way", "wynwood": "Wynwood Walls", "downtown": "Downtown Miami", "bayside": "Bayside Marketplace", "jungle": "Macaws, Jungle Island", "garden": "Miami Beach Botanical Garden", "memorial": "Holocaust Memorial, Miami Beach", "southpointe": "South Pointe Park pier", "lifeguard": "Lifeguard stand, Miami Beach", "lifeguard2": "Lifeguard tower, Miami Beach"};
 var CORAL="#E4572E", TEAL="#0F7173", INK="#0E1A22";
 
 var STOPS = {
@@ -595,29 +843,29 @@ var STOPS = {
   springhill: {n:"SpringHill Suites Miami Doral", lat:25.8103, lng:-80.3686, home:true},
   fifth:      {n:"The Fifth Hotel", lat:25.7737, lng:-80.1338, home:true},
   cityplace:  {n:"CityPlace Doral", lat:25.8120, lng:-80.3510},
-  shark:      {n:"Shark Valley, Everglades National Park", lat:25.7576, lng:-80.7664},
-  coopertown: {n:"Coopertown Airboat Tours", lat:25.7618, lng:-80.5778},
-  dinnerkey:  {n:"Dinner Key Marina, Coconut Grove", lat:25.7270, lng:-80.2330},
-  zoo:        {n:"Zoo Miami", lat:25.6106, lng:-80.3977},
-  vizcaya:    {n:"Vizcaya Museum & Gardens", lat:25.7443, lng:-80.2105},
-  havana:     {n:"Little Havana (Calle Ocho)", lat:25.7653, lng:-80.2190},
-  southpointe:{n:"South Pointe Park", lat:25.7660, lng:-80.1340},
-  ocean:      {n:"Ocean Drive & Art Deco district", lat:25.7810, lng:-80.1305},
-  espanola:   {n:"Española Way", lat:25.7864, lng:-80.1326},
+  shark:      {n:"Shark Valley, Everglades National Park", lat:25.7576, lng:-80.7664, ph:"gator"},
+  coopertown: {n:"Coopertown Airboat Tours", lat:25.7618, lng:-80.5778, ph:"airboat"},
+  dinnerkey:  {n:"Dinner Key Marina, Coconut Grove", lat:25.7270, lng:-80.2330, ph:"biscayne"},
+  zoo:        {n:"Zoo Miami", lat:25.6106, lng:-80.3977, ph:"zoo"},
+  vizcaya:    {n:"Vizcaya Museum & Gardens", lat:25.7443, lng:-80.2105, ph:"vizcaya"},
+  havana:     {n:"Little Havana (Calle Ocho)", lat:25.7653, lng:-80.2190, ph:"havana"},
+  southpointe:{n:"South Pointe Park", lat:25.7660, lng:-80.1340, ph:"southpointe"},
+  ocean:      {n:"Ocean Drive & Art Deco district", lat:25.7810, lng:-80.1305, ph:"deco"},
+  espanola:   {n:"Española Way", lat:25.7864, lng:-80.1326, ph:"espanola"},
   bigbus:     {n:"Big Bus stop, 555 Washington Ave", lat:25.7750, lng:-80.1350},
-  wynwood:    {n:"Wynwood Walls", lat:25.8010, lng:-80.1994},
-  bayside:    {n:"Bayside Marketplace", lat:25.7785, lng:-80.1867},
-  frost:      {n:"Frost Science Museum", lat:25.7853, lng:-80.1880},
-  jungle:     {n:"Jungle Island (Luminosa)", lat:25.7848, lng:-80.1720},
+  wynwood:    {n:"Wynwood Walls", lat:25.8010, lng:-80.1994, ph:"wynwood"},
+  bayside:    {n:"Bayside Marketplace", lat:25.7785, lng:-80.1867, ph:"bayside"},
+  frost:      {n:"Frost Science Museum", lat:25.7853, lng:-80.1880, ph:"downtown"},
+  jungle:     {n:"Jungle Island (Luminosa)", lat:25.7848, lng:-80.1720, ph:"jungle"},
   lincoln:    {n:"Lincoln Road", lat:25.7907, lng:-80.1390},
-  garden:     {n:"Miami Beach Botanical Garden", lat:25.7953, lng:-80.1360},
-  memorial:   {n:"Holocaust Memorial Miami Beach", lat:25.7966, lng:-80.1375}
+  garden:     {n:"Miami Beach Botanical Garden", lat:25.7953, lng:-80.1360, ph:"garden"},
+  memorial:   {n:"Holocaust Memorial Miami Beach", lat:25.7966, lng:-80.1375, ph:"memorial"}
 };
 
 function B(when, what, txt, stop){ return {when:when, what:what, txt:txt||"", stop:stop||null}; }
 
 var DAYS = [
-  { date:"2026-12-31", dow:"Thu", wd:"Thursday", num:"31", mon:"Dec", month:"December", part:1, short:"Arrive",
+  { date:"2026-12-31", photo:"downtown", dow:"Thu", wd:"Thursday", num:"31", mon:"Dec", month:"December", part:1, short:"Arrive",
     title:"Arrival & New Year's Eve",
     sum:"Land, pick up the car and settle into Doral before the year turns over.",
     chips:["Travel day","New Year's Eve"],
@@ -626,7 +874,7 @@ var DAYS = [
       B("Afternoon","Check in at SpringHill Suites","Suite with 2 queen beds and a sofa bed. Breakfast and parking are included.","springhill"),
       B("Evening","New Year's Eve","CityPlace Doral if it announces fireworks; otherwise dinner nearby and an early night before the Everglades.","cityplace")
     ]},
-  { date:"2027-01-01", dow:"Fri", wd:"Friday", num:"1", mon:"Jan", month:"January", part:1, short:"Everglades",
+  { date:"2027-01-01", photo:"gator", dow:"Fri", wd:"Friday", num:"1", mon:"Jan", month:"January", part:1, short:"Everglades",
     title:"Everglades: bikes, gators & an airboat",
     sum:"The big nature day. Start early, before Shark Valley gets busy.",
     chips:["Car day","Outdoors","National park"],
@@ -642,24 +890,24 @@ var DAYS = [
     sum:"Snorkeling and an island visit in Biscayne National Park, with two backup plans if the weather turns.",
     chips:["Car day","Weather-dependent"],
     variants:{
-      snorkel:{label:"Snorkel trip (booked)", blocks:[
+      snorkel:{label:"Snorkel trip (booked)", photo:"biscayne", blocks:[
         B("Morning","Snorkel & island trip","Leaves from Dinner Key Marina in Coconut Grove. Ages 8+; snorkel vests are provided.","dinnerkey"),
         B("Afternoon","Island visit and the boat ride back","Bring a warm layer for the ride back."),
         B("Evening","Dinner and an easy night","")
       ], bring:["Swimsuits","Towels","Warm layer","Dry clothes","Reef-safe sunscreen"]},
-      zoo:{label:"Plan B: Zoo Miami", blocks:[
+      zoo:{label:"Plan B: Zoo Miami", photo:"zoo", blocks:[
         B("Morning","Zoo Miami","A big open-air zoo. Rent a Safari Cycle to cover more ground (an adult has to drive it).","zoo"),
         B("Afternoon","Keep exploring","Tickets are cheaper online."),
         B("Evening","Dinner and an easy night","")
       ], bring:["Hats","Sunscreen","Water","Comfortable shoes"]},
-      cruise:{label:"Plan B: No-swim cruise", blocks:[
+      cruise:{label:"Plan B: No-swim cruise", photo:"mangrove", blocks:[
         B("Morning","Biscayne Bay cruise","A boat trip on the bay with no snorkeling, for a cool or windy day. Confirm the departure point when booking.","dinnerkey"),
         B("Afternoon","Coconut Grove","Lunch and a walk around the Grove."),
         B("Evening","Dinner and an easy night","")
       ], bring:["Warm layer","Sunglasses","Hats"]}
     },
     note:"We check the marine forecast on Dec 29–30 and decide by about 9 AM Dec 31, when the 48-hour refund window closes."},
-  { date:"2027-01-03", dow:"Sun", wd:"Sunday", num:"3", mon:"Jan", month:"January", part:1, short:"Vizcaya",
+  { date:"2027-01-03", photo:"vizcaya", dow:"Sun", wd:"Sunday", num:"3", mon:"Jan", month:"January", part:1, short:"Vizcaya",
     title:"Vizcaya, Little Havana, then the beach",
     sum:"Moving day: one last morning with the car, then the beach week begins.",
     chips:["Moving day","Culture"],
@@ -670,7 +918,7 @@ var DAYS = [
       B("4 PM","Check in at the Fifth Hotel","South of Fifth, steps from the beach.","fifth"),
       B("Sunset","South Pointe Park","A short walk from the hotel.","southpointe")
     ]},
-  { date:"2027-01-04", dow:"Mon", wd:"Monday", num:"4", mon:"Jan", month:"January", part:2, short:"Art Deco",
+  { date:"2027-01-04", photo:"deco", dow:"Mon", wd:"Monday", num:"4", mon:"Jan", month:"January", part:2, short:"Art Deco",
     title:"Art Deco & the beach",
     sum:"A walking morning among the pastel facades, then the first full beach afternoon.",
     chips:["On foot","Beach"],
@@ -680,7 +928,7 @@ var DAYS = [
       B("Evening","Dinner on Española Way","A pedestrian street with Mediterranean-style buildings and plenty of restaurants.","espanola")
     ],
     swap:true},
-  { date:"2027-01-05", dow:"Tue", wd:"Tuesday", num:"5", mon:"Jan", month:"January", part:2, short:"Mainland",
+  { date:"2027-01-05", photo:"wynwood", dow:"Tue", wd:"Tuesday", num:"5", mon:"Jan", month:"January", part:2, short:"Mainland",
     title:"Mainland day: street art & science",
     sum:"Best on whichever of Jan 4–6 looks least like a beach day.",
     chips:["Big Bus","Museums"],
@@ -692,7 +940,7 @@ var DAYS = [
       B("Evening · optional","Luminosa at Jungle Island","A walk-through light show; 5:30 or 6 PM entry.","jungle")
     ],
     bring:["Light jackets for the open-top bus"], swap:true},
-  { date:"2027-01-06", dow:"Wed", wd:"Wednesday", num:"6", mon:"Jan", month:"January", part:2, short:"Trolley",
+  { date:"2027-01-06", photo:"garden", dow:"Wed", wd:"Wednesday", num:"6", mon:"Jan", month:"January", part:2, short:"Trolley",
     title:"Trolley day: Lincoln Road & gardens",
     sum:"A short free-trolley ride north, then back for the beach.",
     chips:["Free trolley","Beach"],
@@ -704,7 +952,7 @@ var DAYS = [
       B("Evening","Waterfront walk and dinner","")
     ],
     swap:true},
-  { date:"2027-01-07", dow:"Thu", wd:"Thursday", num:"7", mon:"Jan", month:"January", part:2, short:"Home",
+  { date:"2027-01-07", photo:"lifeguard2", dow:"Thu", wd:"Thursday", num:"7", mon:"Jan", month:"January", part:2, short:"Home",
     title:"Heading home",
     sum:"An easy last morning by the water.",
     chips:["Travel day"],
@@ -713,6 +961,17 @@ var DAYS = [
       B("Midday","Last beach walk","Or a ride on the Collins Express trolley."),
       B("Then","Uber to the airport","In time for the flight.","mia")
     ]}
+];
+
+var HIGHLIGHTS = [
+  {ph:"everglades", day:1, tag:"Jan 1 · Everglades", t:"Everglades National Park", x:"A vast river of grass. We bike or ride the tram around the Shark Valley loop, past alligators, wading birds and sawgrass."},
+  {ph:"airboat", day:1, tag:"Jan 1 · Everglades", t:"Airboat ride", x:"Skimming across the sawgrass on an airboat at Coopertown, on the drive back from Shark Valley."},
+  {ph:"biscayne", day:2, tag:"Jan 2 · Biscayne", t:"Snorkeling in Biscayne Bay", x:"Biscayne National Park is about 95 percent water. We snorkel shallow reefs and visit an island by boat."},
+  {ph:"vizcaya", day:3, tag:"Jan 3 · Coconut Grove", t:"Vizcaya Museum & Gardens", x:"An Italian Renaissance–style villa and formal gardens on Biscayne Bay, built about a century ago."},
+  {ph:"havana", day:3, tag:"Jan 3 · Little Havana", t:"Little Havana", x:"Domino Park, Cuban coffee and lunch along Calle Ocho."},
+  {ph:"deco", day:4, tag:"Jan 4 · South Beach", t:"Art Deco Historic District", x:"Pastel facades, neon signs and porthole windows along Ocean Drive."},
+  {ph:"wynwood", day:5, tag:"Jan 5 · Wynwood", t:"Wynwood Walls", x:"An outdoor gallery of huge murals by street artists from around the world."},
+  {ph:"southpointe", day:3, tag:"Every evening", t:"South Pointe Park", x:"The pier, sunsets and ships heading out to sea, a short walk from our hotel."}
 ];
 
 var BOOKINGS = [
@@ -844,6 +1103,8 @@ function renderPanel(){
   html += '<div class="panel-top"><div class="meta">Day '+(i+1)+' · '+d.wd+', '+d.month+' '+d.num+'</div>'+
           '<div class="pager"><button type="button" id="prev" aria-label="Previous day" '+(i===0?"disabled":"")+'>'+icon("left")+'</button>'+
           '<button type="button" id="next" aria-label="Next day" '+(i===7?"disabled":"")+'>'+icon("right")+'</button></div></div>';
+  var phk = d.variants ? d.variants[state.variant].photo : d.photo, ph = PHOTOS[phk];
+  if (ph) html = '<figure class="day-photo"><img src="'+ph.src+'" alt="'+esc(PHOTO_NAMES[phk]||"")+'" loading="lazy"><figcaption><a href="'+ph.page+'" target="_blank" rel="noopener">Photo: '+esc(ph.by)+', '+esc(ph.lic)+'</a></figcaption></figure>' + html;
   html += '<h3>'+esc(d.title)+'</h3><p class="sum">'+esc(d.sum)+'</p>';
   html += '<div class="chips">'+d.chips.map(function(c){ return '<span class="chip'+(c==="Weather-dependent"?" warn":"")+'">'+esc(c)+'</span>'; }).join("")+'</div>';
   if (d.variants){
@@ -903,15 +1164,24 @@ function popupHTML(key){
   var s = STOPS[key], days = stopDays(key);
   var lbl = days.map(function(i){return DAYS[i].mon+" "+DAYS[i].num;}).join(", ");
   var btns = state.all ? days.map(function(i){return '<button class="pop-btn" data-go="'+i+'">Day '+(i+1)+'</button> ';}).join("") : "";
-  return '<strong>'+esc(s.n)+'</strong><span class="pd">'+esc(lbl)+'</span><br><a href="'+gmaps(s.n+" Miami")+'" target="_blank" rel="noopener">Directions</a>'+(btns?'<br>'+btns:'');
+  var img = s.ph && PHOTOS[s.ph] ? '<img class="pop-img" src="'+PHOTOS[s.ph].sm+'" alt="">' : "";
+  return img+'<strong>'+esc(s.n)+'</strong><span class="pd">'+esc(lbl)+'</span><br><a href="'+gmaps(s.n+" Miami")+'" target="_blank" rel="noopener">Directions</a>'+(btns?'<br>'+btns:'');
 }
 function initMap(){
   if (!window.L){ $("#map").innerHTML='<p style="padding:24px;color:#6B7882">The map could not load. Use the Directions links instead.</p>'; return; }
   map = L.map("map", {scrollWheelZoom:false, zoomControl:true, attributionControl:true});
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-    maxZoom:19, subdomains:"abcd",
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-  }).addTo(map);
+  var osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  });
+  var esri = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", {
+    maxZoom:19, attribution:'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors'
+  });
+  var tileErrors = 0;
+  osm.on("tileerror", function(){
+    tileErrors++;
+    if (tileErrors === 4 && map.hasLayer(osm)){ map.removeLayer(osm); esri.addTo(map); }
+  });
+  osm.addTo(map);
   layer = L.layerGroup().addTo(map);
   map.on("click", function(){ map.scrollWheelZoom.enable(); });
   map.on("popupopen", function(e){
@@ -974,6 +1244,50 @@ if (hm) startDay = +hm[1]-1;
 else DAYS.forEach(function(d,i){ if (d.date===todayISO) startDay=i; });
 select(startDay, false);
 if (hm) setTimeout(function(){ document.getElementById("itinerary").scrollIntoView(); }, 50);
+
+/* =================== Highlights + lightbox =================== */
+$("#bento").innerHTML = HIGHLIGHTS.map(function(h,i){
+  var ph = PHOTOS[h.ph];
+  return '<button type="button" class="hl" data-i="'+i+'"><img src="'+(i===0?ph.src:ph.sm.replace("500px-", "960px-"))+'" alt="'+esc(h.t)+'" loading="lazy">'+
+    '<span class="cap"><span class="tagline">'+esc(h.tag)+'</span><span class="ttl">'+esc(h.t)+'</span><span class="sub">'+esc(h.x)+'</span></span></button>';
+}).join("");
+var lb = $("#lb"), lbIdx = 0;
+function lbShow(i){
+  lbIdx = (i + HIGHLIGHTS.length) % HIGHLIGHTS.length;
+  var h = HIGHLIGHTS[lbIdx], ph = PHOTOS[h.ph], d = DAYS[h.day];
+  $("#lb-img").src = ph.src; $("#lb-img").alt = h.t;
+  $("#lb-meta").textContent = h.tag;
+  $("#lb-title").textContent = h.t;
+  $("#lb-text").textContent = h.x;
+  $("#lb-go").textContent = "See Day "+(h.day+1)+": "+d.short;
+  var c = $("#lb-credit"); c.href = ph.page; c.textContent = "Photo: "+ph.by+" · "+ph.lic+" · Wikimedia Commons";
+}
+$$(".hl").forEach(function(b){
+  b.addEventListener("click", function(){
+    lbShow(+b.dataset.i);
+    if (lb.showModal) lb.showModal(); else lb.setAttribute("open","");
+  });
+});
+function lbClose(){ if (lb.close) lb.close(); else lb.removeAttribute("open"); }
+$("#lb-x").addEventListener("click", lbClose);
+$("#lb-prev").addEventListener("click", function(){ lbShow(lbIdx-1); });
+$("#lb-next").addEventListener("click", function(){ lbShow(lbIdx+1); });
+lb.addEventListener("click", function(e){ if (e.target === lb) lbClose(); });
+lb.addEventListener("keydown", function(e){
+  if (e.key==="ArrowRight") lbShow(lbIdx+1);
+  if (e.key==="ArrowLeft") lbShow(lbIdx-1);
+});
+$("#lb-go").addEventListener("click", function(){
+  var day = HIGHLIGHTS[lbIdx].day;
+  lbClose(); select(day, true);
+  document.getElementById("itinerary").scrollIntoView({behavior:"smooth"});
+});
+
+/* Photo credits */
+$("#credits").innerHTML = Object.keys(PHOTOS).filter(function(k){return k!=="lifeguard";}).map(function(k){
+  var p = PHOTOS[k];
+  return '<li><a href="'+p.page+'" target="_blank" rel="noopener">'+esc(PHOTO_NAMES[k]||k)+'</a>: '+esc(p.by)+', '+esc(p.lic)+'</li>';
+}).join("");
 
 /* =================== Bookings tracker =================== */
 var booked = store("miami-ny-booked") || {};
