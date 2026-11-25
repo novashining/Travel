@@ -206,16 +206,6 @@ h1 em,h2 em,h3 em,.brand-name em,strong em,.ribbon-quote em,.beach-script{font-f
 .day-nav .i{width:16px;height:16px}
 .copy-day{color:var(--muted)}
 
-/* ---------- Big map ---------- */
-.bigmap-card{background:var(--paper);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden}
-.bigmap-bar{display:flex;justify-content:space-between;align-items:center;gap:14px 24px;flex-wrap:wrap;padding:16px 18px;border-bottom:1px solid var(--line)}
-.bigmap-bar .chips button{padding:7px 12px}
-.bm-legend{display:flex;gap:16px;font-size:13px;color:var(--muted)}
-.bm-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
-.bm-legend i.sq{border-radius:3px}
-#bigmap{height:600px;background:#E6E3D8}
-@media (max-width:760px){#bigmap{height:440px}.bigmap-bar .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%}.bigmap-bar .chips button{flex:none}}
-
 /* ---------- Weather / plan ---------- */
 .wx-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.25fr);gap:22px}
 .plan-card{background:var(--sand-2);border-radius:var(--r-lg);padding:32px;display:grid;gap:24px;align-content:start}

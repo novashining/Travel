@@ -411,11 +411,11 @@ function mk(color, label, o) {
   return L.divIcon({className:"", html:'<div class="mk' + (o.home ? " home" : "") + (o.sm ? " sm" : "") + '" style="background:' + color + '">' + (label || "") + '</div>', iconSize:[size, size], iconAnchor:[size / 2, size / 2], popupAnchor:[0, -size / 2]});
 }
 function stopDayIdx(k) { var out = []; days().forEach(function (d, i) { if (d.blocks.some(function (b) { return b.stop === k; })) out.push(i); }); return out; }
-function popup(k, btns) {
+function popup(k) {
   var s = STOPS[k], ds = stopDayIdx(k), p = s.ph && PHOTOS[s.ph];
   return (p ? '<img class="pop-img" src="' + (p.sm || p.src) + '" alt="">' : "") + '<strong>' + esc(s.n) + '</strong>' +
     '<span class="pop-d">' + ds.map(function (i) { return DATES[i].d; }).join(", ") + '</span><br><a href="' + gmaps(s.n + " Miami") + '" target="_blank" rel="noopener">Directions</a>' +
-    ((btns === undefined ? allStops : btns) && ds.length ? '<br>' + ds.map(function (i) { return '<button class="pop-btn" type="button" data-go="' + i + '">Day ' + (i + 1) + '</button>'; }).join(" ") : "");
+    (allStops && ds.length ? '<br>' + ds.map(function (i) { return '<button class="pop-btn" type="button" data-go="' + i + '">Day ' + (i + 1) + '</button>'; }).join(" ") : "");
 }
 function drawMap() {
   if (!map) return;
@@ -451,56 +451,6 @@ function focusStop(k) {
   }, 120);
 }
 
-/* ---------- Big map section ---------- */
-var bm = null, bmLayer = null, bmDay = "all";
-function bmChips() {
-  $("#bm-chips").innerHTML = '<button type="button" data-d="all" aria-pressed="' + (bmDay === "all") + '">All stops</button>' +
-    days().map(function (d, i) { return '<button type="button" data-d="' + i + '" aria-pressed="' + (String(i) === String(bmDay)) + '">' + DATES[i].d + ' · ' + esc(d.label) + '</button>'; }).join("");
-  $$("#bm-chips button").forEach(function (b) { b.addEventListener("click", function () { bmDay = b.dataset.d; bmChips(); bmDraw(); }); });
-}
-function bmInit() {
-  if (!window.L) { $("#bigmap").innerHTML = '<p style="padding:24px">The map could not load. Use the Directions links in each day instead.</p>'; return; }
-  bm = L.map("bigmap", {scrollWheelZoom:false, zoomControl:false});
-  L.control.zoom({position:"topright"}).addTo(bm);
-  var osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'});
-  var esri = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", {maxZoom:19, attribution:"Tiles &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors"});
-  var errs = 0;
-  osm.on("tileerror", function () { errs++; if (errs === 4 && bm.hasLayer(osm)) { bm.removeLayer(osm); esri.addTo(bm); } });
-  osm.addTo(bm);
-  bmLayer = L.layerGroup().addTo(bm);
-  bm.on("click", function () { bm.scrollWheelZoom.enable(); });
-  bm.on("popupopen", function (e) {
-    $$(".pop-btn", e.popup.getElement()).forEach(function (b) { b.addEventListener("click", function () { bm.closePopup(); jumpToDay(+b.dataset.go); }); });
-  });
-  bmChips(); bmDraw(true);
-}
-function bmDraw(instant) {
-  if (!bm) return;
-  bmLayer.clearLayers();
-  var pts = [], opt = {padding:[50, 50], maxZoom:14};
-  if (bmDay === "all") {
-    Object.keys(STOPS).forEach(function (k) {
-      var s = STOPS[k], ds = stopDayIdx(k);
-      if (!ds.length && !s.home) return;
-      var color = s.home ? INK : (ds[0] > 3 ? SEA : CORAL);
-      L.marker([s.lat, s.lng], {icon:mk(color, "", {home:s.home, sm:!s.home}), title:s.n}).bindPopup(function () { return popup(k, true); }).addTo(bmLayer);
-      pts.push([s.lat, s.lng]);
-    });
-  } else {
-    var d = days()[+bmDay], st = stopsOf(d), col = d.c === 1 ? CORAL : SEA;
-    st.forEach(function (k, i) {
-      var s = STOPS[k];
-      L.marker([s.lat, s.lng], {icon:mk(s.home ? INK : col, i + 1, {home:s.home}), title:s.n, zIndexOffset:1000 - i}).bindPopup(function () { return popup(k, true); }).addTo(bmLayer);
-      pts.push([s.lat, s.lng]);
-    });
-    if (pts.length > 1) L.polyline(pts, {color:col, weight:3, opacity:.8, dashArray:"6 8"}).addTo(bmLayer);
-  }
-  if (!pts.length) return;
-  if (pts.length === 1) bm.setView(pts[0], 14);
-  else if (instant || reduced) bm.fitBounds(L.latLngBounds(pts), opt);
-  else bm.flyToBounds(L.latLngBounds(pts), Object.assign({duration:.8}, opt));
-}
-
 /* ================= Plan controls ================= */
 function syncPlanUI() {
   $$(".seg[data-key]").forEach(function (g) {
@@ -508,7 +458,7 @@ function syncPlanUI() {
   });
 }
 function planChanged(msg) {
-  store("miami27-plan", state); syncPlanUI(); renderMoments(); select(sel, false); buildPrint(); if (bm) { bmChips(); bmDraw(); }
+  store("miami27-plan", state); syncPlanUI(); renderMoments(); select(sel, false); buildPrint();
   if (history.replaceState) history.replaceState(null, "", shareURL(location.hash.slice(1)));
   if (msg) toast(msg);
 }
@@ -727,7 +677,7 @@ $("#credits").innerHTML = Object.keys(PHOTOS).filter(function (k) { return used[
 }).join("");
 
 /* ================= Start ================= */
-syncPlanUI(); renderMoments(); buildPrint(); bmInit();
+syncPlanUI(); renderMoments(); buildPrint();
 var hm = /^#day-([1-8])$/.exec(location.hash), start = 0;
 if (hm) start = +hm[1] - 1; else DATES.forEach(function (d, i) { if (d.iso === todayISO) start = i; });
 select(start, false);
