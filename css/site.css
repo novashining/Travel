@@ -143,7 +143,8 @@ h1 em,h2 em,h3 em,.brand-name em,strong em,.ribbon-quote em,.beach-script{font-f
 .tab .today{position:absolute;top:2px;right:8px;width:7px;height:7px;border-radius:50%;background:var(--coral)}
 .tab.p2 .l{color:var(--sea)}
 
-.day{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);background:var(--paper);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);min-height:620px}
+.day{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);background:var(--paper);border-radius:var(--r-lg);overflow:hidden;overflow:clip;box-shadow:var(--shadow);min-height:620px;align-items:start}
+@media (min-width:1101px){.day-media{position:sticky;top:96px;height:min(700px, calc(100vh - 116px));min-height:540px;border-radius:var(--r-lg) 0 0 var(--r-lg);overflow:hidden}}
 .day:focus{outline:none}
 .day-media{position:relative;background:#cfc8b6;min-height:420px}
 .media-toggle{position:absolute;top:16px;left:16px;z-index:500;display:flex;gap:2px;padding:4px;border-radius:99px;background:rgba(255,253,248,.92);backdrop-filter:blur(8px);box-shadow:0 6px 18px -8px rgba(0,0,0,.35)}
