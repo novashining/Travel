@@ -29,20 +29,21 @@ var PHOTOS = {
   skylineSunset:{src:"assets/img/skyline-sunset.webp", by:"Unsplash", lic:"Unsplash License", page:"https://images.unsplash.com/photo-1535498730771-e735b998cd64", name:"Miami skyline at sunset"},
   skyline: {src:"assets/img/skyline.webp", by:"P. Hughes", lic:"CC BY-SA 4.0", page:"https://commons.wikimedia.org/wiki/File:Miami_-_Skyline_from_Harbor.jpg", name:"Miami skyline from Biscayne Bay"},
   tower:   {src:"assets/img/tower.webp", by:"bebatut", lic:"CC BY-SA 2.0", page:"https://commons.wikimedia.org/wiki/File:South_Beach_%40_Miami.jpg", name:"South Beach lifeguard tower"},
-  gator:   {src:"assets/img/gator.webp", by:"NPS / Omar Barrera", lic:"Public domain", page:"https://commons.wikimedia.org/wiki/File:Everglades_Shark_Valley_Program_%2855339570344%29.jpg", name:"Alligator in Shark Valley"},
-  airboat: {src:"assets/img/airboat.webp", by:"Cacophony", lic:"CC BY 2.5", page:"https://commons.wikimedia.org/wiki/File:Everglades-airboat.jpg", name:"Airboats in the Everglades"},
+  gator: {src:"assets/img/gator.webp", by:"DaSpader", lic:"CC BY-SA 3.0", page:"https://commons.wikimedia.org/wiki/File:Shark_Valley_Alligator_-_panoramio.jpg", name:"Alligator among lily pads, Shark Valley"},
+  airboat: {src:"assets/img/airboat.webp", by:"chensiyuan", lic:"CC BY-SA 4.0", page:"https://commons.wikimedia.org/wiki/File:Miami_everglades_airboat_tourism.JPG", name:"Airboat in the Everglades"},
   snorkel: {src:"assets/img/snorkel.webp", by:"National Park Service", lic:"Public domain", page:"https://commons.wikimedia.org/wiki/File:Biscayne_NP_snorkeling.jpg", name:"Snorkeling in Biscayne National Park"},
-  zoo:     {src:"assets/img/zoo.webp", by:"Jedi94", lic:"CC BY-SA 3.0", page:"https://commons.wikimedia.org/wiki/File:Samburu_Giraffe_Feeding_Station_at_Zoo_Miami.jpg", name:"Giraffes at Zoo Miami"},
-  vizcaya: {src:"assets/img/vizcaya.webp", by:"Daderot", lic:"CC0", page:"https://commons.wikimedia.org/wiki/File:Villa_from_the_gardens_-_Vizcaya_Museum_and_Gardens_-_Miami%2C_Florida_-_DSC08678.jpg", name:"Vizcaya villa and gardens"},
-  wynwood: {src:"assets/img/wynwood.webp", by:"Dan Lundberg", lic:"CC BY-SA 2.0", page:"https://commons.wikimedia.org/wiki/File:Wynwood_Walls_Miami_Florida_October_2013.jpg", name:"Wynwood Walls"},
+  zoo: {src:"assets/img/zoo.webp", by:"Averette", lic:"CC BY 3.0", page:"https://commons.wikimedia.org/wiki/File:Flamingos_Miami_MetroZoo.jpg", name:"Flamingos at Zoo Miami"},
+  vizcaya: {src:"assets/img/vizcaya.webp", by:"Averette", lic:"CC BY 3.0", page:"https://commons.wikimedia.org/wiki/File:Villa_Vizcaya_20110228.jpg", name:"Vizcaya villa and gardens"},
+  wynwood: {src:"assets/img/wynwood.webp", by:"Carol M. Highsmith / Library of Congress", lic:"No known restrictions", page:"https://www.loc.gov/pictures/item/2020720699/", name:"Mural in Wynwood"},
   frost:   {src:"assets/img/frost.webp", by:"Dan Lundberg", lic:"CC BY-SA 2.0", page:"https://commons.wikimedia.org/wiki/File:20170829_Miami_1881_Frost_Science_Museum_sRGB.jpg", name:"Frost Science aquarium"},
+  everglades:{src:"assets/img/everglades.webp", by:"G. Gardner / NPS", lic:"Public domain", page:"https://commons.wikimedia.org/wiki/File:Sunset_over_the_River_of_Grass%2C_NPSphoto%2C_G.Gardner_%289255157507%29.jpg", name:"Sunset over the river of grass"},
+  deco:    {src:"assets/img/deco.webp", by:"Robbschultz69", lic:"CC BY-SA 4.0", page:"https://commons.wikimedia.org/wiki/File:Ocean_Drive_in_the_Miami_Beach_Art_Deco_Historic_District.jpg", name:"Ocean Drive, Art Deco Historic District"},
+  espanola:{src:"assets/img/espanola.webp", by:"Phillip Pessar", lic:"CC BY 4.0", page:"https://commons.wikimedia.org/wiki/File:Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg", name:"Española Way"},
+  havana:  {src:"assets/img/havana.webp", by:"Infrogmation of New Orleans", lic:"CC BY-SA 3.0", page:"https://commons.wikimedia.org/wiki/File:Little_Havana_Dominos_Park.JPG", name:"Domino Park, Little Havana"},
+  pier:    {src:"assets/img/pier.webp", by:"William Finn", lic:"Pexels License", page:"https://www.pexels.com/photo/aerial-view-of-miami-beach-and-south-pointe-pier-38894658/", name:"South Pointe pier from above"},
   garden:  {src:"assets/img/garden.webp", by:"Daderot", lic:"Public domain", page:"https://commons.wikimedia.org/wiki/File:Miami_Beach_Botanical_Garden_-_IMG_8018.JPG", name:"Miami Beach Botanical Garden"}
 };
 /* A few extra places, served from Wikimedia Commons */
-PHOTOS.havana = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Little_Havana_Dominos_Park.JPG/1280px-Little_Havana_Dominos_Park.JPG", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Little_Havana_Dominos_Park.JPG/1280px-Little_Havana_Dominos_Park.JPG", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Little_Havana_Dominos_Park.JPG/960px-Little_Havana_Dominos_Park.JPG", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Little_Havana_Dominos_Park.JPG/500px-Little_Havana_Dominos_Park.JPG", "by": "Infrogmation of New Orleans", "lic": "CC BY-SA 3.0", "page": "https://commons.wikimedia.org/wiki/File:Little_Havana_Dominos_Park.JPG", "name": "Domino Park, Little Havana"};
-PHOTOS.deco = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg/1280px-Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg/1280px-Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg/960px-Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg/500px-Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg", "by": "Jorge Láscar", "lic": "CC BY 2.0", "page": "https://commons.wikimedia.org/wiki/File:Ocean_Drive_-_Art_Deco_buildings_in_Miami_%285410502514%29.jpg", "name": "Art Deco buildings on Ocean Drive"};
-PHOTOS.southpointe = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/South_Pointe_Park_Pier.jpg/1280px-South_Pointe_Park_Pier.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/South_Pointe_Park_Pier.jpg/1280px-South_Pointe_Park_Pier.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/South_Pointe_Park_Pier.jpg/960px-South_Pointe_Park_Pier.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/South_Pointe_Park_Pier.jpg/500px-South_Pointe_Park_Pier.jpg", "by": "Visitor7", "lic": "CC BY-SA 3.0", "page": "https://commons.wikimedia.org/wiki/File:South_Pointe_Park_Pier.jpg", "name": "South Pointe Park pier"};
-PHOTOS.espanola = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg/1280px-Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg/1280px-Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg/960px-Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg/500px-Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg", "by": "Phillip Pessar", "lic": "CC BY 4.0", "page": "https://commons.wikimedia.org/wiki/File:Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg", "name": "Española Way"};
 PHOTOS.mangrove = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Biscayne_National_Park_H-mangrove_shoreline.jpg/1280px-Biscayne_National_Park_H-mangrove_shoreline.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Biscayne_National_Park_H-mangrove_shoreline.jpg/1280px-Biscayne_National_Park_H-mangrove_shoreline.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Biscayne_National_Park_H-mangrove_shoreline.jpg/960px-Biscayne_National_Park_H-mangrove_shoreline.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Biscayne_National_Park_H-mangrove_shoreline.jpg/500px-Biscayne_National_Park_H-mangrove_shoreline.jpg", "by": "National Park Service", "lic": "Public domain", "page": "https://commons.wikimedia.org/wiki/File:Biscayne_National_Park_H-mangrove_shoreline.jpg", "name": "Mangrove shoreline, Biscayne Bay"};
 PHOTOS.bayside = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Miami-Bayside.jpg/1280px-Miami-Bayside.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Miami-Bayside.jpg/1280px-Miami-Bayside.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Miami-Bayside.jpg/960px-Miami-Bayside.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Miami-Bayside.jpg/500px-Miami-Bayside.jpg", "by": "Kolossos", "lic": "CC BY-SA 3.0", "page": "https://commons.wikimedia.org/wiki/File:Miami-Bayside.jpg", "name": "Bayside Marketplace"};
 PHOTOS.jungle = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Two_different_macaws_-Jungle_Island_-Miami-6a.jpg/1280px-Two_different_macaws_-Jungle_Island_-Miami-6a.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Two_different_macaws_-Jungle_Island_-Miami-6a.jpg/1280px-Two_different_macaws_-Jungle_Island_-Miami-6a.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Two_different_macaws_-Jungle_Island_-Miami-6a.jpg/960px-Two_different_macaws_-Jungle_Island_-Miami-6a.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Two_different_macaws_-Jungle_Island_-Miami-6a.jpg/500px-Two_different_macaws_-Jungle_Island_-Miami-6a.jpg", "by": "Keith Allison", "lic": "CC BY-SA 2.0", "page": "https://commons.wikimedia.org/wiki/File:Two_different_macaws_-Jungle_Island_-Miami-6a.jpg", "name": "Macaws at Jungle Island"};
@@ -60,7 +61,7 @@ var STOPS = {
   zoo:        {n:"Zoo Miami", lat:25.6106, lng:-80.3977, ph:"zoo"},
   vizcaya:    {n:"Vizcaya Museum & Gardens", lat:25.7443, lng:-80.2105, ph:"vizcaya"},
   havana:     {n:"Little Havana (Calle Ocho)", lat:25.7653, lng:-80.2190, ph:"havana"},
-  southpointe:{n:"South Pointe Park", lat:25.7660, lng:-80.1340, ph:"southpointe"},
+  southpointe:{n:"South Pointe Park", lat:25.7660, lng:-80.1340, ph:"pier"},
   ocean:      {n:"Ocean Drive & Art Deco district", lat:25.7810, lng:-80.1305, ph:"deco"},
   espanola:   {n:"Española Way", lat:25.7864, lng:-80.1326, ph:"espanola"},
   bigbus:     {n:"Big Bus stop, 555 Washington Ave", lat:25.7750, lng:-80.1350},
@@ -83,7 +84,7 @@ var D = {
       B("Afternoon","Check in at our Doral hotel","A suite with two queens and a sofa bed. Breakfast and parking are included.","home1"),
       B("Evening","New Year's Eve","CityPlace Doral if it announces fireworks; otherwise dinner nearby and an early night before the Everglades.","cityplace")
     ], links:[]},
-  everglades: {key:"everglades", label:"Everglades", theme:"Wild Florida", c:1, photo:"gator", place:"Everglades National Park",
+  everglades: {key:"everglades", label:"Everglades", theme:"Wild Florida", c:1, photo:"everglades", place:"Everglades National Park",
     title:"New year, _new neighbors._", sum:"Our big nature day. We start early, before Shark Valley gets busy.",
     blocks:[
       B("Before leaving","Buy the National Parks pass","Digital America the Beautiful pass on Recreation.gov. The buyer needs photo ID in the car."),
@@ -159,7 +160,7 @@ var D = {
       B("Afternoon","Beach",""),
       B("Evening","Waterfront walk and dinner","")
     ], links:[]},
-  home: {key:"home", label:"Homeward", theme:"Homeward", c:2, photo:"tower", place:"One last look",
+  home: {key:"home", label:"Homeward", theme:"Homeward", c:2, photo:"pier", place:"One last look",
     title:"One more _barefoot walk._", sum:"An easy last morning by the water.",
     blocks:[
       B("By 11 AM","Check out","The hotel holds our bags.","home2"),
@@ -247,12 +248,18 @@ var MOMENTS = [
     story:"An Italian Renaissance–style villa and formal gardens on Biscayne Bay, built about a century ago. We arrive at opening, 9:30 AM, before the move to the beach."},
   {ph:"havana", day:3, place:"Little Havana", small:"Cafecito o'clock", t:"Dominoes _& Cuban coffee._", more:"Lunch on Calle Ocho",
     story:"Domino Park, tiny cups of Cuban coffee and a long lunch on Calle Ocho, the heart of Little Havana, before the car goes back."},
+  {ph:"deco", day:"deco", place:"Ocean Drive", small:"Pastel everything", t:"Art Deco _at golden hour._", more:"Ocean Drive walk",
+    story:"Ocean Drive's pastel hotels, neon signs and porthole windows line up along the beach. We walk it on our first South Beach morning, then come back for the evening glow."},
   {ph:"wynwood", day:"city", place:"Wynwood", small:"Bring the camera", t:"Walls that _talk back._", more:"Wynwood Walls",
     story:"An outdoor gallery of huge murals by street artists from around the world, reached by open-top bus on our city day. Free for kids 12 and under."},
   {ph:"frost", day:"city", place:"Downtown", small:"Look up", t:"Sharks _overhead._", more:"Frost Science",
     story:"At Frost Science you look up through a giant lens at sharks and rays swimming overhead. Add the planetarium, then Bayside for a late lunch by the water."}
 ];
-function momentDay(m) { return m.day === "city" ? +state.city : m.day; }
+function momentDay(m) {
+  if (m.day === "city") return +state.city;
+  if (m.day === "deco") return days().findIndex(function (d, j) { return j >= 4 && d.key === "deco"; });
+  return m.day;
+}
 function renderMoments() {
   $("#moments-grid").innerHTML = MOMENTS.slice(0, 6).map(function (m, i) {
     var p = PHOTOS[m.ph], di = momentDay(m);
@@ -668,7 +675,7 @@ function buildPrint() {
   }).join("");
 }
 $("#print-btn").addEventListener("click", function () { window.print(); });
-var used = {coast:1, tower:1, frost:1, wynwood:1};
+var used = {coast:1, tower:1, frost:1, wynwood:1, everglades:1};
 Object.keys(D).forEach(function (k) { used[D[k].photo] = 1; });
 MOMENTS.forEach(function (m) { used[m.ph] = 1; });
 Object.keys(STOPS).forEach(function (k) { if (STOPS[k].ph) used[STOPS[k].ph] = 1; });
