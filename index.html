@@ -3,546 +3,1128 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Miami New Year · Dec 31 – Jan 7</title>
-<meta name="description" content="Our family trip to Miami: Everglades, Biscayne Bay and South Beach, Dec 31, 2026 – Jan 7, 2027.">
+<title>Miami, New Year · Dec 31 – Jan 7</title>
+<meta name="description" content="Family trip to Miami: the Everglades, Biscayne Bay and South Beach, Dec 31, 2026 – Jan 7, 2027.">
+<meta name="theme-color" content="#0E1A22">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
 <style>
-  :root{
-    --ink:#14323a; --ink-soft:#4a6670; --sand:#fdf7ef; --card:#ffffff;
-    --teal:#0e6e74; --teal-deep:#0a4a52; --coral:#ff6b57; --coral-soft:#ffe3dc;
-    --pink:#f9d3dc; --mint:#d6f1e6; --line:#ead9c6; --sun:#ffb347;
-    --radius:18px; --shadow:0 10px 30px -14px rgba(20,50,58,.35);
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--sand);line-height:1.55;font-size:16px}
-  a{color:var(--teal)}
-  h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+:root{
+  --paper:#F6F3EE; --paper-2:#EEE8DF; --card:#FFFFFF;
+  --ink:#0E1A22; --ink-2:#33434E; --muted:#6B7882; --line:#E3DCD1; --line-2:#D6CDBF;
+  --coral:#E4572E; --coral-2:#FBE6DE; --coral-ink:#A93A1B;
+  --teal:#0F7173; --teal-2:#DDEFEE; --teal-ink:#0A5254;
+  --gold:#C9A227; --gold-2:#F6EDCF;
+  --serif:"Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --sans:Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r:14px; --r-lg:22px;
+  --shadow:0 1px 2px rgba(14,26,34,.04), 0 12px 32px -18px rgba(14,26,34,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3{margin:0;font-weight:400}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.icon{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--coral);outline-offset:2px;border-radius:6px}
 
-  /* Nav */
-  nav{position:sticky;top:0;z-index:1000;background:rgba(253,247,239,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
-  nav a{flex:none;text-decoration:none;color:var(--ink);font-weight:500;font-size:14px;padding:7px 13px;border-radius:99px}
-  nav a:hover{background:var(--coral-soft)}
+/* ---------- Top bar ---------- */
+.top{position:fixed;inset:0 0 auto;z-index:1200;transition:background .25s,border-color .25s,color .25s;color:#fff;border-bottom:1px solid transparent}
+.top.solid{background:rgba(246,243,238,.9);backdrop-filter:saturate(1.4) blur(12px);color:var(--ink);border-color:var(--line)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;letter-spacing:.14em;font-size:12px;text-transform:uppercase;white-space:nowrap}
+.brand-mark{width:28px;height:28px}
+.top nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.top nav a{text-decoration:none;font-size:14px;font-weight:500;padding:8px 12px;border-radius:99px;opacity:.82;white-space:nowrap}
+.top nav a:hover{opacity:1}
+.top nav a.on{opacity:1;background:rgba(255,255,255,.14)}
+.top.solid nav a.on{background:var(--ink);color:#fff}
 
-  /* Hero */
-  .hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(180deg,#ff8a5b 0%,#ff6b8b 38%,#7d5ba6 70%,#0e6e74 100%)}
-  .hero .sun{position:absolute;left:50%;bottom:-120px;width:340px;height:340px;margin-left:-170px;border-radius:50%;
-    background:repeating-linear-gradient(180deg,#ffd27a 0 22px,transparent 22px 32px);opacity:.55}
-  .hero .palm{position:absolute;bottom:0;width:180px;opacity:.9}
-  .hero .palm.l{left:-20px}.hero .palm.r{right:-20px;transform:scaleX(-1)}
-  .hero-inner{position:relative;padding:72px 20px 96px;text-align:center;max-width:760px;margin:0 auto}
-  .eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:13px;font-weight:600;opacity:.95}
-  .hero h1{font-size:clamp(40px,8vw,76px);margin:12px 0 10px;text-shadow:0 2px 18px rgba(0,0,0,.15)}
-  .hero p.lede{font-size:clamp(16px,2.4vw,19px);margin:0 auto;max-width:560px;opacity:.97}
-  .countdown{display:inline-flex;gap:10px;margin-top:28px;background:rgba(20,50,58,.35);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.35);border-radius:16px;padding:12px 18px}
-  .countdown div{min-width:62px}
-  .countdown b{display:block;font-family:Fraunces,serif;font-size:30px;line-height:1}
-  .countdown span{font-size:12px;text-transform:uppercase;letter-spacing:.1em;opacity:.9}
-  .countdown.msg{font-weight:600;font-size:18px}
+/* ---------- Hero ---------- */
+.hero{position:relative;background:var(--ink);color:#F3EEE6;overflow:hidden;padding:132px 0 0}
+.hero-art{position:absolute;inset:0;pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:end;padding-bottom:72px}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:#E9B8A7}
+.kicker::before{content:"";width:28px;height:1px;background:currentColor}
+.hero h1{font-family:var(--serif);font-size:clamp(56px,9vw,124px);line-height:.92;letter-spacing:-.01em;margin:18px 0 22px}
+.hero h1 em{color:var(--coral);font-style:italic}
+.hero .lede{font-size:18px;color:#C9D1D6;max-width:540px;margin:0 0 30px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:15px;padding:12px 20px;border-radius:99px;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--coral);color:#fff}
+.btn.ghost{border-color:rgba(255,255,255,.28);color:#fff}
+.glance{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-lg);padding:26px 26px 22px;backdrop-filter:blur(6px)}
+.glance-label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#9FB0BA;font-weight:600}
+.clock{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 20px}
+.clock div{background:rgba(255,255,255,.06);border-radius:12px;padding:12px 6px 10px;text-align:center}
+.clock b{display:block;font-family:var(--serif);font-size:40px;line-height:1;font-weight:400;font-variant-numeric:tabular-nums}
+.clock span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9FB0BA}
+.clock.msg{display:block;font-family:var(--serif);font-size:30px;line-height:1.15}
+.legs{display:grid;gap:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:16px}
+.leg{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:#D6DDE1}
+.leg i{width:10px;height:10px;border-radius:50%;margin-top:6px;flex:none}
+.leg strong{color:#fff;font-weight:600;display:block}
+.stats{position:relative;border-top:1px solid rgba(255,255,255,.12)}
+.stats .wrap{display:grid;grid-template-columns:repeat(5,1fr)}
+.stat{padding:22px 0;border-right:1px solid rgba(255,255,255,.08);padding-left:22px}
+.stat:first-child{padding-left:0}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:36px;line-height:1;color:#fff}
+.stat span{font-size:13px;color:#9FB0BA}
 
-  section{padding:64px 0 8px}
-  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
-  .sec-head h2{font-size:clamp(28px,4vw,38px)}
-  .sec-head p{margin:0;color:var(--ink-soft);max-width:520px}
+/* ---------- Sections ---------- */
+section{padding:96px 0 0}
+.head{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:32px}
+.eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--coral-ink);margin-bottom:10px}
+.head h2{font-family:var(--serif);font-size:clamp(38px,5vw,56px);line-height:1}
+.head p{margin:12px 0 0;color:var(--muted);max-width:620px}
 
-  /* Stays */
-  .stays{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
-  .stay{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--line)}
-  .stay .band{padding:18px 22px;color:#fff}
-  .stay.p1 .band{background:linear-gradient(120deg,#ff6b57,#ff9a6b)}
-  .stay.p2 .band{background:linear-gradient(120deg,#0e6e74,#2aa39b)}
-  .stay .band small{text-transform:uppercase;letter-spacing:.14em;font-weight:600;font-size:12px;opacity:.95}
-  .stay .band h3{font-size:24px;margin-top:4px}
-  .stay dl{margin:0;padding:16px 22px 20px;display:grid;grid-template-columns:110px 1fr;gap:8px 12px;font-size:15px}
-  .stay dt{color:var(--ink-soft);font-weight:500}
-  .stay dd{margin:0}
-  .who{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
-  .pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:14px}
-  .pill.warn{background:#fff6e5;border-color:#ffd99a}
+/* Stays */
+.stays{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.stay{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:28px 28px 24px;position:relative;overflow:hidden}
+.stay::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--c)}
+.stay .part{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--c)}
+.stay .nights{white-space:nowrap;background:var(--c2);color:var(--c);padding:4px 10px;border-radius:99px;letter-spacing:.04em;text-transform:none;font-size:13px}
+.stay h3{font-family:var(--serif);font-size:34px;line-height:1.05;margin:14px 0 4px}
+.stay .addr{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:14px;text-decoration:none}
+.stay .addr:hover{color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:22px}
+.facts div{background:var(--paper);padding:12px 14px}
+.facts dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.facts dd{margin:2px 0 0;font-size:14px;font-weight:500}
 
-  /* Days */
-  .filters{display:flex;gap:8px;flex-wrap:wrap}
-  .filters button{font:inherit;font-size:14px;font-weight:500;border:1px solid var(--line);background:#fff;color:var(--ink);padding:7px 14px;border-radius:99px;cursor:pointer}
-  .filters button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .days{display:grid;gap:18px}
-  .day{display:grid;grid-template-columns:120px 1fr;background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden}
-  .day .date{padding:20px 14px;text-align:center;color:#fff;display:flex;flex-direction:column;justify-content:center;gap:2px}
-  .day.p1 .date{background:linear-gradient(160deg,#ff6b57,#ff9a6b)}
-  .day.p2 .date{background:linear-gradient(160deg,#0e6e74,#2aa39b)}
-  .day .date .dow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:600}
-  .day .date .num{font-family:Fraunces,serif;font-size:42px;line-height:1}
-  .day .date .mon{font-size:14px;font-weight:500}
-  .day .body{padding:20px 22px 18px}
-  .day .body h3{font-size:23px}
-  .tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px}
-  .tag{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--mint);color:var(--teal-deep)}
-  .tag.c{background:var(--coral-soft);color:#b23a28}
-  .tag.y{background:#fff1d6;color:#8a5a00}
-  .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .slot{background:var(--sand);border-radius:12px;padding:12px 14px;font-size:15px}
-  .slot b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft);margin-bottom:4px}
-  .slot a{font-weight:500}
-  .bring{margin:12px 0 0;font-size:14px;color:var(--ink-soft)}
-  .bring strong{color:var(--ink)}
-  .day.hide{display:none}
+/* ---------- Itinerary explorer ---------- */
+.strip-wrap{position:relative}
+.strip-labels{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.strip-labels span{display:flex;align-items:center;gap:8px}
+.strip-labels span::after{content:"";flex:1;height:1px;background:currentColor;opacity:.3}
+.strip{display:grid;grid-template-columns:repeat(8,1fr);gap:10px}
+.tab{position:relative;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 12px 12px;cursor:pointer;transition:border-color .2s,transform .15s,box-shadow .2s}
+.tab:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.tab .d{display:flex;align-items:baseline;gap:6px}
+.tab .n{font-family:var(--serif);font-size:32px;line-height:1}
+.tab .w{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.tab .t{display:block;font-size:13px;font-weight:500;color:var(--ink-2);margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tab::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:3px;border-radius:3px 3px 0 0;background:var(--c);transform:scaleX(0);transition:transform .25s}
+.tab[aria-selected="true"]{border-color:var(--c);background:var(--c2)}
+.tab[aria-selected="true"]::after{transform:scaleX(1)}
+.tab .today{position:absolute;top:8px;right:8px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--gold);color:#fff;padding:2px 6px;border-radius:99px}
 
-  /* Map */
-  #map{height:480px;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line);z-index:1}
-  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:14px;color:var(--ink-soft)}
-  .dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
-  .pin{width:26px;height:26px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.3)}
-  .pin.home{width:30px;height:30px}
+.explorer{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;margin-top:20px;align-items:start}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:30px 32px 26px;min-height:560px}
+.panel-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.panel .meta{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--c)}
+.pager{display:flex;gap:6px}
+.pager button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;cursor:pointer}
+.pager button:hover:not(:disabled){border-color:var(--ink)}
+.pager button:disabled{opacity:.35;cursor:default}
+.panel h3{font-family:var(--serif);font-size:clamp(32px,3.4vw,44px);line-height:1.02;margin:12px 0 10px}
+.panel .sum{color:var(--ink-2);margin:0 0 18px;font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:5px 10px;border-radius:99px;background:var(--paper-2);color:var(--ink-2)}
+.chip.warn{background:var(--gold-2);color:#7A5E00}
+.seg{display:inline-flex;background:var(--paper-2);border-radius:99px;padding:4px;gap:2px;margin:0 0 22px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;padding:7px 14px;border-radius:99px;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(14,26,34,.15)}
+.seg-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-bottom:8px}
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:var(--line-2)}
+.tl li{position:relative;display:grid;grid-template-columns:32px 1fr;gap:16px;padding:0 0 20px}
+.tl li:last-child{padding-bottom:4px}
+.dot{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--line-2);font-size:13px;font-weight:700;color:var(--ink-2);position:relative;z-index:1}
+.dot.num{background:var(--c);border-color:var(--c);color:#fff;cursor:pointer}
+.tl .when{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+.tl .what{font-weight:600;font-size:16px;margin:1px 0 2px}
+.tl .txt{color:var(--ink-2);font-size:15px;margin:0}
+.tl .dir{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--c);text-decoration:none;margin-top:4px}
+.tl .dir .icon{width:14px;height:14px}
+.note{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--ink-2);margin-top:14px}
+.note .icon{margin-top:2px;color:var(--c)}
+.bring{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;align-items:center}
+.bring > span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-right:4px}
+.bring em{font-style:normal;font-size:13px;border:1px solid var(--line);padding:4px 10px;border-radius:99px}
+.fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-  /* Cards grid */
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-  .card{background:var(--card);border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);padding:20px 22px}
-  .card h3{font-size:20px;margin-bottom:8px}
-  .card p{margin:0 0 8px;font-size:15px}
-  .card ul{margin:0;padding-left:18px;font-size:15px}
-  .card li{margin:4px 0}
+.map-card{position:sticky;top:84px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden}
+#map{height:560px;background:#E8E4DC}
+.map-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.map-bar .legend{display:flex;gap:14px;flex-wrap:wrap}
+.map-bar .legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.toggle{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.toggle[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.mk{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;color:#fff;font:700 13px/1 var(--sans);border:2.5px solid #fff;box-shadow:0 4px 10px rgba(14,26,34,.35);transition:transform .2s}
+.mk.sm{width:16px;height:16px;border-width:2px}
+.mk.home{border-radius:8px}
+.leaflet-popup-content{font:14px/1.45 var(--sans);margin:12px 14px}
+.leaflet-popup-content strong{display:block;font-size:15px}
+.leaflet-popup-content .pd{color:var(--muted);font-size:13px}
+.pop-btn{margin-top:8px;border:0;background:var(--ink);color:#fff;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer}
 
-  /* Bookings */
-  table{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);font-size:15px}
-  td[data-k="Day"]{white-space:nowrap}
-  th,td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
-  th{background:var(--ink);color:#fff;font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.08em}
-  tr:last-child td{border-bottom:0}
-  .status{font-size:12px;font-weight:600;padding:3px 9px;border-radius:99px;white-space:nowrap}
-  .s-now{background:var(--coral-soft);color:#b23a28}
-  .s-soon{background:#fff1d6;color:#8a5a00}
-  .s-day{background:var(--mint);color:var(--teal-deep)}
+/* ---------- Weather ---------- */
+.wx{display:grid;grid-template-columns:.8fr 1.6fr;gap:20px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:26px 28px}
+.box h3{font-family:var(--serif);font-size:30px;line-height:1.05;margin-bottom:6px}
+.box .sub{color:var(--muted);font-size:14px;margin:0 0 18px}
+.norms{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.norm{background:var(--paper);border-radius:12px;padding:14px}
+.norm b{display:block;font-family:var(--serif);font-size:34px;line-height:1;font-weight:400}
+.norm span{font-size:13px;color:var(--muted)}
+.days-wx{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px}
+.dw{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--paper)}
+.dw.trip{background:var(--card)}
+.dw .dd{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.dw .ic{margin:8px 0 4px;color:var(--ink)}
+.dw .ic .icon{width:26px;height:26px}
+.dw .tt{font-family:var(--serif);font-size:26px;line-height:1}
+.dw .tt small{font-family:var(--sans);font-size:13px;color:var(--muted)}
+.dw .ex{font-size:12px;color:var(--muted);margin-top:4px}
+.dw .bar{height:4px;border-radius:4px;background:var(--line);margin-top:8px;overflow:hidden}
+.dw .bar i{display:block;height:100%;background:var(--teal)}
+.verdict{display:flex;gap:14px;align-items:center;border-radius:14px;padding:16px 18px;margin-top:16px;border:1px solid var(--line)}
+.verdict .lamp{width:14px;height:14px;border-radius:50%;flex:none;box-shadow:0 0 0 5px rgba(0,0,0,.05)}
+.verdict b{display:block}
+.verdict span{font-size:14px;color:var(--ink-2)}
+.wx-status{font-size:14px;color:var(--muted);margin:0 0 14px}
 
-  /* Packing */
-  .pack{columns:3 220px;column-gap:24px;background:#fff;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);padding:20px 24px}
-  .pack h3{font-size:17px;margin:4px 0 8px;break-after:avoid}
-  .pack label{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:15px;cursor:pointer;break-inside:avoid}
-  .pack input{accent-color:var(--coral);width:18px;height:18px;margin-top:2px;flex:none}
-  .pack input:checked+span{text-decoration:line-through;color:var(--ink-soft)}
-  .pack-note{font-size:13px;color:var(--ink-soft);margin-top:10px}
+/* ---------- Bookings ---------- */
+.bk-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.progress{display:flex;align-items:center;gap:14px;min-width:260px}
+.progress .track{flex:1;height:8px;border-radius:8px;background:var(--paper-2);overflow:hidden}
+.progress .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),#2AA39B);transition:width .4s}
+.progress b{font-size:14px;white-space:nowrap}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:7px 14px;font-size:13px;font-weight:600;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.bk{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden}
+.bk-row{display:grid;grid-template-columns:44px minmax(0,1.3fr) 130px 150px minmax(0,1.6fr);gap:16px;align-items:center;padding:16px 20px;border-top:1px solid var(--line)}
+.bk-row:first-child{border-top:0}
+.bk-row.hdr{background:var(--paper);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--muted);padding-top:12px;padding-bottom:12px}
+.bk-row.done .bk-name a,.bk-row.done .bk-name span{text-decoration:line-through;color:var(--muted)}
+.bk-row.hide{display:none}
+.check{appearance:none;flex:none;width:22px;height:22px;border:1.5px solid var(--line-2);border-radius:7px;display:grid;place-items:center;cursor:pointer;background:var(--card);margin:0}
+.check:checked{background:var(--teal);border-color:var(--teal)}
+.check:checked::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.bk-name{font-weight:600}
+.bk-name a{text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.bk-name a:hover{color:var(--coral)}
+.bk-name a .icon{width:14px;height:14px;color:var(--muted)}
+.bk-name small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.bk-date{font-size:14px;color:var(--ink-2)}
+.badge{display:inline-block;font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;white-space:nowrap}
+.b-now{background:var(--coral-2);color:var(--coral-ink)}
+.b-soon{background:var(--gold-2);color:#7A5E00}
+.b-day{background:var(--teal-2);color:var(--teal-ink)}
+.b-back{background:var(--paper-2);color:var(--ink-2)}
+.bk-note{font-size:14px;color:var(--ink-2)}
 
-  footer{margin-top:72px;padding:34px 0 48px;background:var(--teal-deep);color:#d9efed;font-size:14px}
-  footer a{color:#fff}
+/* ---------- Prepare: key dates + packing ---------- */
+.prep{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.kd{list-style:none;margin:8px 0 0;padding:0;position:relative}
+.kd::before{content:"";position:absolute;left:7px;top:10px;bottom:10px;width:1px;background:var(--line-2)}
+.kd li{position:relative;padding:0 0 18px 32px}
+.kd li::before{content:"";position:absolute;left:0;top:5px;width:15px;height:15px;border-radius:50%;background:var(--card);border:2px solid var(--line-2)}
+.kd li.past{color:var(--muted)}
+.kd li.past::before{background:var(--line-2)}
+.kd li.next::before{border-color:var(--coral);background:var(--coral);box-shadow:0 0 0 5px var(--coral-2)}
+.kd .kdate{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--muted);display:flex;gap:8px;align-items:center}
+.kd .kdate .badge{letter-spacing:0;text-transform:none}
+.kd .ktxt{font-weight:600;margin-top:2px}
+.kd .kmore{font-size:14px;color:var(--ink-2)}
+.pack-head{display:flex;align-items:center;gap:18px;margin-bottom:10px}
+.ring{width:64px;height:64px;flex:none}
+.ring circle{fill:none;stroke-width:6}
+.ring .bg{stroke:var(--paper-2)}
+.ring .fg{stroke:var(--coral);stroke-linecap:round;transition:stroke-dashoffset .4s;transform:rotate(-90deg);transform-origin:50% 50%}
+.ring text{font:700 15px var(--sans);fill:var(--ink)}
+.pack-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 12px}
+.pack-list{display:grid;grid-template-columns:1fr 1fr;gap:2px 12px}
+.pack-list label{display:flex;gap:12px;align-items:center;padding:9px 10px;border-radius:10px;cursor:pointer;font-size:15px}
+.pack-list label:hover{background:var(--paper)}
+.pack-list input:checked + span{text-decoration:line-through;color:var(--muted)}
+.small{font-size:13px;color:var(--muted)}
+.linkbtn{border:0;background:none;padding:0;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:13px}
 
-  @media (max-width:720px){
-    .day{grid-template-columns:1fr}
-    .day .date{flex-direction:row;align-items:baseline;justify-content:flex-start;gap:10px;padding:12px 18px;text-align:left}
-    .day .date .num{font-size:28px}
-    .slots{grid-template-columns:1fr}
-    #map{height:380px}
-    .hero .palm{width:110px}
-    table,thead,tbody,tr,td{display:block}
-    thead{display:none}
-    tr{border-bottom:1px solid var(--line);padding:8px 0}
-    td{border:0;padding:4px 16px}
-    td[data-k]::before{content:attr(data-k) ": ";font-weight:600;color:var(--ink-soft)}
-  }
-  @media print{
-    nav,#map,.legend,.filters,.countdown,.hero .palm,.hero .sun{display:none!important}
-    .hero{background:#fff;color:var(--ink)}
-    .day,.card,.stay,table,.pack{box-shadow:none}
-    .day{break-inside:avoid}
-  }
+/* ---------- Tips ---------- */
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.tip{background:var(--card);padding:26px 26px 24px}
+.tip .ti{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--paper);color:var(--coral);margin-bottom:14px}
+.tip h3{font-family:var(--serif);font-size:26px;line-height:1.1;margin-bottom:6px}
+.tip p{margin:0;color:var(--ink-2);font-size:15px}
+
+footer{margin-top:110px;background:var(--ink);color:#9FB0BA;font-size:14px;padding:44px 0 56px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer strong{color:#fff;font-family:var(--serif);font-size:26px;font-weight:400;display:block}
+footer a{color:#fff}
+
+#print-all{display:none}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .stats .wrap{grid-template-columns:repeat(3,1fr)}
+  .stat:nth-child(n+4){display:none}
+  .explorer{grid-template-columns:1fr}
+  .map-card{position:relative;top:0;order:-1}
+  #map{height:380px}
+  .panel{min-height:0}
+  .strip{grid-template-columns:repeat(8,minmax(92px,1fr));overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+  .strip .tab{scroll-snap-align:start}
+  .tab .d{flex-direction:column;align-items:flex-start;gap:2px}
+  .tab .w{white-space:nowrap}
+  .strip-labels{display:none}
+  .wx,.prep{grid-template-columns:1fr}
+  .tips{grid-template-columns:1fr 1fr}
+  .bk-row{grid-template-columns:36px minmax(0,1fr) auto;row-gap:6px}
+  .bk-row.hdr{display:none}
+  .bk-row .bk-date{grid-column:2}
+  .bk-row .bk-win{grid-column:3;grid-row:1}
+  .bk-row .bk-note{grid-column:2 / -1}
+}
+@media (max-width:640px){
+  .wrap{padding:0 18px}
+  .top nav{display:none}
+  .hero{padding-top:104px}
+  .stays{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr 1fr}
+  .facts div:last-child{grid-column:1 / -1}
+  .head{grid-template-columns:1fr}
+  .panel{padding:24px 20px}
+  .tips{grid-template-columns:1fr}
+  .stat b{font-size:28px}
+  .stat{padding-left:14px}
+  .stat span{font-size:12px}
+  .pack-list{grid-template-columns:1fr}
+  .clock b{font-size:32px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media print{
+  .top,.hero-art,.cta,.map-card,.strip-wrap,.explorer,.filters,.pack-tabs,.seg,#weather,.linkbtn{display:none!important}
+  #print-all{display:block}
+  .hero{background:#fff;color:var(--ink);padding:0}
+  .hero .lede,.glance-label,.leg{color:var(--ink-2)}
+  .glance,.stats{display:none}
+  body{background:#fff}
+  .box,.bk,.stay,.tips{box-shadow:none}
+  section{padding-top:32px}
+  .pd-day{break-inside:avoid;border-top:1px solid #ccc;padding:12px 0}
+}
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="sun" aria-hidden="true"></div>
-  <svg class="palm l" viewBox="0 0 200 260" aria-hidden="true"><path d="M104 260c-4-60-2-120 8-170" stroke="#123a40" stroke-width="9" fill="none" stroke-linecap="round"/><g fill="#123a40"><path d="M112 92c-30-30-70-34-100-18 32-4 62 6 100 18z"/><path d="M112 92c-10-40-40-66-74-72 26 16 48 40 74 72z"/><path d="M112 92c18-36 52-54 86-52-30 10-56 26-86 52z"/><path d="M112 92c34-12 66-2 88 22-28-12-58-16-88-22z"/><path d="M112 92c4-36 24-64 50-80-16 24-32 50-50 80z"/></g></svg>
-  <svg class="palm r" viewBox="0 0 200 260" aria-hidden="true"><path d="M104 260c-4-60-2-120 8-170" stroke="#123a40" stroke-width="9" fill="none" stroke-linecap="round"/><g fill="#123a40"><path d="M112 92c-30-30-70-34-100-18 32-4 62 6 100 18z"/><path d="M112 92c-10-40-40-66-74-72 26 16 48 40 74 72z"/><path d="M112 92c18-36 52-54 86-52-30 10-56 26-86 52z"/><path d="M112 92c34-12 66-2 88 22-28-12-58-16-88-22z"/><path d="M112 92c4-36 24-64 50-80-16 24-32 50-50 80z"/></g></svg>
-  <div class="hero-inner">
-    <div class="eyebrow">Dec 31, 2026 – Jan 7, 2027</div>
-    <h1>Miami New Year</h1>
-    <p class="lede">Gators and airboats in the Everglades, snorkeling in Biscayne Bay, a Gilded Age mansion, Cuban food in Little Havana, then four days of South Beach.</p>
-    <div class="countdown" id="countdown" aria-live="polite"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M10 14 20 4M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-partly" viewBox="0 0 24 24"><path d="M12 3v1.5M5.6 5.6l1 1M3 12h1.5M18.4 5.6l-1 1"/><path d="M8.5 11.5A4 4 0 0 1 16 10"/><path d="M17 20H9a4 4 0 1 1 .9-7.9A5 5 0 0 1 19.5 14 3 3 0 0 1 17 20z"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H8a5 5 0 1 1 1.1-9.9A6 6 0 0 1 20 12a3.5 3.5 0 0 1-2.5 7z"/></symbol>
+  <symbol id="i-rain" viewBox="0 0 24 24"><path d="M17.5 15H8a5 5 0 1 1 1.1-9.9A6 6 0 0 1 20 8a3.5 3.5 0 0 1-2.5 7z"/><path d="M8 18l-1 3M12 18l-1 3M16 18l-1 3"/></symbol>
+  <symbol id="i-storm" viewBox="0 0 24 24"><path d="M17.5 15H8a5 5 0 1 1 1.1-9.9A6 6 0 0 1 20 8a3.5 3.5 0 0 1-2.5 7z"/><path d="M12 15l-2 4h4l-2 4"/></symbol>
+  <symbol id="i-fog" viewBox="0 0 24 24"><path d="M4 10h16M3 14h18M6 18h12M7 6h10"/></symbol>
+  <symbol id="i-bus" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="15" rx="2"/><path d="M4 11h16M8 18v3M16 18v3"/><circle cx="8" cy="14.5" r=".8"/><circle cx="16" cy="14.5" r=".8"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-waves" viewBox="0 0 24 24"><path d="M2 8c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2M2 14c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2M2 20c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></symbol>
+  <symbol id="i-swap" viewBox="0 0 24 24"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></symbol>
+</svg>
+
+<!-- Top bar -->
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#E4572E"/><path d="M5 19h22M7 22.5h18M10 26h12" stroke="#0E1A22" stroke-width="2"/><path d="M16 4v6M9 6.5l2.5 5M23 6.5l-2.5 5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Miami · New Year
+    </a>
+    <nav aria-label="Sections">
+      <a href="#overview">Overview</a>
+      <a href="#itinerary">Itinerary</a>
+      <a href="#weather">Weather</a>
+      <a href="#bookings">Bookings</a>
+      <a href="#prepare">Prepare</a>
+      <a href="#tips">Tips</a>
+    </nav>
   </div>
 </header>
 
-<nav aria-label="Sections">
-  <div class="wrap">
-    <a href="#stays">Where we stay</a>
-    <a href="#days">Day by day</a>
-    <a href="#map-sec">Map</a>
-    <a href="#bookings">Bookings</a>
-    <a href="#know">Good to know</a>
-    <a href="#packing">Packing list</a>
+<!-- Hero -->
+<div class="hero">
+  <svg class="hero-art" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <radialGradient id="glow" cx="78%" cy="100%" r="60%"><stop offset="0" stop-color="#E4572E" stop-opacity=".32"/><stop offset="1" stop-color="#E4572E" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="1440" height="760" fill="url(#glow)"/>
+    <g stroke="#E4572E" stroke-opacity=".22" fill="none">
+      <circle cx="1120" cy="760" r="120"/><circle cx="1120" cy="760" r="210"/><circle cx="1120" cy="760" r="300"/><circle cx="1120" cy="760" r="390"/><circle cx="1120" cy="760" r="480"/>
+    </g>
+    <g stroke="#C9A227" stroke-opacity=".16" id="rays"></g>
+  </svg>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">Dec 31, 2026 – Jan 7, 2027</div>
+      <h1>Miami, <em>New Year.</em></h1>
+      <p class="lede">Eight days for the four of us: alligators and airboats in the Everglades, snorkeling in Biscayne Bay, a villa on the water, Cuban food in Little Havana, then a car-free week on South Beach.</p>
+      <div class="cta">
+        <a class="btn primary" href="#itinerary">Explore the itinerary</a>
+        <a class="btn ghost" href="#bookings">Bookings</a>
+      </div>
+    </div>
+    <aside class="glance" aria-label="Trip at a glance">
+      <div class="glance-label" id="clock-label">Countdown to arrival</div>
+      <div class="clock" id="clock" aria-live="off"></div>
+      <div class="legs">
+        <div class="leg"><i style="background:#E4572E"></i><div><strong>Part 1 · Doral, with a car</strong>Dec 31 – Jan 3 · SpringHill Suites Miami Doral</div></div>
+        <div class="leg"><i style="background:#2AA39B"></i><div><strong>Part 2 · South Beach, car-free</strong>Jan 3 – Jan 7 · The Fifth Hotel</div></div>
+      </div>
+    </aside>
   </div>
-</nav>
+  <div class="stats">
+    <div class="wrap">
+      <div class="stat"><b>8</b><span>days</span></div>
+      <div class="stat"><b>7</b><span>nights, 2 hotels</span></div>
+      <div class="stat"><b>2</b><span>national parks</span></div>
+      <div class="stat"><b id="stat-stops">21</b><span>places on the map</span></div>
+      <div class="stat"><b>4</b><span>beach afternoons</span></div>
+    </div>
+  </div>
+</div>
 
-<main class="wrap">
+<main>
 
-  <!-- STAYS -->
-  <section id="stays">
-    <div class="sec-head">
-      <h2>Where we stay</h2>
-      <p>Three nights inland with a rental car, then four nights at the beach without one.</p>
+<!-- Overview -->
+<section id="overview">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="eyebrow">Overview</div>
+        <h2>Two bases, two speeds</h2>
+        <p>Three nights inland with a rental car for the parks and museums, then four nights in South Beach where everything is a walk, a free trolley or a short Uber away.</p>
+      </div>
     </div>
     <div class="stays">
-      <article class="stay p1">
-        <div class="band"><small>Part 1 · Dec 31 – Jan 3 · 3 nights</small><h3>SpringHill Suites Miami Doral</h3></div>
-        <dl>
-          <dt>Address</dt><dd><a href="https://www.google.com/maps/search/?api=1&query=SpringHill+Suites+Miami+Doral+3895+NW+107th+Ave" target="_blank" rel="noopener">3895 NW 107th Ave, Doral</a></dd>
-          <dt>Room</dt><dd>Suite with 2 queen beds + sofa bed</dd>
-          <dt>Included</dt><dd>Breakfast and parking</dd>
-          <dt>Getting around</dt><dd>Rental car from the Miami airport (MIA) rental car center</dd>
+      <article class="stay" style="--c:var(--coral);--c2:var(--coral-2)">
+        <div class="part">Part 1 · Doral <span class="nights">Dec 31 – Jan 3 · 3 nights</span></div>
+        <h3>SpringHill Suites Miami Doral</h3>
+        <a class="addr" href="https://www.google.com/maps/search/?api=1&query=SpringHill+Suites+Miami+Doral+3895+NW+107th+Ave" target="_blank" rel="noopener"><svg class="icon"><use href="#i-pin"/></svg>3895 NW 107th Ave, Doral</a>
+        <dl class="facts">
+          <div><dt>Room</dt><dd>2 queens + sofa bed</dd></div>
+          <div><dt>Included</dt><dd>Breakfast, parking</dd></div>
+          <div><dt>Transport</dt><dd>Rental car from MIA</dd></div>
         </dl>
       </article>
-      <article class="stay p2">
-        <div class="band"><small>Part 2 · Jan 3 – Jan 7 · 4 nights</small><h3>The Fifth Hotel</h3></div>
-        <dl>
-          <dt>Address</dt><dd><a href="https://www.google.com/maps/search/?api=1&query=Fifth+Hotel+321+Collins+Ave+Miami+Beach" target="_blank" rel="noopener">321 Collins Ave, South Beach</a></dd>
-          <dt>Check-in</dt><dd>4 PM Jan 3 · check-out 11 AM Jan 7</dd>
-          <dt>Neighborhood</dt><dd>South of Fifth, a short walk to South Pointe Park and the beach</dd>
-          <dt>Getting around</dt><dd>Walking, free trolley, Big Bus, the occasional Uber</dd>
+      <article class="stay" style="--c:var(--teal);--c2:var(--teal-2)">
+        <div class="part">Part 2 · South Beach <span class="nights">Jan 3 – Jan 7 · 4 nights</span></div>
+        <h3>The Fifth Hotel</h3>
+        <a class="addr" href="https://www.google.com/maps/search/?api=1&query=Fifth+Hotel+321+Collins+Ave+Miami+Beach" target="_blank" rel="noopener"><svg class="icon"><use href="#i-pin"/></svg>321 Collins Ave, Miami Beach</a>
+        <dl class="facts">
+          <div><dt>Check-in</dt><dd>4 PM, Jan 3</dd></div>
+          <div><dt>Check-out</dt><dd>11 AM, Jan 7</dd></div>
+          <div><dt>Transport</dt><dd>Walk, trolley, Big Bus</dd></div>
         </dl>
       </article>
     </div>
-    <div class="who">
-      <span class="pill">👨‍👩‍👧‍👦 2 adults + kids aged 10 and 13</span>
-      <span class="pill">🚗 Car: Dec 31 – Jan 3 only</span>
-      <span class="pill warn">🌤️ Jan 4–6 can be shuffled for weather</span>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- DAYS -->
-  <section id="days">
-    <div class="sec-head">
-      <h2>Day by day</h2>
-      <div class="filters" role="group" aria-label="Filter days">
-        <button type="button" data-f="all" aria-pressed="true">All 8 days</button>
-        <button type="button" data-f="p1" aria-pressed="false">Part 1 · Doral</button>
-        <button type="button" data-f="p2" aria-pressed="false">Part 2 · South Beach</button>
+<!-- Itinerary -->
+<section id="itinerary">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="eyebrow">Itinerary</div>
+        <h2>Day by day</h2>
+        <p>Pick a day to see the plan and its stops on the map. Use the arrow keys to step through days, and share a link to any day.</p>
+      </div>
+      <button class="toggle" type="button" id="print-btn"><svg class="icon" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><use href="#i-print"/></svg>Print full itinerary</button>
+    </div>
+
+    <div class="strip-wrap">
+      <div class="strip-labels"><span style="color:var(--coral-ink)">Part 1 · Doral, with a car</span><span style="color:var(--teal-ink)">Part 2 · South Beach, car-free</span></div>
+      <div class="strip" role="tablist" aria-label="Trip days" id="strip"></div>
+    </div>
+
+    <div class="explorer">
+      <article class="panel" id="panel" role="tabpanel" aria-live="polite"></article>
+      <div class="map-card">
+        <div id="map" role="region" aria-label="Map of the selected day's stops"></div>
+        <div class="map-bar">
+          <div class="legend"><span><i style="background:#E4572E"></i>Part 1</span><span><i style="background:#0F7173"></i>Part 2</span><span><i style="background:#0E1A22;border-radius:2px"></i>Hotel / airport</span></div>
+          <button class="toggle" type="button" id="all-toggle" aria-pressed="false">Show all stops</button>
+        </div>
       </div>
     </div>
+    <div id="print-all"></div>
+  </div>
+</section>
 
-    <div class="days">
-
-      <article class="day p1" data-part="p1" data-date="2026-12-31">
-        <div class="date"><span class="dow">Thu</span><span class="num">31</span><span class="mon">Dec</span></div>
-        <div class="body">
-          <h3>Arrive & ring in the New Year</h3>
-          <div class="tags"><span class="tag c">Travel day</span><span class="tag y">New Year's Eve</span></div>
-          <div class="slots">
-            <div class="slot"><b>Morning</b>Fly to Miami.</div>
-            <div class="slot"><b>Afternoon</b>Pick up the rental car at MIA; check in at SpringHill Suites Doral.</div>
-            <div class="slot"><b>Evening</b>CityPlace Doral if it announces fireworks; otherwise dinner nearby and an early night before the Everglades.</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="day p1" data-part="p1" data-date="2027-01-01">
-        <div class="date"><span class="dow">Fri</span><span class="num">1</span><span class="mon">Jan</span></div>
-        <div class="body">
-          <h3>Everglades: bikes, gators & an airboat</h3>
-          <div class="tags"><span class="tag">Car day</span><span class="tag">Outdoors</span></div>
-          <div class="slots">
-            <div class="slot"><b>Morning</b>Buy the digital National Parks pass, then drive to <a href="https://www.google.com/maps/search/?api=1&query=Shark+Valley+Visitor+Center" target="_blank" rel="noopener">Shark Valley</a>. Bike the flat 15-mile loop (bikes from 8:30 AM) or ride the tram. Lots of alligators.</div>
-            <div class="slot"><b>Afternoon</b><a href="https://www.google.com/maps/search/?api=1&query=Coopertown+Airboat+Tours" target="_blank" rel="noopener">Coopertown airboat</a> on the drive back east. Last boat 4:30 PM.</div>
-            <div class="slot"><b>Evening</b>Cuban dinner along Tamiami Trail (US-41), then back to the hotel.</div>
-          </div>
-          <p class="bring"><strong>Bring:</strong> hats, sunscreen, water, bug spray.</p>
-        </div>
-      </article>
-
-      <article class="day p1" data-part="p1" data-date="2027-01-02">
-        <div class="date"><span class="dow">Sat</span><span class="num">2</span><span class="mon">Jan</span></div>
-        <div class="body">
-          <h3>Out on the water: Biscayne National Park</h3>
-          <div class="tags"><span class="tag">Car day</span><span class="tag">Snorkeling</span><span class="tag y">Weather-dependent</span></div>
-          <div class="slots">
-            <div class="slot"><b>Morning</b>Snorkel & island trip from <a href="https://www.google.com/maps/search/?api=1&query=Dinner+Key+Marina+Coconut+Grove" target="_blank" rel="noopener">Dinner Key Marina</a>, Coconut Grove.</div>
-            <div class="slot"><b>Afternoon</b>Trip continues. <em>Plan B if it's windy or cold:</em> Zoo Miami or the no-swim Heritage Cruise.</div>
-            <div class="slot"><b>Evening</b>Dinner and rest.</div>
-          </div>
-          <p class="bring"><strong>Bring:</strong> towels, a warm layer for the boat ride back, dry clothes. Snorkel vests are provided.</p>
-        </div>
-      </article>
-
-      <article class="day p1" data-part="p1" data-date="2027-01-03">
-        <div class="date"><span class="dow">Sun</span><span class="num">3</span><span class="mon">Jan</span></div>
-        <div class="body">
-          <h3>Vizcaya, Little Havana → move to the beach</h3>
-          <div class="tags"><span class="tag c">Moving day</span><span class="tag">Culture</span></div>
-          <div class="slots">
-            <div class="slot"><b>Morning</b>Check out (bags stay in the trunk). <a href="https://www.google.com/maps/search/?api=1&query=Vizcaya+Museum+and+Gardens" target="_blank" rel="noopener">Vizcaya Museum & Gardens</a>, opens 9:30 AM.</div>
-            <div class="slot"><b>Afternoon</b>Lunch in <a href="https://www.google.com/maps/search/?api=1&query=Versailles+Restaurant+Miami" target="_blank" rel="noopener">Little Havana</a>: Calle Ocho, Domino Park, Cuban coffee. Return the car at MIA by 2–3 PM; Uber to the Fifth Hotel (check-in 4 PM).</div>
-            <div class="slot"><b>Evening</b>Sunset walk at <a href="https://www.google.com/maps/search/?api=1&query=South+Pointe+Park+Miami+Beach" target="_blank" rel="noopener">South Pointe Park</a>.</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="day p2" data-part="p2" data-date="2027-01-04">
-        <div class="date"><span class="dow">Mon</span><span class="num">4</span><span class="mon">Jan</span></div>
-        <div class="body">
-          <h3>Art Deco & beach</h3>
-          <div class="tags"><span class="tag">Walking</span><span class="tag">Beach</span></div>
-          <div class="slots">
-            <div class="slot"><b>Morning</b>Ocean Drive and the Art Deco district on foot.</div>
-            <div class="slot"><b>Afternoon</b>Beach, about noon to 4:30 PM, when it's warmest.</div>
-            <div class="slot"><b>Evening</b>Dinner on <a href="https://www.google.com/maps/search/?api=1&query=Espanola+Way+Miami+Beach" target="_blank" rel="noopener">Española Way</a>.</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="day p2" data-part="p2" data-date="2027-01-05">
-        <div class="date"><span class="dow">Tue</span><span class="num">5</span><span class="mon">Jan</span></div>
-        <div class="body">
-          <h3>Mainland day: street art & science</h3>
-          <div class="tags"><span class="tag">Big Bus</span><span class="tag y">Best on the least beachy day</span></div>
-          <div class="slots">
-            <div class="slot"><b>Morning</b>Big Bus from 555 Washington Ave (first bus 9:20 AM) to <a href="https://www.google.com/maps/search/?api=1&query=Wynwood+Walls" target="_blank" rel="noopener">Wynwood Walls</a>.</div>
-            <div class="slot"><b>Afternoon</b>Big Bus on to Bayside and Downtown; <a href="https://www.google.com/maps/search/?api=1&query=Phillip+and+Patricia+Frost+Museum+of+Science" target="_blank" rel="noopener">Frost Science Museum</a> (aquarium + planetarium).</div>
-            <div class="slot"><b>Evening</b>Optional: Luminosa light show at <a href="https://www.google.com/maps/search/?api=1&query=Jungle+Island+Miami" target="_blank" rel="noopener">Jungle Island</a> (5:30 or 6 PM entry).</div>
-          </div>
-          <p class="bring"><strong>Bring:</strong> light jackets; the Big Bus top deck is windy.</p>
-        </div>
-      </article>
-
-      <article class="day p2" data-part="p2" data-date="2027-01-06">
-        <div class="date"><span class="dow">Wed</span><span class="num">6</span><span class="mon">Jan</span></div>
-        <div class="body">
-          <h3>Trolley day: Lincoln Road & gardens</h3>
-          <div class="tags"><span class="tag">Free trolley</span><span class="tag">Beach</span></div>
-          <div class="slots">
-            <div class="slot"><b>Morning</b>Free trolley to <a href="https://www.google.com/maps/search/?api=1&query=Lincoln+Road+Mall+Miami+Beach" target="_blank" rel="noopener">Lincoln Road</a>, the <a href="https://www.google.com/maps/search/?api=1&query=Miami+Beach+Botanical+Garden" target="_blank" rel="noopener">Botanical Garden</a> (free) and the <a href="https://www.google.com/maps/search/?api=1&query=Holocaust+Memorial+Miami+Beach" target="_blank" rel="noopener">Holocaust Memorial</a>.</div>
-            <div class="slot"><b>Afternoon</b>Beach.</div>
-            <div class="slot"><b>Evening</b>Waterfront walk and dinner.</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="day p2" data-part="p2" data-date="2027-01-07">
-        <div class="date"><span class="dow">Thu</span><span class="num">7</span><span class="mon">Jan</span></div>
-        <div class="body">
-          <h3>Heading home</h3>
-          <div class="tags"><span class="tag c">Travel day</span></div>
-          <div class="slots">
-            <div class="slot"><b>Morning</b>Check out by 11 AM and leave bags at the hotel.</div>
-            <div class="slot"><b>Midday</b>One last beach walk, or the Collins Express trolley.</div>
-            <div class="slot"><b>Then</b>Uber to the airport in time for the flight.</div>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- MAP -->
-  <section id="map-sec">
-    <div class="sec-head">
-      <h2>Map</h2>
-      <p>Tap a pin to see which day it is. Pins are approximate; use the links on each day for directions.</p>
-    </div>
-    <div id="map" role="region" aria-label="Map of trip stops"></div>
-    <div class="legend">
-      <span><i class="dot" style="background:#ff6b57"></i>Part 1 (with car)</span>
-      <span><i class="dot" style="background:#0e6e74"></i>Part 2 (South Beach)</span>
-      <span><i class="dot" style="background:#14323a"></i>Hotels & airport</span>
-    </div>
-  </section>
-
-  <!-- BOOKINGS -->
-  <section id="bookings">
-    <div class="sec-head">
-      <h2>Bookings & tickets</h2>
-      <p>What's booked when, with the official links.</p>
-    </div>
-    <table>
-      <thead><tr><th>What</th><th>Day</th><th>When to book</th><th>Notes</th></tr></thead>
-      <tbody>
-        <tr><td data-k="What"><a href="https://www.marriott.com/reservation/availabilitySearch.mi?propertyCode=MIAMS&isSearch=false&fromDate=12/31/2026&toDate=01/03/2027&numberOfRooms=1&numberOfAdults=2&childrenCount=2&childrenAges=10,13" target="_blank" rel="noopener">SpringHill Suites Doral</a></td><td data-k="Day">Dec 31 – Jan 3</td><td data-k="Book"><span class="status s-now">Now</span></td><td data-k="Notes">Suite, 2 queens + sofa bed. Free cancellation until 5:59 PM Dec 29.</td></tr>
-        <tr><td data-k="What"><a href="https://www.biscaynenationalparkinstitute.org/snorkel-and-island-visit-from-coconut-grove/" target="_blank" rel="noopener">Biscayne snorkel & island trip</a></td><td data-k="Day">Jan 2</td><td data-k="Book"><span class="status s-now">Now</span></td><td data-k="Notes">Ages 8+. Refund or rebook up to 48 hours before; full refund if they cancel for weather.</td></tr>
-        <tr><td data-k="What"><a href="https://www.kayak.com/cars" target="_blank" rel="noopener">Rental car</a></td><td data-k="Day">Dec 31 – Jan 3</td><td data-k="Book"><span class="status s-now">Now</span></td><td data-k="Notes">Pick up and return at the MIA rental car center.</td></tr>
-        <tr><td data-k="What"><a href="https://www.sharkvalleytramtours.com/" target="_blank" rel="noopener">Shark Valley bikes or tram</a></td><td data-k="Day">Jan 1</td><td data-k="Book"><span class="status s-soon">1–3 weeks ahead</span></td><td data-k="Notes">Go early; busiest 10 AM–3 PM.</td></tr>
-        <tr><td data-k="What"><a href="https://vizcaya.org/" target="_blank" rel="noopener">Vizcaya Museum & Gardens</a></td><td data-k="Day">Jan 3</td><td data-k="Book"><span class="status s-soon">1–3 weeks ahead</span></td><td data-k="Notes">Timed entry. Open 9:30 AM–4:30 PM.</td></tr>
-        <tr><td data-k="What"><a href="https://thewynwoodwalls.com/admissions" target="_blank" rel="noopener">Wynwood Walls</a></td><td data-k="Day">Jan 5</td><td data-k="Book"><span class="status s-soon">1–3 weeks ahead</span></td><td data-k="Notes">Kids 12 and under free. Open 10:30 AM–6:30 PM.</td></tr>
-        <tr><td data-k="What"><a href="https://www.bigbustours.com/en/miami/miami-bus-tours" target="_blank" rel="noopener">Big Bus 24-hour ticket</a></td><td data-k="Day">Jan 5</td><td data-k="Book"><span class="status s-soon">1–3 weeks ahead</span></td><td data-k="Notes">South Beach stop at 555 Washington Ave, every 30 min, 9:20 AM–4:20 PM.</td></tr>
-        <tr><td data-k="What"><a href="https://www.frostscience.org/" target="_blank" rel="noopener">Frost Science Museum</a></td><td data-k="Day">Jan 5</td><td data-k="Book"><span class="status s-soon">1–3 weeks ahead</span></td><td data-k="Notes">Planetarium show reserved on arrival.</td></tr>
-        <tr><td data-k="What"><a href="https://feverup.com/m/781881" target="_blank" rel="noopener">Luminosa at Jungle Island</a> (optional)</td><td data-k="Day">Jan 5 evening</td><td data-k="Book"><span class="status s-soon">1–3 weeks ahead</span></td><td data-k="Notes">5:30 or 6 PM entry.</td></tr>
-        <tr><td data-k="What"><a href="https://www.nps.gov/planyourvisit/passes.htm" target="_blank" rel="noopener">National Parks pass</a></td><td data-k="Day">Jan 1</td><td data-k="Book"><span class="status s-day">On the day</span></td><td data-k="Notes">Digital pass on Recreation.gov before driving out. Covers Shark Valley entry.</td></tr>
-        <tr><td data-k="What">Coopertown airboat</td><td data-k="Day">Jan 1</td><td data-k="Book"><span class="status s-day">On the day</span></td><td data-k="Notes">No reservation needed. Open 9 AM–5 PM.</td></tr>
-        <tr><td data-k="What"><a href="https://shop.zoomiami.org/mainstore" target="_blank" rel="noopener">Zoo Miami</a> (Plan B)</td><td data-k="Day">Jan 2</td><td data-k="Book"><span class="status s-day">Only if needed</span></td><td data-k="Notes">Buy online if the snorkel trip is cancelled.</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- GOOD TO KNOW -->
-  <section id="know">
-    <div class="sec-head">
-      <h2>Good to know</h2>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <h3>🌡️ Weather</h3>
-        <p>January is usually dry and in the mid-70s °F, with the ocean around 75°F. A cold front can bring a windy, cooler day or two, so we'll swap days if needed.</p>
-      </div>
-      <div class="card">
-        <h3>🚋 Getting around South Beach</h3>
-        <p>The Miami Beach trolley is free and runs about every 20 minutes from 8 AM to 11 PM. The Big Bus covers Wynwood, Downtown and Bayside. Uber for anything else.</p>
-      </div>
-      <div class="card">
-        <h3>📅 Opening days</h3>
-        <ul>
-          <li>Botanical Garden: closed Mondays</li>
-          <li>Vizcaya: closed Tuesdays</li>
-          <li>Holocaust Memorial: visit in daylight</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>🧳 Moving day (Jan 3)</h3>
-        <p>Bags ride in the trunk during Vizcaya and Little Havana. Car goes back to MIA by 2–3 PM, then an Uber to the Fifth Hotel.</p>
-      </div>
-      <div class="card">
-        <h3>🤿 Snorkel day</h3>
-        <p>If the forecast on Dec 29–30 looks windy or cold, we cancel by the morning of Dec 31 and switch to Zoo Miami or the Heritage Cruise.</p>
-      </div>
-      <div class="card">
-        <h3>☀️ Beach rhythm</h3>
-        <p>Sightseeing in the mornings, beach from about noon to 4:30 PM when it's warmest, sunsets at South Pointe.</p>
+<!-- Weather -->
+<section id="weather">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="eyebrow">Weather</div>
+        <h2>Forecast & snorkel check</h2>
+        <p>A live forecast for Miami Beach. Trip days fill in once they're within 16 days. The snorkel check and beach-day tip update on their own.</p>
       </div>
     </div>
-  </section>
+    <div class="wx">
+      <div class="box">
+        <h3>Typical early January</h3>
+        <p class="sub">What to expect before the forecast is in.</p>
+        <div class="norms">
+          <div class="norm"><b>mid-70s</b><span>daytime highs °F</span></div>
+          <div class="norm"><b>low 60s</b><span>overnight lows °F</span></div>
+          <div class="norm"><b>~75°</b><span>ocean water °F</span></div>
+          <div class="norm"><b>Dry</b><span>season; mostly sunny</span></div>
+        </div>
+        <p class="small" style="margin:0">Cold fronts can bring a windy, cooler day or two. If that happens, we move the mainland day and keep the beach for warmer afternoons.</p>
+      </div>
+      <div class="box">
+        <h3 id="wx-title">Live forecast</h3>
+        <p class="wx-status" id="wx-status">Loading forecast…</p>
+        <div class="days-wx" id="wx-days"></div>
+        <div id="wx-extra"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- PACKING -->
-  <section id="packing">
-    <div class="sec-head">
-      <h2>Packing list</h2>
-      <p>Tick things off as you pack. Your ticks are saved on your own phone or computer only.</p>
+<!-- Bookings -->
+<section id="bookings">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="eyebrow">Bookings</div>
+        <h2>Tickets & reservations</h2>
+        <p>Everything to book, when to book it, and official links. Tick items off as they're booked; ticks are saved on this device only.</p>
+      </div>
     </div>
-    <div class="pack" id="pack">
-      <h3>Beach & water</h3>
-      <label><input type="checkbox" data-id="swim"><span>Swimsuits (2 each)</span></label>
-      <label><input type="checkbox" data-id="towel"><span>Quick-dry towels for the boat</span></label>
-      <label><input type="checkbox" data-id="sunscreen"><span>Reef-safe sunscreen</span></label>
-      <label><input type="checkbox" data-id="rash"><span>Rash guards or a shorty wetsuit</span></label>
-      <label><input type="checkbox" data-id="sandals"><span>Sandals / water shoes</span></label>
-      <label><input type="checkbox" data-id="drybag"><span>Dry bag for phones</span></label>
-      <h3>Everglades</h3>
-      <label><input type="checkbox" data-id="hats"><span>Hats & sunglasses</span></label>
-      <label><input type="checkbox" data-id="bug"><span>Bug spray</span></label>
-      <label><input type="checkbox" data-id="bottles"><span>Refillable water bottles</span></label>
-      <label><input type="checkbox" data-id="sneakers"><span>Sneakers for biking</span></label>
-      <h3>Clothes</h3>
-      <label><input type="checkbox" data-id="layers"><span>Light jacket or hoodie each</span></label>
-      <label><input type="checkbox" data-id="shorts"><span>Shorts & T-shirts</span></label>
-      <label><input type="checkbox" data-id="dinner"><span>One nicer outfit for dinners</span></label>
-      <label><input type="checkbox" data-id="walk"><span>Comfortable walking shoes</span></label>
-      <h3>Documents & tech</h3>
-      <label><input type="checkbox" data-id="id"><span>Photo ID (needed for the parks pass)</span></label>
-      <label><input type="checkbox" data-id="license"><span>Driver's license + credit card for the car</span></label>
-      <label><input type="checkbox" data-id="conf"><span>Hotel & ticket confirmations</span></label>
-      <label><input type="checkbox" data-id="chargers"><span>Chargers & a power bank</span></label>
-      <label><input type="checkbox" data-id="meds"><span>Any medicines</span></label>
+    <div class="bk-top">
+      <div class="filters" role="group" aria-label="Filter bookings" id="bk-filters">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="now" aria-pressed="false">Book now</button>
+        <button type="button" data-f="soon" aria-pressed="false">1–3 weeks ahead</button>
+        <button type="button" data-f="day" aria-pressed="false">On the day</button>
+        <button type="button" data-f="todo" aria-pressed="false">Not booked yet</button>
+      </div>
+      <div class="progress"><div class="track"><i id="bk-bar"></i></div><b id="bk-count">0 of 0 booked</b></div>
     </div>
-    <p class="pack-note"><a href="#" id="pack-reset">Clear my ticks</a></p>
-  </section>
+    <div class="bk" id="bk"></div>
+  </div>
+</section>
+
+<!-- Prepare -->
+<section id="prepare">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="eyebrow">Prepare</div>
+        <h2>Before we go</h2>
+        <p>Key dates update automatically, with the next one highlighted. The packing list saves your ticks on your own device.</p>
+      </div>
+    </div>
+    <div class="prep">
+      <div class="box">
+        <h3>Key dates</h3>
+        <p class="sub">Deadlines that matter, in order.</p>
+        <ol class="kd" id="kd"></ol>
+      </div>
+      <div class="box">
+        <div class="pack-head">
+          <svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="bg" cx="32" cy="32" r="27"/><circle class="fg" id="ring-fg" cx="32" cy="32" r="27" stroke-dasharray="169.6" stroke-dashoffset="169.6"/><text x="32" y="37" text-anchor="middle" id="ring-txt">0%</text></svg>
+          <div><h3 style="margin:0">Packing list</h3><p class="sub" style="margin:0" id="pack-sub">0 of 0 packed</p></div>
+        </div>
+        <div class="filters pack-tabs" role="group" aria-label="Packing categories" id="pack-tabs"></div>
+        <div class="pack-list" id="pack-list"></div>
+        <p style="margin:12px 0 0"><button class="linkbtn" type="button" id="pack-reset">Clear my ticks</button></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tips -->
+<section id="tips">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="eyebrow">Good to know</div>
+        <h2>Practical notes</h2>
+      </div>
+    </div>
+    <div class="tips">
+      <div class="tip"><div class="ti"><svg class="icon"><use href="#i-bus"/></svg></div><h3>Getting around</h3><p>In South Beach the free trolley runs about every 20 minutes, 8 AM–11 PM. The Big Bus covers Wynwood, Downtown and Bayside. Uber for anything else.</p></div>
+      <div class="tip"><div class="ti"><svg class="icon"><use href="#i-cal"/></svg></div><h3>Opening days</h3><p>The Botanical Garden is closed Mondays and Vizcaya is closed Tuesdays. Visit the Holocaust Memorial in daylight.</p></div>
+      <div class="tip"><div class="ti"><svg class="icon"><use href="#i-bag"/></svg></div><h3>Moving day</h3><p>On Jan 3 the bags stay in the trunk through Vizcaya and Little Havana. The car goes back to MIA by 2–3 PM, then an Uber to the hotel.</p></div>
+      <div class="tip"><div class="ti"><svg class="icon"><use href="#i-waves"/></svg></div><h3>Snorkel decision</h3><p>We check the marine forecast Dec 29–30. If it looks rough, we cancel by about 9 AM Dec 31 and switch to Zoo Miami or the no-swim cruise.</p></div>
+      <div class="tip"><div class="ti"><svg class="icon"><use href="#i-sun"/></svg></div><h3>Beach rhythm</h3><p>Sightseeing in the mornings, beach from about noon to 4:30 PM when it's warmest, then sunset at South Pointe.</p></div>
+      <div class="tip"><div class="ti"><svg class="icon"><use href="#i-plane"/></svg></div><h3>Departure day</h3><p>Check out by 11 AM on Jan 7. The hotel holds bags, so there's time for a last walk before heading to the airport.</p></div>
+    </div>
+  </div>
+</section>
 
 </main>
 
 <footer>
   <div class="wrap">
-    Miami New Year · Dec 31, 2026 – Jan 7, 2027. Times and opening hours were checked in November 2026 and can change, so check the official links before you go. Map © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors, © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>.
+    <div><strong>Miami, New Year.</strong>Dec 31, 2026 – Jan 7, 2027</div>
+    <div style="max-width:560px">Hours and details were checked in November 2026 and can change, so check the official links before you go. Map pins are approximate. Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors, tiles © <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>. Forecast by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>.</div>
   </div>
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="vendor/leaflet/leaflet.js"></script>
 <script>
 (function(){
-  /* Countdown */
-  var el = document.getElementById('countdown');
-  var start = new Date('2026-12-31T00:00:00-05:00');
-  var end = new Date('2027-01-08T00:00:00-05:00');
-  function tick(){
-    var now = new Date();
-    if (now >= end){ el.className='countdown msg'; el.textContent='Hope you had a wonderful trip!'; return; }
-    if (now >= start){
-      var d = Math.floor((now - start)/864e5) + 1;
-      el.className='countdown msg'; el.textContent='Day ' + d + ' of 8 · Enjoy Miami!'; return;
-    }
-    var s = Math.floor((start - now)/1000);
-    var days = Math.floor(s/86400), h = Math.floor(s%86400/3600), m = Math.floor(s%3600/60);
-    el.className='countdown';
-    el.innerHTML = '<div><b>'+days+'</b><span>days</span></div><div><b>'+h+'</b><span>hours</span></div><div><b>'+m+'</b><span>min</span></div>';
+"use strict";
+
+/* =================== Data =================== */
+var CORAL="#E4572E", TEAL="#0F7173", INK="#0E1A22";
+
+var STOPS = {
+  mia:        {n:"Miami Airport (MIA) & rental car center", lat:25.7959, lng:-80.2870, home:true},
+  springhill: {n:"SpringHill Suites Miami Doral", lat:25.8103, lng:-80.3686, home:true},
+  fifth:      {n:"The Fifth Hotel", lat:25.7737, lng:-80.1338, home:true},
+  cityplace:  {n:"CityPlace Doral", lat:25.8120, lng:-80.3510},
+  shark:      {n:"Shark Valley, Everglades National Park", lat:25.7576, lng:-80.7664},
+  coopertown: {n:"Coopertown Airboat Tours", lat:25.7618, lng:-80.5778},
+  dinnerkey:  {n:"Dinner Key Marina, Coconut Grove", lat:25.7270, lng:-80.2330},
+  zoo:        {n:"Zoo Miami", lat:25.6106, lng:-80.3977},
+  vizcaya:    {n:"Vizcaya Museum & Gardens", lat:25.7443, lng:-80.2105},
+  havana:     {n:"Little Havana (Calle Ocho)", lat:25.7653, lng:-80.2190},
+  southpointe:{n:"South Pointe Park", lat:25.7660, lng:-80.1340},
+  ocean:      {n:"Ocean Drive & Art Deco district", lat:25.7810, lng:-80.1305},
+  espanola:   {n:"Española Way", lat:25.7864, lng:-80.1326},
+  bigbus:     {n:"Big Bus stop, 555 Washington Ave", lat:25.7750, lng:-80.1350},
+  wynwood:    {n:"Wynwood Walls", lat:25.8010, lng:-80.1994},
+  bayside:    {n:"Bayside Marketplace", lat:25.7785, lng:-80.1867},
+  frost:      {n:"Frost Science Museum", lat:25.7853, lng:-80.1880},
+  jungle:     {n:"Jungle Island (Luminosa)", lat:25.7848, lng:-80.1720},
+  lincoln:    {n:"Lincoln Road", lat:25.7907, lng:-80.1390},
+  garden:     {n:"Miami Beach Botanical Garden", lat:25.7953, lng:-80.1360},
+  memorial:   {n:"Holocaust Memorial Miami Beach", lat:25.7966, lng:-80.1375}
+};
+
+function B(when, what, txt, stop){ return {when:when, what:what, txt:txt||"", stop:stop||null}; }
+
+var DAYS = [
+  { date:"2026-12-31", dow:"Thu", wd:"Thursday", num:"31", mon:"Dec", month:"December", part:1, short:"Arrive",
+    title:"Arrival & New Year's Eve",
+    sum:"Land, pick up the car and settle into Doral before the year turns over.",
+    chips:["Travel day","New Year's Eve"],
+    blocks:[
+      B("Daytime","Fly into Miami (MIA)","Pick up the rental car at the airport's rental car center.","mia"),
+      B("Afternoon","Check in at SpringHill Suites","Suite with 2 queen beds and a sofa bed. Breakfast and parking are included.","springhill"),
+      B("Evening","New Year's Eve","CityPlace Doral if it announces fireworks; otherwise dinner nearby and an early night before the Everglades.","cityplace")
+    ]},
+  { date:"2027-01-01", dow:"Fri", wd:"Friday", num:"1", mon:"Jan", month:"January", part:1, short:"Everglades",
+    title:"Everglades: bikes, gators & an airboat",
+    sum:"The big nature day. Start early, before Shark Valley gets busy.",
+    chips:["Car day","Outdoors","National park"],
+    blocks:[
+      B("Before leaving","Buy the National Parks pass","Digital America the Beautiful pass on Recreation.gov. The person who buys it needs photo ID in the car."),
+      B("From 8:30 AM","Shark Valley","Bike the flat 15-mile loop or ride the tram. Plenty of alligators along the canal.","shark"),
+      B("Afternoon","Coopertown airboat","On the drive back east. No reservation needed; the last boat leaves at 4:30 PM.","coopertown"),
+      B("Evening","Cuban dinner on Tamiami Trail","Along US-41 on the way back to the hotel.")
+    ],
+    bring:["Hats","Sunscreen","Water","Bug spray","Photo ID"]},
+  { date:"2027-01-02", dow:"Sat", wd:"Saturday", num:"2", mon:"Jan", month:"January", part:1, short:"Biscayne",
+    title:"Out on the water: Biscayne Bay",
+    sum:"Snorkeling and an island visit in Biscayne National Park, with two backup plans if the weather turns.",
+    chips:["Car day","Weather-dependent"],
+    variants:{
+      snorkel:{label:"Snorkel trip (booked)", blocks:[
+        B("Morning","Snorkel & island trip","Leaves from Dinner Key Marina in Coconut Grove. Ages 8+; snorkel vests are provided.","dinnerkey"),
+        B("Afternoon","Island visit and the boat ride back","Bring a warm layer for the ride back."),
+        B("Evening","Dinner and an easy night","")
+      ], bring:["Swimsuits","Towels","Warm layer","Dry clothes","Reef-safe sunscreen"]},
+      zoo:{label:"Plan B: Zoo Miami", blocks:[
+        B("Morning","Zoo Miami","A big open-air zoo. Rent a Safari Cycle to cover more ground (an adult has to drive it).","zoo"),
+        B("Afternoon","Keep exploring","Tickets are cheaper online."),
+        B("Evening","Dinner and an easy night","")
+      ], bring:["Hats","Sunscreen","Water","Comfortable shoes"]},
+      cruise:{label:"Plan B: No-swim cruise", blocks:[
+        B("Morning","Biscayne Bay cruise","A boat trip on the bay with no snorkeling, for a cool or windy day. Confirm the departure point when booking.","dinnerkey"),
+        B("Afternoon","Coconut Grove","Lunch and a walk around the Grove."),
+        B("Evening","Dinner and an easy night","")
+      ], bring:["Warm layer","Sunglasses","Hats"]}
+    },
+    note:"We check the marine forecast on Dec 29–30 and decide by about 9 AM Dec 31, when the 48-hour refund window closes."},
+  { date:"2027-01-03", dow:"Sun", wd:"Sunday", num:"3", mon:"Jan", month:"January", part:1, short:"Vizcaya",
+    title:"Vizcaya, Little Havana, then the beach",
+    sum:"Moving day: one last morning with the car, then the beach week begins.",
+    chips:["Moving day","Culture"],
+    blocks:[
+      B("9:30 AM","Vizcaya Museum & Gardens","Check out first; the bags stay in the trunk. A Gilded Age villa with formal gardens on Biscayne Bay.","vizcaya"),
+      B("Lunch","Little Havana","Calle Ocho, Domino Park, Cuban coffee and lunch. Versailles is the classic.","havana"),
+      B("2–3 PM","Return the car at MIA","Then an Uber to the Fifth Hotel. Check-in is at 4 PM.","mia"),
+      B("4 PM","Check in at the Fifth Hotel","South of Fifth, steps from the beach.","fifth"),
+      B("Sunset","South Pointe Park","A short walk from the hotel.","southpointe")
+    ]},
+  { date:"2027-01-04", dow:"Mon", wd:"Monday", num:"4", mon:"Jan", month:"January", part:2, short:"Art Deco",
+    title:"Art Deco & the beach",
+    sum:"A walking morning among the pastel facades, then the first full beach afternoon.",
+    chips:["On foot","Beach"],
+    blocks:[
+      B("Morning","Ocean Drive & the Art Deco district","Walk it ourselves or join the official Art Deco walking tour.","ocean"),
+      B("Noon – 4:30 PM","Beach","The warmest part of the day."),
+      B("Evening","Dinner on Española Way","A pedestrian street with Mediterranean-style buildings and plenty of restaurants.","espanola")
+    ],
+    swap:true},
+  { date:"2027-01-05", dow:"Tue", wd:"Tuesday", num:"5", mon:"Jan", month:"January", part:2, short:"Mainland",
+    title:"Mainland day: street art & science",
+    sum:"Best on whichever of Jan 4–6 looks least like a beach day.",
+    chips:["Big Bus","Museums"],
+    blocks:[
+      B("9:20 AM","Big Bus from Washington Ave","First bus from the South Beach stop at 555 Washington Ave; buses run about every 30 minutes.","bigbus"),
+      B("Late morning","Wynwood Walls","Large outdoor street-art murals. Opens 10:30 AM.","wynwood"),
+      B("Lunch","Bayside Marketplace","Waterfront shops and food by the port.","bayside"),
+      B("Afternoon","Frost Science Museum","Aquarium, exhibits and a planetarium show.","frost"),
+      B("Evening · optional","Luminosa at Jungle Island","A walk-through light show; 5:30 or 6 PM entry.","jungle")
+    ],
+    bring:["Light jackets for the open-top bus"], swap:true},
+  { date:"2027-01-06", dow:"Wed", wd:"Wednesday", num:"6", mon:"Jan", month:"January", part:2, short:"Trolley",
+    title:"Trolley day: Lincoln Road & gardens",
+    sum:"A short free-trolley ride north, then back for the beach.",
+    chips:["Free trolley","Beach"],
+    blocks:[
+      B("Morning","Lincoln Road","Pedestrian mall with shops and cafés.","lincoln"),
+      B("Late morning","Botanical Garden","Free, and a quiet green break.","garden"),
+      B("Late morning","Holocaust Memorial","Next door to the garden. Visit in daylight.","memorial"),
+      B("Afternoon","Beach",""),
+      B("Evening","Waterfront walk and dinner","")
+    ],
+    swap:true},
+  { date:"2027-01-07", dow:"Thu", wd:"Thursday", num:"7", mon:"Jan", month:"January", part:2, short:"Home",
+    title:"Heading home",
+    sum:"An easy last morning by the water.",
+    chips:["Travel day"],
+    blocks:[
+      B("By 11 AM","Check out","Leave the bags at the hotel.","fifth"),
+      B("Midday","Last beach walk","Or a ride on the Collins Express trolley."),
+      B("Then","Uber to the airport","In time for the flight.","mia")
+    ]}
+];
+
+var BOOKINGS = [
+  {id:"springhill", n:"SpringHill Suites Doral", url:"https://www.marriott.com/reservation/availabilitySearch.mi?propertyCode=MIAMS&isSearch=false&fromDate=12/31/2026&toDate=01/03/2027&numberOfRooms=1&numberOfAdults=2&childrenCount=2&childrenAges=10,13", d:"Dec 31 – Jan 3", w:"now", note:"Suite, 2 queens + sofa bed. Free cancellation until 5:59 PM Dec 29."},
+  {id:"biscayne", n:"Biscayne snorkel & island trip", url:"https://www.biscaynenationalparkinstitute.org/snorkel-and-island-visit-from-coconut-grove/", d:"Jan 2", w:"now", note:"Ages 8+. Refund or rebook up to 48 hours before; full refund if they cancel for weather."},
+  {id:"car", n:"Rental car", url:"https://www.kayak.com/cars", d:"Dec 31 – Jan 3", w:"now", note:"Pick up and return at the MIA rental car center."},
+  {id:"shark", n:"Shark Valley bikes or tram", url:"https://www.sharkvalleytramtours.com/", d:"Jan 1", w:"soon", note:"Go early; busiest 10 AM–3 PM."},
+  {id:"vizcaya", n:"Vizcaya Museum & Gardens", url:"https://vizcaya.org/", d:"Jan 3", w:"soon", note:"Timed entry. Open 9:30 AM–4:30 PM."},
+  {id:"wynwood", n:"Wynwood Walls", url:"https://thewynwoodwalls.com/admissions", d:"Jan 5", w:"soon", note:"Free for kids 12 and under. Open 10:30 AM–6:30 PM."},
+  {id:"bigbus", n:"Big Bus 24-hour ticket", url:"https://www.bigbustours.com/en/miami/miami-bus-tours", d:"Jan 5", w:"soon", note:"South Beach stop at 555 Washington Ave, every 30 min, 9:20 AM–4:20 PM."},
+  {id:"frost", n:"Frost Science Museum", url:"https://www.frostscience.org/", d:"Jan 5", w:"soon", note:"Planetarium show reserved on arrival."},
+  {id:"luminosa", n:"Luminosa at Jungle Island", sub:"Optional", url:"https://feverup.com/m/781881", d:"Jan 5 evening", w:"soon", note:"5:30 or 6 PM entry."},
+  {id:"pass", n:"National Parks pass", url:"https://www.nps.gov/planyourvisit/passes.htm", d:"Jan 1", w:"day", note:"Digital pass on Recreation.gov before driving out. Covers Shark Valley entry."},
+  {id:"airboat", n:"Coopertown airboat", url:null, d:"Jan 1", w:"day", note:"No reservation needed. Open 9 AM–5 PM."},
+  {id:"zoo", n:"Zoo Miami", sub:"Plan B", url:"https://shop.zoomiami.org/mainstore", d:"Jan 2", w:"back", note:"Only if the snorkel trip is cancelled. Cheaper online."}
+];
+var WIN = {now:["Book now","b-now"], soon:["1–3 weeks ahead","b-soon"], day:["On the day","b-day"], back:["Only if needed","b-back"]};
+
+var KEYDATES = [
+  {due:"2026-11-30T23:59:00-05:00", label:"Late November", t:"Book the hotel, the snorkel trip and the car", m:"These three can sell out over the holidays."},
+  {due:"2026-12-12T23:59:00-05:00", label:"Early December", t:"Book Shark Valley and Vizcaya", m:"Also check whether CityPlace Doral announces New Year's Eve fireworks."},
+  {due:"2026-12-22T23:59:00-05:00", label:"Mid December", t:"Buy Wynwood, Big Bus and Frost tickets", m:"Plus Luminosa if we want it."},
+  {due:"2026-12-29T17:59:00-05:00", label:"Dec 29, 5:59 PM", t:"Last free cancellation for SpringHill", m:"After this the hotel is non-refundable."},
+  {due:"2026-12-30T23:59:00-05:00", label:"Dec 29–30", t:"Check the marine forecast", m:"Look at wind for Jan 2 on Biscayne Bay."},
+  {due:"2026-12-31T09:00:00-05:00", label:"Dec 31, ~9 AM", t:"Final call on snorkeling", m:"48-hour refund window closes. Switch to a Plan B if needed."},
+  {due:"2027-01-01T08:00:00-05:00", label:"Jan 1, morning", t:"Buy the National Parks pass", m:"On Recreation.gov, before driving to Shark Valley."}
+];
+
+var PACK = {
+  "Beach & water":["Swimsuits (2 each)","Quick-dry towels","Reef-safe sunscreen","Rash guards or a shorty wetsuit","Sandals or water shoes","Dry bag for phones"],
+  "Everglades":["Hats & sunglasses","Bug spray","Refillable water bottles","Sneakers for biking"],
+  "Clothes":["Light jacket or hoodie each","Shorts & T-shirts","One nicer outfit for dinner","Comfortable walking shoes"],
+  "Documents & tech":["Photo ID","Driver's license + card for the car","Hotel & ticket confirmations","Chargers & power bank","Any medicines"]
+};
+
+/* =================== Helpers =================== */
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function store(key, val){
+  try{
+    if (val === undefined){ return JSON.parse(localStorage.getItem(key)||"null"); }
+    localStorage.setItem(key, JSON.stringify(val));
+  }catch(e){ return null; }
+}
+function gmaps(q){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);}
+function icon(id, extra){return '<svg class="icon"'+(extra||"")+'><use href="#i-'+id+'"/></svg>';}
+function partColor(p){return p===1?CORAL:TEAL;}
+function localISO(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+
+/* =================== Hero rays + countdown =================== */
+(function rays(){
+  var g = document.getElementById("rays"), html = "";
+  for (var i=0;i<=18;i++){
+    var a = Math.PI + i*(Math.PI/18);
+    html += '<line x1="1120" y1="760" x2="'+(1120+Math.cos(a)*900).toFixed(1)+'" y2="'+(760+Math.sin(a)*900).toFixed(1)+'"/>';
   }
-  tick(); setInterval(tick, 30000);
+  g.innerHTML = html;
+})();
 
-  /* Highlight today's card during the trip */
-  var today = new Date(); var iso = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
-  var todayCard = document.querySelector('.day[data-date="'+iso+'"]');
-  if (todayCard){ todayCard.style.outline='3px solid #ffb347'; var t=document.createElement('span'); t.className='tag y'; t.textContent='Today'; todayCard.querySelector('.tags').prepend(t); }
+var START = new Date("2026-12-31T00:00:00-05:00"), END = new Date("2027-01-08T00:00:00-05:00");
+var clock = $("#clock"), clockLabel = $("#clock-label");
+function tick(){
+  var now = new Date();
+  if (now >= END){ clock.className="clock msg"; clock.textContent="Hope it was a great trip."; clockLabel.textContent="Trip complete"; return; }
+  if (now >= START){
+    var d = Math.floor((now-START)/864e5)+1;
+    clock.className="clock msg"; clock.textContent="Day "+d+" of 8. Enjoy Miami!"; clockLabel.textContent="We're there"; return;
+  }
+  var s = Math.floor((START-now)/1000);
+  var parts = [[Math.floor(s/86400),"days"],[Math.floor(s%86400/3600),"hours"],[Math.floor(s%3600/60),"min"],[s%60,"sec"]];
+  clock.className="clock";
+  clock.innerHTML = parts.map(function(p){return '<div><b>'+String(p[0]).padStart(2,"0")+'</b><span>'+p[1]+'</span></div>';}).join("");
+}
+tick(); setInterval(tick,1000);
+$("#stat-stops").textContent = Object.keys(STOPS).length;
 
-  /* Day filters */
-  var btns = document.querySelectorAll('.filters button');
-  btns.forEach(function(b){
-    b.addEventListener('click', function(){
-      btns.forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true':'false'); });
-      var f = b.dataset.f;
-      document.querySelectorAll('.day').forEach(function(d){ d.classList.toggle('hide', f!=='all' && d.dataset.part!==f); });
+/* =================== Top bar + scrollspy =================== */
+var top = $("#top");
+function onScroll(){ top.classList.toggle("solid", window.scrollY > 40); }
+window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
+if ("IntersectionObserver" in window){
+  var links = {}; $$(".top nav a").forEach(function(a){ links[a.getAttribute("href").slice(1)] = a; });
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ $$(".top nav a").forEach(function(a){a.classList.remove("on");}); if (links[e.target.id]) links[e.target.id].classList.add("on"); }
     });
-  });
+  }, {rootMargin:"-45% 0px -50% 0px"});
+  Object.keys(links).forEach(function(id){ var el=document.getElementById(id); if (el) spy.observe(el); });
+}
 
-  /* Packing list, saved per viewer */
-  var KEY='miami-ny-pack';
-  var saved = {};
-  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e){ saved = {}; }
-  var boxes = document.querySelectorAll('#pack input');
-  boxes.forEach(function(c){
-    c.checked = !!saved[c.dataset.id];
-    c.addEventListener('change', function(){
-      saved[c.dataset.id] = c.checked;
-      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e){}
-    });
-  });
-  document.getElementById('pack-reset').addEventListener('click', function(e){
-    e.preventDefault(); saved = {}; boxes.forEach(function(c){ c.checked=false; });
-    try { localStorage.removeItem(KEY); } catch(e){}
-  });
+/* =================== Itinerary explorer =================== */
+var state = {day:0, variant:"snorkel", all:false};
+var todayISO = localISO(new Date());
+var strip = $("#strip"), panel = $("#panel");
 
-  /* Map */
-  if (!window.L){ document.getElementById('map').innerHTML='<p style="padding:20px">The map could not load. Use the links on each day instead.</p>'; return; }
-  var C1='#ff6b57', C2='#0e6e74', CH='#14323a';
-  var stops = [
-    ['SpringHill Suites Doral','Hotel · Dec 31 – Jan 3',25.8103,-80.3686,CH,true],
-    ['The Fifth Hotel','Hotel · Jan 3 – 7',25.7737,-80.1338,CH,true],
-    ['Miami Airport (MIA) rental car center','Car pickup Dec 31 · return Jan 3',25.7959,-80.2870,CH,false],
-    ['CityPlace Doral','Dec 31 · New Year’s Eve (if fireworks)',25.8120,-80.3510,C1,false],
-    ['Shark Valley','Jan 1 · bike loop or tram',25.7576,-80.7664,C1,false],
-    ['Coopertown Airboats','Jan 1 · airboat ride',25.7618,-80.5778,C1,false],
-    ['Dinner Key Marina','Jan 2 · Biscayne snorkel trip',25.7270,-80.2330,C1,false],
-    ['Zoo Miami','Jan 2 · Plan B',25.6106,-80.3977,C1,false],
-    ['Vizcaya Museum & Gardens','Jan 3 · morning',25.7443,-80.2105,C1,false],
-    ['Little Havana (Calle Ocho)','Jan 3 · lunch',25.7653,-80.2190,C1,false],
-    ['South Pointe Park','Jan 3 · sunset',25.7660,-80.1340,C2,false],
-    ['Ocean Drive & Art Deco district','Jan 4 · morning walk',25.7810,-80.1305,C2,false],
-    ['Española Way','Jan 4 · dinner',25.7864,-80.1326,C2,false],
-    ['Wynwood Walls','Jan 5 · street art',25.8010,-80.1994,C2,false],
-    ['Frost Science Museum','Jan 5 · afternoon',25.7853,-80.1880,C2,false],
-    ['Bayside Marketplace','Jan 5 · Big Bus stop',25.7785,-80.1867,C2,false],
-    ['Jungle Island (Luminosa)','Jan 5 · optional evening',25.7848,-80.1720,C2,false],
-    ['Lincoln Road','Jan 6 · trolley day',25.7907,-80.1390,C2,false],
-    ['Miami Beach Botanical Garden','Jan 6 · free',25.7953,-80.1360,C2,false],
-    ['Holocaust Memorial Miami Beach','Jan 6',25.7966,-80.1375,C2,false]
-  ];
-  var map = L.map('map', {scrollWheelZoom:false});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19, subdomains:'abcd',
+function dayBlocks(day){ return day.variants ? day.variants[state.variant].blocks : day.blocks; }
+function dayBring(day){ return day.variants ? day.variants[state.variant].bring : day.bring; }
+function dayStops(day){
+  var seen = {}, out = [];
+  dayBlocks(day).forEach(function(b){ if (b.stop && !seen[b.stop]){ seen[b.stop]=1; out.push(b.stop); } });
+  return out;
+}
+
+strip.innerHTML = DAYS.map(function(d,i){
+  var c = d.part===1 ? "--c:var(--coral);--c2:var(--coral-2)" : "--c:var(--teal);--c2:var(--teal-2)";
+  return '<button class="tab" role="tab" id="tab-'+i+'" aria-controls="panel" aria-selected="false" tabindex="-1" style="'+c+'" data-i="'+i+'">'+
+    (d.date===todayISO?'<span class="today">Today</span>':'')+
+    '<span class="d"><span class="n">'+d.num+'</span><span class="w">'+d.dow+' · '+d.mon+'</span></span>'+
+    '<span class="t">'+esc(d.short)+'</span></button>';
+}).join("");
+$$(".tab", strip).forEach(function(t){
+  t.addEventListener("click", function(){ select(+t.dataset.i, true); });
+  t.addEventListener("keydown", function(e){
+    var i = +t.dataset.i;
+    if (e.key==="ArrowRight"){ e.preventDefault(); select(Math.min(7,i+1), true, true); }
+    if (e.key==="ArrowLeft"){ e.preventDefault(); select(Math.max(0,i-1), true, true); }
+    if (e.key==="Home"){ e.preventDefault(); select(0, true, true); }
+    if (e.key==="End"){ e.preventDefault(); select(7, true, true); }
+  });
+});
+
+function renderPanel(){
+  var d = DAYS[state.day], i = state.day;
+  var c = d.part===1 ? "--c:var(--coral);--c2:var(--coral-2)" : "--c:var(--teal);--c2:var(--teal-2)";
+  panel.setAttribute("style", c);
+  panel.setAttribute("aria-labelledby", "tab-"+i);
+  var stops = dayStops(d), n = 0, html = "";
+  html += '<div class="panel-top"><div class="meta">Day '+(i+1)+' · '+d.wd+', '+d.month+' '+d.num+'</div>'+
+          '<div class="pager"><button type="button" id="prev" aria-label="Previous day" '+(i===0?"disabled":"")+'>'+icon("left")+'</button>'+
+          '<button type="button" id="next" aria-label="Next day" '+(i===7?"disabled":"")+'>'+icon("right")+'</button></div></div>';
+  html += '<h3>'+esc(d.title)+'</h3><p class="sum">'+esc(d.sum)+'</p>';
+  html += '<div class="chips">'+d.chips.map(function(c){ return '<span class="chip'+(c==="Weather-dependent"?" warn":"")+'">'+esc(c)+'</span>'; }).join("")+'</div>';
+  if (d.variants){
+    html += '<div class="seg-label">Choose the plan</div><div class="seg" role="group" aria-label="Plan for this day">'+
+      Object.keys(d.variants).map(function(k){ return '<button type="button" data-v="'+k+'" aria-pressed="'+(state.variant===k)+'">'+esc(d.variants[k].label)+'</button>'; }).join("")+'</div>';
+  }
+  html += '<ol class="tl">';
+  dayBlocks(d).forEach(function(b){
+    var idx = b.stop ? stops.indexOf(b.stop)+1 : 0;
+    var dot = idx ? '<span class="dot num" data-stop="'+b.stop+'" title="Show on map">'+idx+'</span>' : '<span class="dot">·</span>';
+    html += '<li>'+dot+'<div><div class="when">'+esc(b.when)+'</div><div class="what">'+esc(b.what)+'</div>'+
+      (b.txt?'<p class="txt">'+esc(b.txt)+'</p>':'')+
+      (b.stop?'<a class="dir" href="'+gmaps(STOPS[b.stop].n+" Miami")+'" target="_blank" rel="noopener">'+icon("pin")+'Directions</a>':'')+
+      '</div></li>';
+  });
+  html += '</ol>';
+  var bring = dayBring(d);
+  if (bring && bring.length) html += '<div class="bring"><span>Bring</span>'+bring.map(function(x){return '<em>'+esc(x)+'</em>';}).join("")+'</div>';
+  if (d.note) html += '<div class="note">'+icon("info")+'<span>'+esc(d.note)+'</span></div>';
+  if (d.swap) html += '<div class="note">'+icon("swap")+'<span>Jan 4–6 can be shuffled for weather: put the mainland day on the least beachy day. Keep the trolley day off Monday, when the garden is closed.</span></div>';
+  panel.innerHTML = '<div class="fade">'+html+'</div>';
+
+  $("#prev").addEventListener("click", function(){ select(state.day-1, true); });
+  $("#next").addEventListener("click", function(){ select(state.day+1, true); });
+  $$(".seg button", panel).forEach(function(b){ b.addEventListener("click", function(){ state.variant=b.dataset.v; renderPanel(); drawMap(); }); });
+  $$(".dot.num", panel).forEach(function(dot){ dot.addEventListener("click", function(){ focusStop(dot.dataset.stop); }); });
+}
+
+function select(i, user, focusTab){
+  state.day = i;
+  $$(".tab", strip).forEach(function(t,k){ t.setAttribute("aria-selected", k===i); t.tabIndex = k===i?0:-1; });
+  var tab = $("#tab-"+i);
+  if (focusTab) tab.focus();
+  if (tab.scrollIntoView && user) tab.scrollIntoView({block:"nearest", inline:"nearest", behavior:"smooth"});
+  if (state.all){ state.all=false; $("#all-toggle").setAttribute("aria-pressed","false"); }
+  renderPanel(); drawMap();
+  if (user && history.replaceState) history.replaceState(null, "", "#day-"+(i+1));
+}
+
+/* =================== Map =================== */
+var map = null, layer = null, markers = {};
+function mkIcon(color, label, opts){
+  opts = opts||{};
+  var cls = "mk"+(opts.home?" home":"")+(opts.sm?" sm":"");
+  var size = opts.sm?16:30;
+  return L.divIcon({className:"", html:'<div class="'+cls+'" style="background:'+color+'">'+(label||"")+'</div>', iconSize:[size,size], iconAnchor:[size/2,size/2], popupAnchor:[0,-size/2]});
+}
+function stopDays(key){
+  var out = [];
+  DAYS.forEach(function(d,i){
+    var blocks = d.variants ? [].concat.apply([], Object.keys(d.variants).map(function(k){return d.variants[k].blocks;})) : d.blocks;
+    if (blocks.some(function(b){return b.stop===key;})) out.push(i);
+  });
+  return out;
+}
+function popupHTML(key){
+  var s = STOPS[key], days = stopDays(key);
+  var lbl = days.map(function(i){return DAYS[i].mon+" "+DAYS[i].num;}).join(", ");
+  var btns = state.all ? days.map(function(i){return '<button class="pop-btn" data-go="'+i+'">Day '+(i+1)+'</button> ';}).join("") : "";
+  return '<strong>'+esc(s.n)+'</strong><span class="pd">'+esc(lbl)+'</span><br><a href="'+gmaps(s.n+" Miami")+'" target="_blank" rel="noopener">Directions</a>'+(btns?'<br>'+btns:'');
+}
+function initMap(){
+  if (!window.L){ $("#map").innerHTML='<p style="padding:24px;color:#6B7882">The map could not load. Use the Directions links instead.</p>'; return; }
+  map = L.map("map", {scrollWheelZoom:false, zoomControl:true, attributionControl:true});
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+    maxZoom:19, subdomains:"abcd",
     attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
-  var pts = [];
-  stops.forEach(function(s){
-    var icon = L.divIcon({className:'', html:'<div class="pin'+(s[5]?' home':'')+'" style="background:'+s[4]+'"></div>', iconSize:s[5]?[30,30]:[26,26], iconAnchor:s[5]?[15,30]:[13,26], popupAnchor:[0,-26]});
-    var q = encodeURIComponent(s[0]+' Miami');
-    L.marker([s[2],s[3]], {icon:icon, title:s[0]}).addTo(map)
-      .bindPopup('<strong>'+s[0]+'</strong><br>'+s[1]+'<br><a href="https://www.google.com/maps/search/?api=1&query='+q+'" target="_blank" rel="noopener">Directions</a>');
-    pts.push([s[2],s[3]]);
+  layer = L.layerGroup().addTo(map);
+  map.on("click", function(){ map.scrollWheelZoom.enable(); });
+  map.on("popupopen", function(e){
+    $$(".pop-btn", e.popup.getElement()).forEach(function(b){
+      b.addEventListener("click", function(){ map.closePopup(); select(+b.dataset.go, true); });
+    });
   });
-  map.fitBounds(pts, {padding:[30,30]});
-  map.on('click', function(){ map.scrollWheelZoom.enable(); });
+  map.setView([25.77,-80.3], 10);
+}
+function drawMap(){
+  if (!map) return;
+  layer.clearLayers(); markers = {};
+  var pts = [];
+  if (state.all){
+    Object.keys(STOPS).forEach(function(k){
+      var s = STOPS[k], days = stopDays(k);
+      var color = s.home ? INK : partColor(DAYS[days[0]].part);
+      var m = L.marker([s.lat,s.lng], {icon:mkIcon(color,"",{home:s.home, sm:!s.home}), title:s.n}).bindPopup(function(){return popupHTML(k);});
+      m.addTo(layer); markers[k]=m; pts.push([s.lat,s.lng]);
+    });
+  } else {
+    var d = DAYS[state.day], stops = dayStops(d), color = partColor(d.part);
+    stops.forEach(function(k,idx){
+      var s = STOPS[k];
+      var m = L.marker([s.lat,s.lng], {icon:mkIcon(s.home?INK:color, idx+1, {home:s.home}), title:s.n, zIndexOffset:1000-idx}).bindPopup(function(){return popupHTML(k);});
+      m.addTo(layer); markers[k]=m; pts.push([s.lat,s.lng]);
+    });
+    if (pts.length > 1) L.polyline(pts, {color:color, weight:2.5, opacity:.75, dashArray:"6 8"}).addTo(layer);
+  }
+  if (!pts.length) return;
+  if (pts.length === 1) map.flyTo(pts[0], 14, {duration:.8});
+  else map.flyToBounds(L.latLngBounds(pts), {padding:[48,48], maxZoom:14, duration:.8});
+}
+function focusStop(k){
+  if (!map || !markers[k]) return;
+  var s = STOPS[k];
+  if (window.innerWidth <= 1000) $(".map-card").scrollIntoView({behavior:"smooth", block:"center"});
+  map.flyTo([s.lat,s.lng], 15, {duration:.7});
+  setTimeout(function(){ markers[k].openPopup(); }, 750);
+}
+$("#all-toggle").addEventListener("click", function(){
+  state.all = !state.all;
+  this.setAttribute("aria-pressed", state.all);
+  drawMap();
+});
+
+/* Print-all version of the itinerary */
+$("#print-all").innerHTML = DAYS.map(function(d,i){
+  var blocks = d.variants ? d.variants.snorkel.blocks : d.blocks;
+  return '<div class="pd-day"><strong>Day '+(i+1)+' · '+d.wd+', '+d.month+' '+d.num+': '+esc(d.title)+'</strong>'+
+    '<ul>'+blocks.map(function(b){return '<li><b>'+esc(b.when)+'</b>: '+esc(b.what)+(b.txt?'. '+esc(b.txt):'')+'</li>';}).join("")+'</ul>'+
+    (d.variants?'<p><em>Plan B: Zoo Miami, or a no-swim Biscayne Bay cruise.</em></p>':'')+'</div>';
+}).join("");
+$("#print-btn").addEventListener("click", function(){ window.print(); });
+
+/* Start: hash > today > day 1 */
+initMap();
+var startDay = 0, hm = /^#day-([1-8])$/.exec(location.hash);
+if (hm) startDay = +hm[1]-1;
+else DAYS.forEach(function(d,i){ if (d.date===todayISO) startDay=i; });
+select(startDay, false);
+if (hm) setTimeout(function(){ document.getElementById("itinerary").scrollIntoView(); }, 50);
+
+/* =================== Bookings tracker =================== */
+var booked = store("miami-ny-booked") || {};
+var bk = $("#bk"), bkFilter = "all";
+bk.innerHTML = '<div class="bk-row hdr"><span></span><span>Item</span><span>For</span><span>When to book</span><span>Notes</span></div>' +
+  BOOKINGS.map(function(b){
+    var name = b.url ? '<a href="'+b.url+'" target="_blank" rel="noopener">'+esc(b.n)+icon("ext")+'</a>' : '<span>'+esc(b.n)+'</span>';
+    return '<div class="bk-row" data-id="'+b.id+'" data-w="'+b.w+'">'+
+      '<input type="checkbox" class="check" aria-label="Mark '+esc(b.n)+' as booked">'+
+      '<div class="bk-name">'+name+(b.sub?'<small>'+esc(b.sub)+'</small>':'')+'</div>'+
+      '<div class="bk-date">'+esc(b.d)+'</div>'+
+      '<div class="bk-win"><span class="badge '+WIN[b.w][1]+'">'+WIN[b.w][0]+'</span></div>'+
+      '<div class="bk-note">'+esc(b.note)+'</div></div>';
+  }).join("");
+function bkUpdate(){
+  var rows = $$(".bk-row[data-id]", bk), done = 0, total = 0;
+  rows.forEach(function(r){
+    var id = r.dataset.id, isDone = !!booked[id];
+    r.classList.toggle("done", isDone);
+    $(".check", r).checked = isDone;
+    if (r.dataset.w !== "back"){ total++; if (isDone) done++; }
+    var show = bkFilter==="all" || (bkFilter==="todo" ? !isDone : r.dataset.w===bkFilter);
+    r.classList.toggle("hide", !show);
+  });
+  $("#bk-count").textContent = done+" of "+total+" booked";
+  $("#bk-bar").style.width = (total? done/total*100 : 0)+"%";
+}
+$$(".bk-row[data-id] .check", bk).forEach(function(c){
+  c.addEventListener("change", function(){ booked[c.closest(".bk-row").dataset.id] = c.checked; store("miami-ny-booked", booked); bkUpdate(); });
+});
+$$("#bk-filters button").forEach(function(b){
+  b.addEventListener("click", function(){
+    bkFilter = b.dataset.f;
+    $$("#bk-filters button").forEach(function(x){x.setAttribute("aria-pressed", x===b);});
+    bkUpdate();
+  });
+});
+bkUpdate();
+
+/* =================== Key dates =================== */
+(function(){
+  var now = new Date(), nextFound = false;
+  $("#kd").innerHTML = KEYDATES.map(function(k){
+    var due = new Date(k.due), cls = "", badge = "";
+    if (due < now){ cls = "past"; badge = '<span class="badge b-back">Passed</span>'; }
+    else if (!nextFound){ nextFound = true; cls = "next"; badge = '<span class="badge b-now">Next up</span>'; }
+    return '<li class="'+cls+'"><div class="kdate">'+esc(k.label)+' '+badge+'</div><div class="ktxt">'+esc(k.t)+'</div><div class="kmore">'+esc(k.m)+'</div></li>';
+  }).join("");
+})();
+
+/* =================== Packing =================== */
+var packed = store("miami-ny-pack2") || {};
+var packCat = "All", cats = ["All"].concat(Object.keys(PACK));
+$("#pack-tabs").innerHTML = cats.map(function(c){return '<button type="button" data-c="'+esc(c)+'" aria-pressed="'+(c==="All")+'">'+esc(c)+'</button>';}).join("");
+function packRender(){
+  var items = [];
+  Object.keys(PACK).forEach(function(c){ PACK[c].forEach(function(x){ items.push({c:c, x:x, id:c+"|"+x}); }); });
+  var visible = items.filter(function(it){ return packCat==="All" || it.c===packCat; });
+  $("#pack-list").innerHTML = visible.map(function(it){
+    return '<label><input type="checkbox" class="check" data-id="'+esc(it.id)+'"'+(packed[it.id]?" checked":"")+'><span>'+esc(it.x)+'</span></label>';
+  }).join("");
+  $$("#pack-list input").forEach(function(inp){
+    inp.addEventListener("change", function(){ packed[inp.dataset.id] = inp.checked; store("miami-ny-pack2", packed); packStats(items); });
+  });
+  packStats(items);
+}
+function packStats(items){
+  var done = items.filter(function(it){return packed[it.id];}).length, pct = items.length? Math.round(done/items.length*100) : 0;
+  $("#pack-sub").textContent = done+" of "+items.length+" packed";
+  $("#ring-txt").textContent = pct+"%";
+  $("#ring-fg").style.strokeDashoffset = (169.6*(1-pct/100)).toFixed(1);
+}
+$$("#pack-tabs button").forEach(function(b){
+  b.addEventListener("click", function(){
+    packCat = b.dataset.c;
+    $$("#pack-tabs button").forEach(function(x){x.setAttribute("aria-pressed", x===b);});
+    packRender();
+  });
+});
+$("#pack-reset").addEventListener("click", function(){ packed = {}; store("miami-ny-pack2", packed); packRender(); });
+packRender();
+
+/* =================== Weather (Open-Meteo) =================== */
+function wxInfo(code){
+  if (code===0) return ["sun","Clear"];
+  if (code<=2) return ["partly","Partly cloudy"];
+  if (code===3) return ["cloud","Cloudy"];
+  if (code===45||code===48) return ["fog","Fog"];
+  if (code>=95) return ["storm","Storms"];
+  if ((code>=51&&code<=67)||(code>=80&&code<=82)) return ["rain","Showers"];
+  return ["cloud","Mixed"];
+}
+function fmtDay(iso){
+  var p = iso.split("-"), d = new Date(+p[0], +p[1]-1, +p[2]);
+  return d.toLocaleDateString("en-US",{weekday:"short", month:"short", day:"numeric"});
+}
+(function weather(){
+  var url = "https://api.open-meteo.com/v1/forecast?latitude=25.7737&longitude=-80.1338"+
+    "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max"+
+    "&temperature_unit=fahrenheit&wind_speed_unit=kn&timezone=America%2FNew_York&forecast_days=16";
+  var status = $("#wx-status"), box = $("#wx-days"), extra = $("#wx-extra");
+  if (!window.fetch){ status.textContent = "Live forecast isn't supported in this browser."; return; }
+  fetch(url).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(j){
+    var dly = j.daily, rows = dly.time.map(function(t,i){
+      return {t:t, code:dly.weather_code[i], hi:dly.temperature_2m_max[i], lo:dly.temperature_2m_min[i], rain:dly.precipitation_probability_max[i], wind:dly.wind_speed_10m_max[i]};
+    });
+    var tripDates = DAYS.map(function(d){return d.date;});
+    var trip = rows.filter(function(r){ return tripDates.indexOf(r.t) >= 0; });
+    var show, isTrip = trip.length > 0;
+    if (isTrip){
+      show = trip;
+      $("#wx-title").textContent = "Trip forecast";
+      status.textContent = trip.length===8 ? "All eight trip days are in range. Forecasts beyond a week are rough guides." : trip.length+" of 8 trip days are in range so far; the rest fill in as we get closer.";
+    } else {
+      show = rows.slice(0,7);
+      $("#wx-title").textContent = "Miami Beach this week";
+      status.textContent = "Trip days come into range about 16 days out (from around Dec 16). Until then, here's what Miami Beach looks like right now.";
+    }
+    box.innerHTML = show.map(function(r){
+      var w = wxInfo(r.code), rain = r.rain==null? 0 : r.rain;
+      return '<div class="dw'+(isTrip?" trip":"")+'"><div class="dd">'+fmtDay(r.t)+'</div><div class="ic" title="'+w[1]+'">'+icon(w[0])+'</div>'+
+        '<div class="tt">'+Math.round(r.hi)+'° <small>/ '+Math.round(r.lo)+'°</small></div>'+
+        '<div class="ex">'+w[1]+' · wind '+Math.round(r.wind)+' kn</div>'+
+        '<div class="bar" title="Chance of rain '+rain+'%"><i style="width:'+rain+'%"></i></div><div class="ex">Rain '+rain+'%</div></div>';
+    }).join("");
+
+    var out = "";
+    var jan2 = rows.filter(function(r){return r.t==="2027-01-02";})[0];
+    if (jan2){
+      var w = jan2.wind, v;
+      if (w < 15) v = ["#2AA39B","Snorkel day looks good","Max wind about "+Math.round(w)+" knots on Jan 2. Under 15 knots usually means calm enough for snorkeling."];
+      else if (w <= 20) v = ["#C9A227","Snorkel day is borderline","Max wind about "+Math.round(w)+" knots on Jan 2. Watch the forecast; the operator makes the final call."];
+      else v = ["#E4572E","Snorkel day looks rough","Max wind about "+Math.round(w)+" knots on Jan 2. Consider switching to Zoo Miami or the no-swim cruise before the 48-hour cutoff."];
+      out += '<div class="verdict" style="background:'+v[0]+'14"><i class="lamp" style="background:'+v[0]+'"></i><div><b>'+v[1]+'</b><span>'+v[2]+'</span></div></div>';
+    } else {
+      out += '<div class="verdict"><i class="lamp" style="background:#D6CDBF"></i><div><b>Snorkel check for Jan 2</b><span>Shows a go / borderline / rough rating from the wind forecast once Jan 2 is within range (around Dec 17).</span></div></div>';
+    }
+    var beach = ["2027-01-04","2027-01-05","2027-01-06"].map(function(t){return rows.filter(function(r){return r.t===t;})[0];});
+    if (beach.every(Boolean)){
+      var score = function(r){ return r.hi - (r.rain||0)*0.15 - r.wind*0.4; };
+      var worst = beach.slice().sort(function(a,b){return score(a)-score(b);})[0];
+      var msg = worst.t==="2027-01-05" ? "Tue Jan 5 still looks like the least beachy day, so keep the mainland day where it is." :
+        fmtDay(worst.t)+" looks like the least beachy day. Consider moving the mainland day (Big Bus, Wynwood, Frost) there"+(worst.t==="2027-01-04"?", and keep the trolley day off Monday.":".");
+      out += '<div class="verdict"><i class="lamp" style="background:#0F7173"></i><div><b>Beach-day tip</b><span>'+esc(msg)+'</span></div></div>';
+    }
+    extra.innerHTML = out;
+  }).catch(function(){
+    status.textContent = "The live forecast couldn't load right now. Try again later, or check a weather app for Miami Beach.";
+  });
+})();
+
 })();
 </script>
 </body>
