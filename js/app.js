@@ -200,7 +200,10 @@ function stopsOf(day) {
 
 /* ================= Header, countdown, reveal ================= */
 var head = $("#head");
-function onScroll() { head.classList.toggle("scrolled", window.scrollY > 10); }
+function onScroll() {
+  head.classList.toggle("scrolled", window.scrollY > 10);
+  if (window.scrollY < 300) $$(".nav-links a.on").forEach(function (a) { a.classList.remove("on"); });
+}
 window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
 if ("IntersectionObserver" in window) {
   var navLinks = {}; $$(".nav-links a").forEach(function (a) { navLinks[a.getAttribute("href").slice(1)] = a; });
@@ -389,7 +392,8 @@ function ensureMap() {
     if (!window.L) $("#map").innerHTML = '<p style="padding:24px">The map could not load. Use the Directions links instead.</p>';
     return;
   }
-  map = L.map("map", {scrollWheelZoom:false});
+  map = L.map("map", {scrollWheelZoom:false, zoomControl:false});
+  L.control.zoom({position:"topright"}).addTo(map);
   var osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'});
   var esri = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", {maxZoom:19, attribution:"Tiles &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors"});
   var errs = 0;

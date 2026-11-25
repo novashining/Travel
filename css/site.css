@@ -162,6 +162,7 @@ h1 em,h2 em,h3 em,.brand-name em,strong em,.ribbon-quote em,.beach-script{font-f
 .day-media.show-map .media-photo{opacity:0}
 #map{position:absolute;inset:0;background:#E6E3D8}
 .leaflet-tile-pane{filter:saturate(.78) sepia(.06)}
+.leaflet-top.leaflet-right{top:6px;right:6px}
 .map-all{position:absolute;right:16px;bottom:16px;z-index:500;border:0;border-radius:99px;padding:9px 14px;font-size:13px;font-weight:600;background:rgba(255,253,248,.95);box-shadow:0 6px 18px -8px rgba(0,0,0,.35)}
 .map-all[aria-pressed="true"]{background:var(--ink);color:#fff}
 .mk{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;color:#fff;font:700 13px/1 var(--body);border:2.5px solid #fff;box-shadow:0 4px 10px rgba(20,40,34,.35)}
