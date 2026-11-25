@@ -51,122 +51,170 @@ PHOTOS.memorial = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/
 
 /* ================= Map stops ================= */
 var STOPS = {
-  mia:        {n:"Miami Airport (MIA) & rental cars", lat:25.7959, lng:-80.2870, home:true},
-  home1:      {n:"Home base · Doral", lat:25.8103, lng:-80.3686, home:true},
-  home2:      {n:"Home base · South Beach", lat:25.7737, lng:-80.1338, home:true},
-  cityplace:  {n:"CityPlace Doral", lat:25.8120, lng:-80.3510},
-  shark:      {n:"Shark Valley, Everglades National Park", lat:25.7576, lng:-80.7664, ph:"gator"},
-  coopertown: {n:"Coopertown Airboat Tours", lat:25.7618, lng:-80.5778, ph:"airboat"},
-  dinnerkey:  {n:"Dinner Key Marina, Coconut Grove", lat:25.7270, lng:-80.2330, ph:"snorkel"},
-  zoo:        {n:"Zoo Miami", lat:25.6106, lng:-80.3977, ph:"zoo"},
-  vizcaya:    {n:"Vizcaya Museum & Gardens", lat:25.7443, lng:-80.2105, ph:"vizcaya"},
-  havana:     {n:"Little Havana (Calle Ocho)", lat:25.7653, lng:-80.2190, ph:"havana"},
-  southpointe:{n:"South Pointe Park", lat:25.7660, lng:-80.1340, ph:"pier"},
-  ocean:      {n:"Ocean Drive & Art Deco district", lat:25.7810, lng:-80.1305, ph:"deco"},
-  espanola:   {n:"Española Way", lat:25.7864, lng:-80.1326, ph:"espanola"},
-  bigbus:     {n:"Big Bus stop, 555 Washington Ave", lat:25.7750, lng:-80.1350},
-  wynwood:    {n:"Wynwood Walls", lat:25.8010, lng:-80.1994, ph:"wynwood"},
-  bayside:    {n:"Bayside Marketplace", lat:25.7785, lng:-80.1867, ph:"bayside"},
-  frost:      {n:"Frost Science Museum", lat:25.7853, lng:-80.1880, ph:"frost"},
-  jungle:     {n:"Jungle Island (Luminosa)", lat:25.7848, lng:-80.1720, ph:"jungle"},
-  lincoln:    {n:"Lincoln Road", lat:25.7907, lng:-80.1390},
-  garden:     {n:"Miami Beach Botanical Garden", lat:25.7953, lng:-80.1360, ph:"garden"},
-  memorial:   {n:"Holocaust Memorial Miami Beach", lat:25.7966, lng:-80.1375, ph:"memorial"}
+  mia:        {n:"Miami Airport (MIA) & rental cars", lat:25.79691, lng:-80.26050, kind:"air"},
+  home1:      {n:"Our Doral hotel", lat:25.81063, lng:-80.36794, kind:"hotel"},
+  home2:      {n:"Our South Beach hotel", lat:25.77258, lng:-80.13311, kind:"hotel"},
+  cityplace:  {n:"CityPlace Doral", lat:25.80843, lng:-80.33137},
+  shark:      {n:"Shark Valley, Everglades National Park", lat:25.75694, lng:-80.76538, ph:"gator"},
+  coopertown: {n:"Coopertown Airboat Tours", lat:25.76064, lng:-80.56124, ph:"airboat"},
+  dinnerkey:  {n:"Dinner Key Marina, Coconut Grove", lat:25.72664, lng:-80.23253, ph:"snorkel"},
+  zoo:        {n:"Zoo Miami", lat:25.61337, lng:-80.39992, ph:"zoo"},
+  vizcaya:    {n:"Vizcaya Museum & Gardens", lat:25.74470, lng:-80.21158, ph:"vizcaya"},
+  havana:     {n:"Little Havana · Domino Park", lat:25.76549, lng:-80.21937, ph:"havana"},
+  southpointe:{n:"South Pointe Park", lat:25.76592, lng:-80.13345, ph:"pier"},
+  ocean:      {n:"Ocean Drive & Art Deco district", lat:25.78029, lng:-80.13034, ph:"deco"},
+  espanola:   {n:"Española Way", lat:25.78686, lng:-80.13297, ph:"espanola"},
+  bayside:    {n:"Bayside Marketplace · Big Bus stop 1", lat:25.77824, lng:-80.18710, ph:"bayside"},
+  frost:      {n:"Frost Science Museum", lat:25.78524, lng:-80.18815, ph:"frost"},
+  jungle:     {n:"Jungle Island (Luminosa)", lat:25.78618, lng:-80.17469, ph:"jungle"},
+  lincoln:    {n:"Lincoln Road", lat:25.79030, lng:-80.13652},
+  garden:     {n:"Miami Beach Botanical Garden", lat:25.79567, lng:-80.13552, ph:"garden"},
+  memorial:   {n:"Holocaust Memorial Miami Beach", lat:25.79545, lng:-80.13622, ph:"memorial"},
+  /* Big Bus Red Loop stops (official order: 1 Bayside → 2 South Beach → 3 Soundscape → 4 Mid Beach → 5 North Beach → 6 Design District → 7 Wynwood → 8 Downtown → 9 Little Havana) */
+  bb_sb:      {n:"Big Bus stop 2 · South Beach", info:"555 Washington Ave, in front of CVS. Buses about every 30 min, 9:20 AM – 4:20 PM.", lat:25.77528, lng:-80.13377, kind:"bus"},
+  bb_sound:   {n:"Big Bus stop 3 · Soundscape Park", info:"1680 Washington Ave.", lat:25.79156, lng:-80.13181, kind:"bus", via:true},
+  bb_riu:     {n:"Big Bus stop 4 · Mid Beach", info:"3101 Collins Ave.", lat:25.80673, lng:-80.12369, kind:"bus", via:true},
+  bb_lex:     {n:"Big Bus stop 5 · North Beach", info:"4299 Collins Ave.", lat:25.81419, lng:-80.12241, kind:"bus", via:true},
+  bb_dd:      {n:"Big Bus stop 6 · Design District", info:"NE 2nd Ave & 37th St.", lat:25.81097, lng:-80.19117, kind:"bus", via:true},
+  bb_wyn:     {n:"Wynwood Walls · Big Bus stop 7", info:"Bus stop at NW 2nd Ave near NW 25th St.", lat:25.80114, lng:-80.19966, kind:"bus", ph:"wynwood"},
+  bb_dt:      {n:"Big Bus stop 8 · Downtown", info:"302 Biscayne Blvd, near NE 3rd St.", lat:25.77120, lng:-80.18734, kind:"bus"},
+  bb_lh:      {n:"Big Bus stop 9 · Little Havana", info:"1356 SW 8th St.", lat:25.76569, lng:-80.21800, kind:"bus", via:true},
+  /* Free South Beach trolley stops */
+  tr_4th:     {n:"Trolley stop · Washington Ave & 4th St", info:"South Beach Loop, a block from the hotel. Free, about every 20 min, 8 AM – 11 PM.", lat:25.77376, lng:-80.13442, kind:"trolley"},
+  tr_lincoln: {n:"Trolley stop · Washington Ave & Lincoln Rd", info:"Hop off for Lincoln Road.", lat:25.78959, lng:-80.13152, kind:"trolley"},
+  tr_17:      {n:"Trolley stop · Washington Ave & 17th St", info:"Southbound back to 4th St.", lat:25.79293, lng:-80.13311, kind:"trolley"}
 };
+var BIGBUS_LOOP = ["bayside","bb_sb","bb_sound","bb_riu","bb_lex","bb_dd","bb_wyn","bb_dt","bb_lh","bayside"];
 
 /* ================= Days ================= */
 function B(when, what, txt, stop) { return {when:when, what:what, txt:txt || "", stop:stop || null}; }
+function L_(p, m) { return {p:p, m:m}; }   // a leg: list of stop keys + mode (drive, uber, walk, bus, trolley, opt)
 var D = {
   arrive: {key:"arrive", label:"Arrive", theme:"Arrival", c:1, photo:"skylineSunset", place:"Hello, Miami",
     title:"Touch down, _slow down._", sum:"Land, pick up the car and settle into Doral as the year turns over.",
+    start:"mia", end:"home1",
     blocks:[
       B("Daytime","Fly into Miami (MIA)","Pick up the rental car at the airport's rental car center.","mia"),
       B("Afternoon","Check in at our Doral hotel","A suite with two queens and a sofa bed. Breakfast and parking are included.","home1"),
       B("Evening","New Year's Eve","CityPlace Doral if it announces fireworks; otherwise dinner nearby and an early night before the Everglades.","cityplace")
-    ], links:[]},
+    ],
+    legs:[L_(["mia","home1"],"drive"), L_(["home1","cityplace"],"drive"), L_(["cityplace","home1"],"drive")], links:[]},
   everglades: {key:"everglades", label:"Everglades", theme:"Wild Florida", c:1, photo:"everglades", place:"Everglades National Park",
     title:"New year, _new neighbors._", sum:"Our big nature day. We start early, before Shark Valley gets busy.",
+    start:"home1", end:"home1",
     blocks:[
       B("Before leaving","Buy the National Parks pass","Digital America the Beautiful pass on Recreation.gov. The buyer needs photo ID in the car."),
-      B("From 8:30 AM","Shark Valley","Bike the flat 15-mile loop or ride the tram. Plenty of alligators along the canal.","shark"),
+      B("From 8:30 AM","Shark Valley","About an hour's drive west. Bike the flat 15-mile loop or ride the tram; plenty of alligators along the canal.","shark"),
       B("Afternoon","Coopertown airboat","On the drive back east. No reservation needed; the last boat leaves at 4:30 PM.","coopertown"),
       B("Evening","Cuban dinner on Tamiami Trail","Along US-41 on the way back to the hotel.")
     ], bring:["Hats","Sunscreen","Water","Bug spray","Photo ID"],
+    legs:[L_(["home1","shark"],"drive"), L_(["shark","coopertown"],"drive"), L_(["coopertown","home1"],"drive")],
     links:[["Shark Valley tram & bikes","https://www.sharkvalleytramtours.com/"],["National Parks pass","https://www.nps.gov/planyourvisit/passes.htm"]]},
   snorkel: {key:"snorkel", label:"Biscayne", theme:"Ocean day", c:1, photo:"snorkel", place:"Biscayne National Park",
     title:"Masks on, _reef below._", sum:"Snorkeling and an island visit in a national park that's about 95 percent water.",
+    start:"home1", end:"home1",
     blocks:[
       B("Booked time","Snorkel & island trip","Leaves from Dinner Key Marina in Coconut Grove. The departure time is on our booking; ages 8+, snorkel vests provided.","dinnerkey"),
       B("Around it","Coconut Grove","A stroll and a meal in the Grove, near the marina."),
       B("Evening","Dinner and an easy night","")
     ], bring:["Swimsuits","Towels","Warm layer","Dry clothes","Reef-safe sunscreen"],
     note:"Weather-dependent. We check the marine forecast Dec 29–30 and switch by about 9 AM Dec 31, before the 48-hour refund window closes.",
+    legs:[L_(["home1","dinnerkey"],"drive"), L_(["dinnerkey","home1"],"drive")],
     links:[["Biscayne snorkel trip","https://www.biscaynenationalparkinstitute.org/snorkel-and-island-visit-from-coconut-grove/"]]},
   zoo: {key:"zoo", label:"Zoo Miami", theme:"Plan B · Wildlife", c:1, photo:"zoo", place:"Zoo Miami",
-    title:"Giraffes, _not reefs._", sum:"Our land-based backup if the ocean has other plans.",
+    title:"Flamingos, _not reefs._", sum:"Our land-based backup if the ocean has other plans.",
+    start:"home1", end:"home1",
     blocks:[
       B("Morning","Zoo Miami","A big open-air zoo. Rent a Safari Cycle to cover more ground (an adult has to drive it).","zoo"),
       B("Afternoon","Keep exploring","Tickets are cheaper online."),
       B("Evening","Dinner and an easy night","")
     ], bring:["Hats","Sunscreen","Water","Comfortable shoes"],
+    legs:[L_(["home1","zoo"],"drive"), L_(["zoo","home1"],"drive")],
     links:[["Zoo Miami tickets","https://shop.zoomiami.org/mainstore"]]},
   cruise: {key:"cruise", label:"On the bay", theme:"Plan B · No swim", c:1, photo:"mangrove", place:"Biscayne Bay",
     title:"The bay, _from the deck._", sum:"A boat day without getting wet, for a cool or windy morning.",
+    start:"home1", end:"home1",
     blocks:[
       B("Morning","Biscayne Bay cruise","A boat trip on the bay with no snorkeling. Confirm the departure point when booking.","dinnerkey"),
       B("Afternoon","Coconut Grove","Lunch and a walk around the Grove."),
       B("Evening","Dinner and an easy night","")
-    ], bring:["Warm layer","Sunglasses","Hats"], links:[]},
+    ], bring:["Warm layer","Sunglasses","Hats"],
+    legs:[L_(["home1","dinnerkey"],"drive"), L_(["dinnerkey","home1"],"drive")], links:[]},
   vizcaya: {key:"vizcaya", label:"Vizcaya", theme:"Culture & coast", c:1, photo:"vizcaya", place:"Vizcaya · Little Havana",
     title:"Gardens, cafecito _& the coast._", sum:"Moving day: one last morning with the car, then the beach week begins.",
+    start:"home1", end:"home2",
     blocks:[
       B("9:30 AM","Vizcaya Museum & Gardens","Check out first; the bags stay in the trunk. A villa and formal gardens on Biscayne Bay.","vizcaya"),
       B("Lunch","Little Havana","Calle Ocho, Domino Park, Cuban coffee and lunch.","havana"),
-      B("2–3 PM","Return the car at MIA","Then an Uber to South Beach.","mia"),
+      B("2–3 PM","Return the car at MIA","Then an Uber to South Beach, about 25 minutes.","mia"),
       B("4 PM","Check in at our South Beach hotel","Steps from the sand.","home2"),
-      B("Sunset","South Pointe Park","A short walk from the hotel.","southpointe")
-    ], links:[["Vizcaya tickets","https://vizcaya.org/"]]},
+      B("Sunset","South Pointe Park","A 10-minute walk from the hotel.","southpointe")
+    ],
+    legs:[L_(["home1","vizcaya"],"drive"), L_(["vizcaya","havana"],"drive"), L_(["havana","mia"],"drive"), L_(["mia","home2"],"uber"), L_(["home2","southpointe"],"walk"), L_(["southpointe","home2"],"walk")],
+    links:[["Vizcaya tickets","https://vizcaya.org/"]]},
   deco: {key:"deco", label:"Art Deco", theme:"Beach day", c:2, photo:"deco", place:"Ocean Drive",
     title:"Pastel mornings, _salt afternoons._", sum:"A walk among the Art Deco facades, then a long beach afternoon.",
+    start:"home2", end:"home2",
     blocks:[
-      B("Morning","Ocean Drive & the Art Deco district","On our own, or with the official Art Deco walking tour.","ocean"),
+      B("Morning","Ocean Drive & the Art Deco district","On our own, or with the official Art Deco walking tour. About 15 minutes on foot.","ocean"),
       B("Noon – 4:30","Beach","The warmest part of the day."),
       B("Evening","Dinner on Española Way","A pedestrian street of Mediterranean-style buildings and restaurants.","espanola")
-    ], links:[["Art Deco walking tour","https://feverup.com/m/172735"]]},
-  cityDry: {key:"city", label:"City day", theme:"City day", c:2, photo:"frost", place:"Wynwood · Downtown",
-    title:"Murals, sharks _& city light._", sum:"Our mainland day, on the least beachy day of the week.",
+    ],
+    legs:[L_(["home2","ocean"],"walk"), L_(["ocean","espanola"],"walk"), L_(["espanola","home2"],"walk")],
+    links:[["Art Deco walking tour","https://feverup.com/m/172735"]]},
+  cityDry: {key:"city", label:"City day", theme:"City day · Big Bus", c:2, photo:"frost", place:"Wynwood · Downtown",
+    title:"Murals, sharks _& city light._", sum:"Our mainland day on the Big Bus Red Loop, on the least beachy day of the week.",
+    start:"home2", end:"home2", loop:BIGBUS_LOOP,
     blocks:[
-      B("9:20 AM","Big Bus from Washington Ave","First bus from the South Beach stop; buses run about every 30 minutes.","bigbus"),
-      B("Late morning","Wynwood Walls","Huge outdoor murals. Opens 10:30 AM; free for kids 12 and under.","wynwood"),
-      B("Lunch","Bayside Marketplace","Waterfront shops and food by the port.","bayside"),
-      B("Afternoon","Frost Science Museum","Aquarium, exhibits and a planetarium show.","frost"),
-      B("Evening · optional","Luminosa at Jungle Island","A walk-through light show; 5:30 or 6 PM entry.","jungle")
+      B("9:10 AM","Walk to Big Bus stop 2","555 Washington Ave, in front of CVS, about 5 minutes from the hotel.","bb_sb"),
+      B("9:20 AM","Ride the Red Loop north","Over Mid and North Beach and through the Design District. Grab the top deck."),
+      B("About 10:20","Hop off at Wynwood Walls (stop 7)","Huge outdoor murals. Opens 10:30 AM; free for kids 12 and under.","bb_wyn"),
+      B("Late morning","Hop back on to Downtown (stop 8)","302 Biscayne Blvd, a short walk from Bayside.","bb_dt"),
+      B("Lunch","Bayside Marketplace","Waterfront shops and food. Bayside is also Big Bus stop 1 for the ride home.","bayside"),
+      B("Afternoon","Frost Science Museum","Aquarium, exhibits and a planetarium show; about 15 minutes on foot from Bayside.","frost"),
+      B("By 4:00 PM","Big Bus home from Bayside","The last loop leaves Bayside at 4 PM and reaches South Beach about 4:20 PM."),
+      B("Evening · optional","Luminosa at Jungle Island","A short Uber from the hotel; 5:30 or 6 PM entry.","jungle")
     ], bring:["Light jackets for the open-top bus"],
-    links:[["Big Bus","https://www.bigbustours.com/en/miami/miami-bus-tours"],["Wynwood Walls","https://thewynwoodwalls.com/admissions"],["Frost Science","https://www.frostscience.org/"],["Luminosa","https://feverup.com/m/781881"]]},
+    legs:[L_(["home2","bb_sb"],"walk"), L_(["bb_sb","bb_sound","bb_riu","bb_lex","bb_dd","bb_wyn"],"bus"), L_(["bb_wyn","bb_dt"],"bus"),
+          L_(["bb_dt","bayside"],"walk"), L_(["bayside","frost"],"walk"), L_(["frost","bayside"],"walk"), L_(["bayside","bb_sb"],"bus"), L_(["bb_sb","home2"],"walk"),
+          L_(["home2","jungle"],"opt"), L_(["jungle","home2"],"opt")],
+    links:[["Big Bus","https://www.bigbustours.com/en/miami/miami-bus-tours"],["Big Bus stops","https://www.bigbustours.com/en/miami/find-a-bus-stop-miami"],["Wynwood Walls","https://thewynwoodwalls.com/admissions"],["Frost Science","https://www.frostscience.org/"],["Luminosa","https://feverup.com/m/781881"]]},
   cityWet: {key:"city", label:"City day", theme:"Rainy-day plan", c:2, photo:"frost", place:"Frost Science",
     title:"Rain outside, _oceans inside._", sum:"Skip the open-top bus; the museum carries the day.",
+    start:"home2", end:"home2",
     blocks:[
       B("Morning","Uber to Downtown","About 20 minutes from South Beach."),
       B("Late morning","Frost Science Museum","Aquarium, planetarium and indoor exhibits.","frost"),
       B("Lunch","Bayside Marketplace","If it clears; otherwise the museum café.","bayside"),
       B("Evening","Luminosa, only if it clears","Otherwise a cozy dinner near the hotel.","jungle")
-    ], links:[["Frost Science","https://www.frostscience.org/"]]},
-  garden: {key:"garden", label:"Gardens", theme:"Beach day", c:2, photo:"garden", place:"Lincoln Road · Gardens",
-    title:"Garden paths, _then the sand._", sum:"A short free-trolley ride north, then back for the beach.",
+    ],
+    legs:[L_(["home2","frost"],"uber"), L_(["frost","bayside"],"walk"), L_(["bayside","home2"],"uber"), L_(["home2","jungle"],"opt"), L_(["jungle","home2"],"opt")],
+    links:[["Frost Science","https://www.frostscience.org/"]]},
+  garden: {key:"garden", label:"Gardens", theme:"Beach day · Trolley", c:2, photo:"garden", place:"Lincoln Road · Gardens",
+    title:"Garden paths, _then the sand._", sum:"A free trolley ride up Washington Avenue, a garden morning, then back for the beach.",
+    start:"home2", end:"home2",
     blocks:[
-      B("Morning","Lincoln Road","Pedestrian mall with shops and cafés.","lincoln"),
+      B("Morning","Trolley north from 4th St","The free South Beach Loop stops at Washington Ave & 4th St, a block from the hotel; about every 20 minutes.","tr_4th"),
+      B("Hop off","Washington Ave & Lincoln Rd","Then stroll west along the pedestrian mall.","tr_lincoln"),
+      B("Morning","Lincoln Road","Shops and cafés under the palms.","lincoln"),
       B("Late morning","Botanical Garden","Free, and a quiet green break.","garden"),
       B("Late morning","Holocaust Memorial","Next door to the garden. Visit in daylight.","memorial"),
+      B("Back by noon","Trolley south from 17th St","Southbound on Washington Ave back to 4th St.","tr_17"),
       B("Afternoon","Beach",""),
       B("Evening","Waterfront walk and dinner","")
-    ], links:[]},
+    ],
+    legs:[L_(["home2","tr_4th"],"walk"), L_(["tr_4th","tr_lincoln"],"trolley"), L_(["tr_lincoln","lincoln"],"walk"), L_(["lincoln","garden"],"walk"), L_(["garden","memorial"],"walk"),
+          L_(["memorial","tr_17"],"walk"), L_(["tr_17","tr_4th"],"trolley"), L_(["tr_4th","home2"],"walk")],
+    links:[["South Beach trolley","https://www.miamibeachfl.gov/city-hall/transportation/trolley/south-beach-trolley/"]]},
   home: {key:"home", label:"Homeward", theme:"Homeward", c:2, photo:"pier", place:"One last look",
     title:"One more _barefoot walk._", sum:"An easy last morning by the water.",
+    start:"home2", end:"mia",
     blocks:[
       B("By 11 AM","Check out","The hotel holds our bags.","home2"),
       B("Midday","Last beach walk","Or a ride on the Collins Express trolley."),
-      B("Then","Uber to the airport","In time for the flight.","mia")
-    ], links:[]}
+      B("Then","Uber to the airport","About 25 minutes, in time for the flight.","mia")
+    ],
+    legs:[L_(["home2","mia"],"uber")], links:[]}
 };
 var DATES = [
   {w:"Thu", d:"Dec 31", long:"Thursday, December 31", iso:"2026-12-31"},
@@ -195,8 +243,25 @@ function days() {
 }
 function stopsOf(day) {
   var seen = {}, out = [];
-  day.blocks.forEach(function (b) { if (b.stop && !seen[b.stop]) { seen[b.stop] = 1; out.push(b.stop); } });
+  day.blocks.forEach(function (b) {
+    var k = b.stop; if (!k || seen[k]) return; seen[k] = 1;
+    var s = STOPS[k];
+    if (s.kind === "hotel" || ((s.kind === "bus" || s.kind === "trolley") && !s.ph) || k === day.start || k === day.end) return;
+    out.push(k);   // attractions, plus bus stops that are sights themselves (Wynwood)
+  });
   return out;
+}
+function stopBadge(day, k, st) {
+  var n = st.indexOf(k);
+  if (n >= 0) return {t:String(n + 1), cls:""};
+  if (k === day.start && k === day.end) return {t:"H", cls:" home", title:"Start and end"};
+  if (k === day.start) return {t:"S", cls:" home", title:"Start"};
+  if (k === day.end) return {t:"E", cls:" home", title:"End"};
+  var s = STOPS[k];
+  if (s.kind === "hotel") return {t:"H", cls:" home"};
+  if (s.kind === "bus") return {t:"B", cls:" bus"};
+  if (s.kind === "trolley") return {t:"T", cls:" trolley"};
+  return {t:"•", cls:""};
 }
 
 /* ================= Header, countdown, reveal ================= */
@@ -340,14 +405,14 @@ function renderDay(animate) {
   h += '<div class="day-meta"><p class="eyebrow">Day ' + (sel + 1) + ' · ' + DATES[sel].long + '</p><span class="theme' + (d.c === 1 ? " c" : "") + '">' + esc(d.theme) + '</span></div>';
   h += '<h3>' + fmt(d.title) + '</h3><p class="day-sum">' + esc(d.sum) + '</p>';
   h += '<ol class="plan">' + d.blocks.map(function (b) {
-    var n = b.stop ? st.indexOf(b.stop) + 1 : 0;
+    var bg = b.stop ? stopBadge(d, b.stop, st) : null;
     return '<li><span class="when">' + esc(b.when) + '</span><span><span class="what">' + esc(b.what) + '</span>' + (b.txt ? '<span class="txt">' + esc(b.txt) + '</span>' : '') + '</span>' +
-      (n ? '<button class="stop-btn' + (d.c === 2 ? " p2" : "") + '" type="button" data-stop="' + b.stop + '" aria-label="Show ' + esc(STOPS[b.stop].n) + ' on the map">' + n + '</button>' : '<span></span>') + '</li>';
+      (bg ? '<button class="stop-btn' + (d.c === 2 ? " p2" : "") + bg.cls + '" type="button" data-stop="' + b.stop + '" aria-label="Show ' + esc(STOPS[b.stop].n) + ' on the map"' + (bg.title ? ' title="' + bg.title + '"' : '') + '>' + bg.t + '</button>' : '<span></span>') + '</li>';
   }).join("") + '</ol>';
   if (d.bring) h += '<div class="bring"><span>Bring</span>' + d.bring.map(function (x) { return '<em>' + esc(x) + '</em>'; }).join("") + '</div>';
   if (d.note) h += '<p class="note">' + icon("info") + '<span>' + esc(d.note) + '</span></p>';
   var links = (d.links || []).map(function (l) { return '<a href="' + l[1] + '" target="_blank" rel="noopener">' + esc(l[0]) + icon("ext") + '</a>'; });
-  if (st.length) links.push('<a href="' + gmaps(STOPS[st.filter(function (k) { return !STOPS[k].home; })[0] || st[0]].n + " Miami") + '" target="_blank" rel="noopener">Directions' + icon("pin") + '</a>');
+  if (st.length) links.push('<a href="' + gmaps(STOPS[st[0]].n + " Miami") + '" target="_blank" rel="noopener">Directions' + icon("pin") + '</a>');
   if (links.length) h += '<div class="links">' + links.join("") + '</div>';
   h += '<div class="day-nav"><button type="button" id="prev-day" ' + (sel === 0 ? "disabled" : "") + '>' + icon("left") + 'Previous</button>' +
        '<button type="button" class="copy-day" id="copy-day">' + icon("link") + 'Link to this day</button>' +
@@ -413,41 +478,136 @@ function ensureMap() {
     $$(".pop-btn", e.popup.getElement()).forEach(function (b) { b.addEventListener("click", function () { map.closePopup(); allStops = false; $("#map-all").setAttribute("aria-pressed", "false"); select(+b.dataset.go, true); }); });
   });
 }
+var MODE = {
+  drive:  {label:"Drive", color:null, weight:4, opacity:.85},
+  uber:   {label:"Uber", color:null, weight:4, opacity:.7, dash:"10 8"},
+  walk:   {label:"Walk", color:"#1E3A31", weight:3.5, opacity:.85, dash:"1 7", cap:"round"},
+  bus:    {label:"Big Bus", color:"#D32F2F", weight:6, opacity:.9},
+  trolley:{label:"Free trolley", color:"#2E8B57", weight:6, opacity:.9},
+  opt:    {label:"Optional", color:"#8A8F86", weight:3, opacity:.6, dash:"6 8"}
+};
 function mk(color, label, o) {
-  o = o || {}; var size = o.sm ? 16 : 30;
-  return L.divIcon({className:"", html:'<div class="mk' + (o.home ? " home" : "") + (o.sm ? " sm" : "") + '" style="background:' + color + '">' + (label || "") + '</div>', iconSize:[size, size], iconAnchor:[size / 2, size / 2], popupAnchor:[0, -size / 2]});
+  o = o || {}; var size = o.sm ? 16 : o.size || 30;
+  return L.divIcon({className:"", html:'<div class="mk' + (o.cls || "") + (o.sm ? " sm" : "") + '" style="background:' + color + (o.size ? ';width:' + size + 'px;height:' + size + 'px;font-size:' + Math.round(size / 2.6) + 'px' : '') + '">' + (label || "") + '</div>', iconSize:[size, size], iconAnchor:[size / 2, size / 2], popupAnchor:[0, -size / 2]});
 }
-function stopDayIdx(k) { var out = []; days().forEach(function (d, i) { if (d.blocks.some(function (b) { return b.stop === k; })) out.push(i); }); return out; }
-function popup(k) {
+function stopDayIdx(k) { var out = []; days().forEach(function (d, i) { if (d.blocks.some(function (b) { return b.stop === k; }) || d.start === k || d.end === k) out.push(i); }); return out; }
+function popup(k, extra) {
   var s = STOPS[k], ds = stopDayIdx(k), p = s.ph && PHOTOS[s.ph];
-  return (p ? '<img class="pop-img" src="' + (p.sm || p.src) + '" alt="">' : "") + '<strong>' + esc(s.n) + '</strong>' +
-    '<span class="pop-d">' + ds.map(function (i) { return DATES[i].d; }).join(", ") + '</span><br><a href="' + gmaps(s.n + " Miami") + '" target="_blank" rel="noopener">Directions</a>' +
+  return (p ? '<img class="pop-img" src="' + (p.sm || p.src) + '" alt="">' : "") + (extra ? '<span class="pop-k">' + extra + '</span>' : '') + '<strong>' + esc(s.n) + '</strong>' +
+    (s.info ? '<span class="pop-d">' + esc(s.info) + '</span><br>' : '') +
+    (ds.length ? '<span class="pop-d">' + ds.map(function (i) { return DATES[i].d; }).join(", ") + '</span><br>' : '') +
+    (s.kind === "hotel" ? '' : '<a href="' + gmaps(s.n.replace(/ · Big Bus stop \d| · /g, " ") + " Miami") + '" target="_blank" rel="noopener">Directions</a>') +
     (allStops && ds.length ? '<br>' + ds.map(function (i) { return '<button class="pop-btn" type="button" data-go="' + i + '">Day ' + (i + 1) + '</button>'; }).join(" ") : "");
+}
+
+/* Street-following route lines (OSRM via routing.openstreetmap.de), cached on this device */
+var RT_KEY = "miami27-routes-v1", rtCache = store(RT_KEY) || {}, rtPending = {};
+function routeFor(keys, mode) {
+  var prof = mode === "walk" ? "routed-foot" : "routed-car";
+  var id = prof + ":" + keys.join(">");
+  if (rtCache[id]) return Promise.resolve(rtCache[id]);
+  if (rtPending[id]) return rtPending[id];
+  var coords = keys.map(function (k) { return STOPS[k].lng + "," + STOPS[k].lat; }).join(";");
+  var url = "https://routing.openstreetmap.de/" + prof + "/route/v1/driving/" + coords + "?overview=full&geometries=geojson";
+  rtPending[id] = fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (j) {
+    var line = j.routes[0].geometry.coordinates.map(function (c) { return [+c[1].toFixed(5), +c[0].toFixed(5)]; });
+    var out = {line:line, km:j.routes[0].distance / 1000, min:j.routes[0].duration / 60};
+    rtCache[id] = out; store(RT_KEY, rtCache); delete rtPending[id]; return out;
+  }).catch(function () { delete rtPending[id]; return null; });
+  return rtPending[id];
+}
+var drawToken = 0, legendCtl = null;
+function addLegend(modes) {
+  if (legendCtl) { legendCtl.remove(); legendCtl = null; }
+  if (!modes.length) return;
+  legendCtl = L.control({position:"bottomleft"});
+  legendCtl.onAdd = function () {
+    var div = L.DomUtil.create("div", "map-legend");
+    div.innerHTML = modes.map(function (m) {
+      var o = MODE[m.mode], col = o.color || m.color;
+      return '<span><svg width="26" height="8"><line x1="1" y1="4" x2="25" y2="4" stroke="' + col + '" stroke-width="' + Math.min(o.weight, 5) + '" stroke-linecap="round"' + (o.dash ? ' stroke-dasharray="' + (m.mode === "walk" ? "1 5" : "5 4") + '"' : '') + '/></svg>' + o.label + '</span>';
+    }).join("") + '<span><b class="lg-h">S</b>Start · <b class="lg-h">E</b>End · <b class="lg-h">H</b>Hotel</span>';
+    return div;
+  };
+  legendCtl.addTo(map);
 }
 function drawMap() {
   if (!map) return;
+  var token = ++drawToken;
   layer.clearLayers(); markers = {};
   var pts = [];
   if (allStops) {
+    addLegend([]);
     Object.keys(STOPS).forEach(function (k) {
       var s = STOPS[k], ds = stopDayIdx(k);
-      if (!ds.length && !s.home) return;
-      var color = s.home ? INK : (ds[0] > 3 ? SEA : CORAL);
-      markers[k] = L.marker([s.lat, s.lng], {icon:mk(color, "", {home:s.home, sm:!s.home}), title:s.n}).bindPopup(function () { return popup(k); }).addTo(layer);
+      if (s.kind === "bus" && !s.ph || s.kind === "trolley") return;
+      if (!ds.length) return;
+      var color = s.kind === "hotel" || s.kind === "air" ? INK : (ds[0] > 3 ? SEA : CORAL);
+      var lab = s.kind === "hotel" ? "H" : s.kind === "air" ? "✈" : "";
+      markers[k] = L.marker([s.lat, s.lng], {icon:mk(color, lab, {cls:(lab ? " home" : ""), sm:!lab}), title:s.n}).bindPopup(function () { return popup(k); }).addTo(layer);
       pts.push([s.lat, s.lng]);
     });
   } else {
     var d = days()[sel], st = stopsOf(d), col = d.c === 1 ? CORAL : SEA;
+    var shown = {}, modesUsed = [];
+    // full Big Bus loop for context
+    if (d.loop) {
+      routeFor(d.loop, "bus").then(function (r) {
+        if (token !== drawToken || !r) return;
+        L.polyline(r.line, {color:"#D32F2F", weight:3, opacity:.28}).addTo(layer).bringToBack();
+      });
+    }
+    // route legs
+    d.legs.forEach(function (leg) {
+      var o = MODE[leg.m], lc = o.color || col;
+      if (!modesUsed.some(function (x) { return x.mode === leg.m; })) modesUsed.push({mode:leg.m, color:lc});
+      var style = {color:lc, weight:o.weight, opacity:o.opacity, dashArray:o.dash || null, lineCap:o.cap || "round", lineJoin:"round"};
+      var straight = leg.p.map(function (k) { return [STOPS[k].lat, STOPS[k].lng]; });
+      var temp = L.polyline(straight, Object.assign({}, style, {opacity:o.opacity * .35})).addTo(layer);
+      routeFor(leg.p, leg.m).then(function (r) {
+        if (token !== drawToken) return;
+        if (r) { layer.removeLayer(temp); var pl = L.polyline(r.line, style).addTo(layer); pl.bindTooltip(o.label + (r.min ? " · about " + Math.max(1, Math.round(leg.m === "bus" || leg.m === "trolley" ? r.min * 1.6 : r.min)) + " min" : ""), {sticky:true}); }
+        else temp.setStyle({opacity:o.opacity});
+      });
+    });
+    addLegend(modesUsed);
+    // transit stops along the legs (small squares), boarding/alighting stops bigger
+    var used = {};
+    d.legs.forEach(function (leg) { leg.p.forEach(function (k) { used[k] = true; }); });
+    Object.keys(used).forEach(function (k) {
+      var s = STOPS[k];
+      if (s.kind !== "bus" && s.kind !== "trolley") return;
+      if (st.indexOf(k) >= 0) return;
+      var isVia = !!s.via, color = s.kind === "bus" ? "#D32F2F" : "#2E8B57";
+      markers[k] = L.marker([s.lat, s.lng], {icon:mk(color, isVia ? "" : (s.kind === "bus" ? "B" : "T"), {cls:" stopsq", size:isVia ? 14 : 24}), title:s.n, zIndexOffset:isVia ? 0 : 500})
+        .bindPopup(function () { return popup(k, s.kind === "bus" ? "Big Bus" : "Free trolley"); }).addTo(layer);
+      if (!isVia) pts.push([s.lat, s.lng]);
+    });
+    // numbered attractions
     st.forEach(function (k, i) {
       var s = STOPS[k];
-      markers[k] = L.marker([s.lat, s.lng], {icon:mk(s.home ? INK : col, i + 1, {home:s.home}), title:s.n, zIndexOffset:1000 - i}).bindPopup(function () { return popup(k); }).addTo(layer);
+      markers[k] = L.marker([s.lat, s.lng], {icon:mk(col, i + 1), title:s.n, zIndexOffset:1000 - i}).bindPopup(function () { return popup(k); }).addTo(layer);
       pts.push([s.lat, s.lng]);
     });
-    if (pts.length > 1) L.polyline(pts, {color:col, weight:2.5, opacity:.8, dashArray:"6 8"}).addTo(layer);
+    // start / end (hotel, airport)
+    [d.start, d.end].forEach(function (k, idx) {
+      if (!k || shown[k]) return; shown[k] = 1;
+      var same = d.start === d.end, s = STOPS[k];
+      var lab = same ? "H" : (idx === 0 ? "S" : "E"), tag = same ? "Start &amp; end" : (idx === 0 ? "Start" : "End");
+      markers[k] = L.marker([s.lat, s.lng], {icon:mk(INK, lab, {cls:" home start"}), title:s.n, zIndexOffset:2000}).bindPopup(function () { return popup(k, tag); }).addTo(layer);
+      pts.push([s.lat, s.lng]);
+    });
+    // hotels visited mid-day (e.g. check-in) that are not start/end
+    d.blocks.forEach(function (b) {
+      var k = b.stop; if (!k || markers[k]) return;
+      var s = STOPS[k];
+      markers[k] = L.marker([s.lat, s.lng], {icon:mk(INK, s.kind === "air" ? "✈" : "H", {cls:" home"}), title:s.n, zIndexOffset:1500}).bindPopup(function () { return popup(k); }).addTo(layer);
+      pts.push([s.lat, s.lng]);
+    });
   }
   if (!pts.length) { map.setView([25.77, -80.25], 11); return; }
   if (pts.length === 1) map.flyTo(pts[0], 14, {duration:reduced ? 0 : .8});
-  else map.flyToBounds(L.latLngBounds(pts), {padding:[56, 56], maxZoom:14, duration:reduced ? 0 : .8});
+  else map.flyToBounds(L.latLngBounds(pts), {padding:[48, 48], maxZoom:15, duration:reduced ? 0 : .8});
 }
 function focusStop(k) {
   if (!map) return;
