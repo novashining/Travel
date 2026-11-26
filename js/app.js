@@ -46,6 +46,8 @@ var PHOTOS = {
   garden:  {src:"assets/img/garden.webp", by:"Daderot", lic:"Public domain", page:"https://commons.wikimedia.org/wiki/File:Miami_Beach_Botanical_Garden_-_IMG_8018.JPG", name:"Miami Beach Botanical Garden"}
 };
 /* A few extra places, served from Wikimedia Commons */
+PHOTOS.cityNight = {"src": "https://images.unsplash.com/photo-1719427802451-433d1b549832?w=1280&q=80&auto=format&fit=crop", "big": "https://images.unsplash.com/photo-1719427802451-433d1b549832?w=1800&q=80&auto=format&fit=crop", "md": "https://images.unsplash.com/photo-1719427802451-433d1b549832?w=960&q=80&auto=format&fit=crop", "sm": "https://images.unsplash.com/photo-1719427802451-433d1b549832?w=500&q=80&auto=format&fit=crop", "by": "Michael J. Vega / Unsplash", "lic": "Unsplash License", "page": "https://unsplash.com/photos/a-view-of-a-city-at-night-from-a-high-point-of-view-gPPi3cEPiwc", "name": "Miami skyline and palms at dusk", "pos": "58% 50%"};
+PHOTOS.southBeachAerial = {"src": "https://images.unsplash.com/photo-1734229178504-c1d3310c999f?w=1280&q=80&auto=format&fit=crop", "big": "https://images.unsplash.com/photo-1734229178504-c1d3310c999f?w=1800&q=80&auto=format&fit=crop", "md": "https://images.unsplash.com/photo-1734229178504-c1d3310c999f?w=960&q=80&auto=format&fit=crop", "sm": "https://images.unsplash.com/photo-1734229178504-c1d3310c999f?w=500&q=80&auto=format&fit=crop", "by": "Michael Moloney / Unsplash", "lic": "Unsplash License", "page": "https://unsplash.com/photos/an-aerial-view-of-a-beach-and-a-city-PfzzehRmNTg", "name": "South Beach from above", "pos": "45% 50%"};
 PHOTOS.vizcaya2 = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Vizcaya_-_panoramio_-_Thomas_Julin.jpg/1280px-Vizcaya_-_panoramio_-_Thomas_Julin.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Vizcaya_-_panoramio_-_Thomas_Julin.jpg/1920px-Vizcaya_-_panoramio_-_Thomas_Julin.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Vizcaya_-_panoramio_-_Thomas_Julin.jpg/960px-Vizcaya_-_panoramio_-_Thomas_Julin.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Vizcaya_-_panoramio_-_Thomas_Julin.jpg/500px-Vizcaya_-_panoramio_-_Thomas_Julin.jpg", "page": "https://commons.wikimedia.org/wiki/File:Vizcaya_-_panoramio_-_Thomas_Julin.jpg", "by": "Thomas Julin", "lic": "CC BY 3.0", "name": "Vizcaya villa above the garden fountain"};
 PHOTOS.decoNight = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Ocean_Drive_by_night_1.jpg/1280px-Ocean_Drive_by_night_1.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Ocean_Drive_by_night_1.jpg/1920px-Ocean_Drive_by_night_1.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Ocean_Drive_by_night_1.jpg/960px-Ocean_Drive_by_night_1.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Ocean_Drive_by_night_1.jpg/500px-Ocean_Drive_by_night_1.jpg", "page": "https://commons.wikimedia.org/wiki/File:Ocean_Drive_by_night_1.jpg", "by": "Gzzz", "lic": "CC BY-SA 4.0", "name": "Ocean Drive's Art Deco hotels lit up at night", "pos": "42% 50%"};
 PHOTOS.wynwoodWalls = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Wynwood_Walls_Miami_Florida_October_2013.jpg/1280px-Wynwood_Walls_Miami_Florida_October_2013.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Wynwood_Walls_Miami_Florida_October_2013.jpg/1920px-Wynwood_Walls_Miami_Florida_October_2013.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Wynwood_Walls_Miami_Florida_October_2013.jpg/960px-Wynwood_Walls_Miami_Florida_October_2013.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Wynwood_Walls_Miami_Florida_October_2013.jpg/500px-Wynwood_Walls_Miami_Florida_October_2013.jpg", "page": "https://commons.wikimedia.org/wiki/File:Wynwood_Walls_Miami_Florida_October_2013.jpg", "by": "Dan Lundberg", "lic": "CC BY-SA 2.0", "name": "Wynwood Walls entrance and murals"};
@@ -158,7 +160,7 @@ var D = {
     ],
     legs:[L_(["home1","vizcaya"],"drive"), L_(["vizcaya","havana"],"drive"), L_(["havana","mia"],"drive"), L_(["mia","home2"],"uber"), L_(["home2","southpointe"],"walk"), L_(["southpointe","home2"],"walk")],
     links:[["Vizcaya tickets","https://vizcaya.org/"]]},
-  deco: {key:"deco", label:"Art Deco", theme:"Beach day", c:2, photo:"decoNight", place:"Ocean Drive",
+  deco: {key:"deco", label:"Art Deco", theme:"Beach day", c:2, photo:"southBeachAerial", place:"Ocean Drive · South Beach",
     title:"Art Deco walk _& beach_", sum:"A walk among the Art Deco facades, then a long beach afternoon.",
     start:"home2", end:"home2",
     blocks:[
@@ -168,7 +170,7 @@ var D = {
     ],
     legs:[L_(["home2","ocean"],"walk"), L_(["ocean","espanola"],"walk"), L_(["espanola","home2"],"walk")],
     links:[["Art Deco walking tour","https://feverup.com/m/172735"]]},
-  cityDry: {key:"city", label:"City day", theme:"City day · Big Bus", c:2, photo:"wynwoodWalls", place:"Wynwood · Downtown",
+  cityDry: {key:"city", label:"City day", theme:"City day · Big Bus", c:2, photo:"cityNight", place:"Wynwood · Downtown",
     title:"City day: _Wynwood, Bayside & Frost_", sum:"Our mainland day on the Big Bus Red Loop, on the least beachy day of the week.",
     start:"home2", end:"home2", loop:BIGBUS_LOOP,
     blocks:[
