@@ -41,6 +41,8 @@ var PHOTOS = {
   espanola:{src:"assets/img/espanola.webp", by:"Phillip Pessar", lic:"CC BY 4.0", page:"https://commons.wikimedia.org/wiki/File:Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg", name:"Española Way"},
   havana:  {src:"assets/img/havana.webp", by:"Infrogmation of New Orleans", lic:"CC BY-SA 3.0", page:"https://commons.wikimedia.org/wiki/File:Little_Havana_Dominos_Park.JPG", name:"Domino Park, Little Havana"},
   pier:    {src:"assets/img/pier.webp", by:"William Finn", lic:"Pexels License", page:"https://www.pexels.com/photo/aerial-view-of-miami-beach-and-south-pointe-pier-38894658/", name:"South Pointe pier from above"},
+  svbike:  {src:"assets/img/shark-valley-bike.webp", by:"NPS / Everglades National Park", lic:"Public domain", page:"https://commons.wikimedia.org/wiki/File:Shark_Valley_Tram_and_Bicycle_Road_%284%29%2C_NPSPhoto_%289243576524%29.jpg", name:"Biking the Shark Valley loop"},
+  svtower: {src:"assets/img/shark-valley-tower.webp", by:"Milan Boers", lic:"CC BY 2.0", page:"https://commons.wikimedia.org/wiki/File:Shark_Valley_Observation_Tower.jpg", name:"Shark Valley observation tower"},
   garden:  {src:"assets/img/garden.webp", by:"Daderot", lic:"Public domain", page:"https://commons.wikimedia.org/wiki/File:Miami_Beach_Botanical_Garden_-_IMG_8018.JPG", name:"Miami Beach Botanical Garden"}
 };
 /* A few extra places, served from Wikimedia Commons */
@@ -52,9 +54,10 @@ PHOTOS.memorial = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/
 /* ================= Map stops ================= */
 var STOPS = {
   mia:        {n:"Miami Airport (MIA) & rental cars", lat:25.79691, lng:-80.26050, kind:"air"},
+  fll:        {n:"Fort Lauderdale Airport (FLL)", lat:26.07202, lng:-80.15100, kind:"air"},
   home1:      {n:"Our Kendall hotel", lat:25.73318, lng:-80.38265, kind:"hotel"},
   home2:      {n:"Our South Beach hotel", lat:25.77258, lng:-80.13311, kind:"hotel"},
-  shark:      {n:"Shark Valley, Everglades National Park", lat:25.75694, lng:-80.76538, ph:"gator"},
+  shark:      {n:"Shark Valley, Everglades National Park", lat:25.75694, lng:-80.76538, ph:"svtower"},
   coopertown: {n:"Coopertown Airboat Tours", lat:25.76064, lng:-80.56124, ph:"airboat"},
   dinnerkey:  {n:"Dinner Key Marina, Coconut Grove", lat:25.72664, lng:-80.23253, ph:"snorkel"},
   zoo:        {n:"Zoo Miami", lat:25.61337, lng:-80.39992, ph:"zoo"},
@@ -89,16 +92,17 @@ var BIGBUS_LOOP = ["bayside","bb_sb","bb_sound","bb_riu","bb_lex","bb_dd","bb_wy
 function B(when, what, txt, stop) { return {when:when, what:what, txt:txt || "", stop:stop || null}; }
 function L_(p, m) { return {p:p, m:m}; }   // a leg: list of stop keys + mode (drive, uber, walk, bus, trolley, opt)
 var D = {
-  arrive: {key:"arrive", label:"Arrive", theme:"Arrival", c:1, photo:"skylineSunset", place:"Hello, Miami",
-    title:"Arrive in _Miami_", sum:"Land, pick up the car and settle into Kendall as the year turns over.",
-    start:"mia", end:"home1",
+  arrive: {key:"arrive", label:"Fly in", theme:"Arrival", c:1, photo:"skylineSunset", place:"Hello, Miami",
+    title:"Fly in _& New Year's Eve_", sum:"An evening landing at Fort Lauderdale, a drive south to Kendall, and midnight at the hotel.",
+    start:"fll", end:"home1",
     blocks:[
-      B("Daytime","Fly into Miami (MIA)","Pick up the rental car at the airport's rental car center.","mia"),
-      B("Afternoon","Check in at our Kendall hotel","About 20 minutes from the airport. Every suite has a sofa bed; breakfast and parking are free.","home1"),
-      B("Evening","New Year's Eve","Dinner near the hotel and an early night before the Everglades, or local fireworks if any are announced.")
+      B("3:58 PM","Flight 2959 from Dulles (IAD)","Lands at Fort Lauderdale (FLL) at 6:49 PM."),
+      B("About 7:30 PM","Pick up the rental car at FLL","Book it one-way: pick up at FLL, drop off at Miami airport (MIA) on Jan 3.","fll"),
+      B("About 8:30 PM","Check in at our Kendall hotel","About 50 minutes' drive south. Every suite has a sofa bed; breakfast and parking are free.","home1"),
+      B("Midnight","New Year's Eve","A late dinner near the hotel, then ring in 2027. Local fireworks if any are announced.")
     ],
-    legs:[L_(["mia","home1"],"drive")], links:[]},
-  everglades: {key:"everglades", label:"Everglades", theme:"Wild Florida", c:1, photo:"everglades", place:"Everglades National Park",
+    legs:[L_(["fll","home1"],"drive")], links:[]},
+  everglades: {key:"everglades", label:"Everglades", theme:"Wild Florida", c:1, photo:"svbike", place:"Everglades National Park",
     title:"Everglades: _Shark Valley & airboat_", sum:"Our big nature day. We start early, before Shark Valley gets busy.",
     start:"home1", end:"home1",
     blocks:[
@@ -145,7 +149,7 @@ var D = {
     blocks:[
       B("9:30 AM","Vizcaya Museum & Gardens","Check out first; the bags stay in the trunk. A villa and formal gardens on Biscayne Bay.","vizcaya"),
       B("Lunch","Little Havana","Calle Ocho, Domino Park, Cuban coffee and lunch.","havana"),
-      B("2–3 PM","Return the car at MIA","Then an Uber to South Beach, about 25 minutes.","mia"),
+      B("2–3 PM","Return the car at MIA","Drop-off for the one-way rental from FLL. Then an Uber to South Beach, about 20 minutes.","mia"),
       B("4 PM","Check in at our South Beach hotel","Steps from the sand.","home2"),
       B("Sunset","South Pointe Park","A 10-minute walk from the hotel.","southpointe")
     ],
@@ -205,15 +209,16 @@ var D = {
     legs:[L_(["home2","tr_4th"],"walk"), L_(["tr_4th","tr_lincoln"],"trolley"), L_(["tr_lincoln","lincoln"],"walk"), L_(["lincoln","garden"],"walk"), L_(["garden","memorial"],"walk"),
           L_(["memorial","tr_17"],"walk"), L_(["tr_17","tr_4th"],"trolley"), L_(["tr_4th","home2"],"walk")],
     links:[["South Beach trolley","https://www.miamibeachfl.gov/city-hall/transportation/trolley/south-beach-trolley/"]]},
-  home: {key:"home", label:"Homeward", theme:"Homeward", c:2, photo:"pier", place:"One last look",
-    title:"Check out _& fly home_", sum:"An easy last morning by the water.",
-    start:"home2", end:"mia",
+  home: {key:"home", label:"Fly home", theme:"Homeward", c:2, photo:"pier", place:"One last look",
+    title:"Last beach day _& fly home_", sum:"A full last day in South Beach, then the evening flight home from Fort Lauderdale.",
+    start:"home2", end:"fll",
     blocks:[
       B("By 11 AM","Check out","The hotel holds our bags.","home2"),
-      B("Midday","Last beach walk","Or a ride on the Collins Express trolley."),
-      B("Then","Uber to the airport","About 25 minutes, in time for the flight.","mia")
+      B("Late morning","Last beach time & lunch","South Pointe Park or the beach by the hotel.","southpointe"),
+      B("By 4:00 PM","Uber XL to Fort Lauderdale (FLL)","Pick up the bags first. About 45–60 minutes in weekday traffic.","fll"),
+      B("7:04 PM","Flight 2960 to Dulles (IAD)","Lands at 9:42 PM.")
     ],
-    legs:[L_(["home2","mia"],"uber")], links:[]}
+    legs:[L_(["home2","southpointe"],"walk"), L_(["southpointe","home2"],"walk"), L_(["home2","fll"],"uber")], links:[]}
 };
 var DATES = [
   {w:"Thu", d:"Dec 31", long:"Thursday, December 31", iso:"2026-12-31"},
@@ -282,11 +287,15 @@ if ("IntersectionObserver" in window) {
   }, {rootMargin:"-45% 0px -50% 0px"});
   Object.keys(navLinks).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
 }
-var START = new Date("2026-12-31T00:00:00-05:00"), END = new Date("2027-01-08T00:00:00-05:00");
+var todayISO = (function (d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); })(new Date());
+var START = new Date("2026-12-31T15:58:00-05:00"), END = new Date("2027-01-07T21:42:00-05:00");   // flight 2959 departs, flight 2960 lands
 function tick() {
   var el = $("#countdown"), now = new Date();
   if (now >= END) { el.className = "countdown msg"; el.textContent = "Back home, with stories"; return; }
-  if (now >= START) { el.className = "countdown msg"; el.textContent = "Day " + (Math.floor((now - START) / 864e5) + 1) + " of 8 · we're here"; return; }
+  if (now >= START) {
+    var di = DATES.findIndex(function (d) { return d.iso === todayISO; });
+    el.className = "countdown msg"; el.textContent = di >= 0 ? "Day " + (di + 1) + " of 8 · we're here" : "On our way"; return;
+  }
   var s = Math.floor((START - now) / 1000);
   var p = [[Math.floor(s / 86400),"days"],[Math.floor(s % 86400 / 3600),"hrs"],[Math.floor(s % 3600 / 60),"min"],[s % 60,"sec"]];
   el.className = "countdown";
@@ -376,7 +385,6 @@ $$("[data-moment]").forEach(function (b) {
 
 /* ================= Day explorer ================= */
 var sel = 0, mediaMode = "photo", allStops = false;
-var todayISO = (function (d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); })(new Date());
 
 function renderTabs() {
   var ds = days();
@@ -742,9 +750,10 @@ ptabs.forEach(function (t, i) {
 });
 
 var BOOKINGS = [
+  {id:"flights", n:"Flights IAD ⇄ FLL", url:null, d:"Dec 31 · Jan 7", w:"booked", note:"#2959 IAD 3:58 PM → FLL 6:49 PM · #2960 FLL 7:04 PM → IAD 9:42 PM."},
   {id:"hotel1", n:"Kendall hotel", url:null, d:"Dec 31 – Jan 3", w:"booked", note:"Booked. Check the confirmation for the room type and the cancellation deadline."},
   {id:"biscayne", n:"Biscayne snorkel & island trip", url:"https://www.biscaynenationalparkinstitute.org/snorkel-and-island-visit-from-coconut-grove/", d:"Jan 2", w:"now", note:"Ages 8+. Refund or rebook up to 48 hours before; full refund if they cancel for weather."},
-  {id:"car", n:"Rental car", url:"https://www.kayak.com/cars", d:"Dec 31 – Jan 3", w:"now", note:"Pick up and return at the MIA rental car center."},
+  {id:"car", n:"Rental car", url:"https://www.kayak.com/cars", d:"Dec 31 – Jan 3", w:"now", note:"One-way: pick up at FLL Dec 31 (we land 6:49 PM), drop off at MIA Jan 3. Check the one-way fee."},
   {id:"shark", n:"Shark Valley bikes or tram", url:"https://www.sharkvalleytramtours.com/", d:"Jan 1", w:"soon", note:"Go early; busiest 10 AM–3 PM."},
   {id:"vizcaya", n:"Vizcaya Museum & Gardens", url:"https://vizcaya.org/", d:"Jan 3", w:"soon", note:"Timed entry. Open 9:30 AM–4:30 PM."},
   {id:"wynwood", n:"Wynwood Walls", url:"https://thewynwoodwalls.com/admissions", d:"City day", w:"soon", note:"Free for kids 12 and under. Open 10:30 AM–6:30 PM."},
@@ -758,6 +767,7 @@ var BOOKINGS = [
 var WIN = {booked:["Booked","b-day"], now:["Book now","b-now"], soon:["1–3 weeks ahead","b-soon"], day:["On the day","b-day"], back:["Only if needed","b-back"]};
 var booked = store("miami27-booked") || store("miami-ny-booked") || {};
 if (booked.hotel1 === undefined) booked.hotel1 = true;   // already booked
+if (booked.flights === undefined) booked.flights = true;
 var bkFilter = "all";
 $("#bk").innerHTML = '<div class="bk-row hdr"><span></span><span>Item</span><span>For</span><span>When to book</span><span>Notes</span></div>' +
   BOOKINGS.map(function (b) {
@@ -783,7 +793,7 @@ $$("#bk-filters button").forEach(function (b) { b.addEventListener("click", func
 bkUpdate();
 
 var KEYDATES = [
-  {due:"2026-11-30T23:59:00-05:00", label:"Late November", t:"Book the snorkel trip and the car", m:"Both can sell out over the holidays."},
+  {due:"2026-11-30T23:59:00-05:00", label:"Late November", t:"Book the snorkel trip and the car", m:"Book the car one-way: FLL pickup Dec 31, MIA drop-off Jan 3. Both can sell out over the holidays."},
   {due:"2026-12-12T23:59:00-05:00", label:"Early December", t:"Book Shark Valley and Vizcaya", m:"Also look for New Year's Eve fireworks near Kendall."},
   {due:"2026-12-22T23:59:00-05:00", label:"Mid December", t:"Buy Wynwood, Big Bus and Frost tickets", m:"Plus Luminosa if we want it. Pick the city day first."},
   {due:"2026-12-30T23:59:00-05:00", label:"Dec 29–30", t:"Check the marine forecast", m:"Use the snorkel check above, or the wind forecast for Biscayne Bay."},
@@ -834,7 +844,7 @@ function buildPrint() {
   }).join("");
 }
 $("#print-btn").addEventListener("click", function () { window.print(); });
-var used = {coast:1, tower:1, frost:1, wynwood:1, everglades:1};
+var used = {coast:1, tower:1, frost:1, wynwood:1};
 Object.keys(D).forEach(function (k) { used[D[k].photo] = 1; });
 MOMENTS.forEach(function (m) { used[m.ph] = 1; });
 Object.keys(STOPS).forEach(function (k) { if (STOPS[k].ph) used[STOPS[k].ph] = 1; });
