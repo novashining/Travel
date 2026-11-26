@@ -200,7 +200,7 @@ var D = {
     ],
     legs:[L_(["home2","frost"],"uber"), L_(["frost","bayside"],"walk"), L_(["bayside","home2"],"uber"), L_(["home2","jungle"],"opt"), L_(["jungle","home2"],"opt")],
     links:[["Frost Science","https://www.frostscience.org/"]]},
-  garden: {key:"garden", label:"Gardens", theme:"Beach day · Trolley", c:2, photo:"beachCoast", place:"Miami Beach · Lincoln Road & gardens",
+  garden: {key:"garden", label:"Gardens", theme:"Beach day · Trolley", c:2, photo:"beachCoast", place:"Miami Beach",
     title:"Trolley to Lincoln Road _& the Botanical Garden_", sum:"A free trolley ride up Washington Avenue, a garden morning, then back for the beach.",
     start:"home2", end:"home2",
     blocks:[
