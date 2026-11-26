@@ -46,6 +46,9 @@ var PHOTOS = {
   garden:  {src:"assets/img/garden.webp", by:"Daderot", lic:"Public domain", page:"https://commons.wikimedia.org/wiki/File:Miami_Beach_Botanical_Garden_-_IMG_8018.JPG", name:"Miami Beach Botanical Garden"}
 };
 /* A few extra places, served from Wikimedia Commons */
+PHOTOS.vizcaya2 = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Vizcaya_-_panoramio_-_Thomas_Julin.jpg/1280px-Vizcaya_-_panoramio_-_Thomas_Julin.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Vizcaya_-_panoramio_-_Thomas_Julin.jpg/1920px-Vizcaya_-_panoramio_-_Thomas_Julin.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Vizcaya_-_panoramio_-_Thomas_Julin.jpg/960px-Vizcaya_-_panoramio_-_Thomas_Julin.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Vizcaya_-_panoramio_-_Thomas_Julin.jpg/500px-Vizcaya_-_panoramio_-_Thomas_Julin.jpg", "page": "https://commons.wikimedia.org/wiki/File:Vizcaya_-_panoramio_-_Thomas_Julin.jpg", "by": "Thomas Julin", "lic": "CC BY 3.0", "name": "Vizcaya villa above the garden fountain"};
+PHOTOS.decoNight = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Colony_Hotel_Miami_Beach_Izzy.JPG/1280px-Colony_Hotel_Miami_Beach_Izzy.JPG", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Colony_Hotel_Miami_Beach_Izzy.JPG/1920px-Colony_Hotel_Miami_Beach_Izzy.JPG", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Colony_Hotel_Miami_Beach_Izzy.JPG/960px-Colony_Hotel_Miami_Beach_Izzy.JPG", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Colony_Hotel_Miami_Beach_Izzy.JPG/500px-Colony_Hotel_Miami_Beach_Izzy.JPG", "page": "https://commons.wikimedia.org/wiki/File:Colony_Hotel_Miami_Beach_Izzy.JPG", "by": "Discoizzy", "lic": "Public domain", "name": "Ocean Drive neon at night, Colony Hotel", "pos": "38% 50%"};
+PHOTOS.wynwoodWalls = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Wynwood_Walls_Miami_Florida_October_2013.jpg/1280px-Wynwood_Walls_Miami_Florida_October_2013.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Wynwood_Walls_Miami_Florida_October_2013.jpg/1920px-Wynwood_Walls_Miami_Florida_October_2013.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Wynwood_Walls_Miami_Florida_October_2013.jpg/960px-Wynwood_Walls_Miami_Florida_October_2013.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Wynwood_Walls_Miami_Florida_October_2013.jpg/500px-Wynwood_Walls_Miami_Florida_October_2013.jpg", "page": "https://commons.wikimedia.org/wiki/File:Wynwood_Walls_Miami_Florida_October_2013.jpg", "by": "Dan Lundberg", "lic": "CC BY-SA 2.0", "name": "Wynwood Walls entrance and murals"};
 PHOTOS.mangrove = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Biscayne_National_Park_H-mangrove_shoreline.jpg/1280px-Biscayne_National_Park_H-mangrove_shoreline.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Biscayne_National_Park_H-mangrove_shoreline.jpg/1280px-Biscayne_National_Park_H-mangrove_shoreline.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Biscayne_National_Park_H-mangrove_shoreline.jpg/960px-Biscayne_National_Park_H-mangrove_shoreline.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Biscayne_National_Park_H-mangrove_shoreline.jpg/500px-Biscayne_National_Park_H-mangrove_shoreline.jpg", "by": "National Park Service", "lic": "Public domain", "page": "https://commons.wikimedia.org/wiki/File:Biscayne_National_Park_H-mangrove_shoreline.jpg", "name": "Mangrove shoreline, Biscayne Bay"};
 PHOTOS.bayside = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Miami-Bayside.jpg/1280px-Miami-Bayside.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Miami-Bayside.jpg/1280px-Miami-Bayside.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Miami-Bayside.jpg/960px-Miami-Bayside.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Miami-Bayside.jpg/500px-Miami-Bayside.jpg", "by": "Kolossos", "lic": "CC BY-SA 3.0", "page": "https://commons.wikimedia.org/wiki/File:Miami-Bayside.jpg", "name": "Bayside Marketplace"};
 PHOTOS.jungle = {"src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Two_different_macaws_-Jungle_Island_-Miami-6a.jpg/1280px-Two_different_macaws_-Jungle_Island_-Miami-6a.jpg", "big": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Two_different_macaws_-Jungle_Island_-Miami-6a.jpg/1280px-Two_different_macaws_-Jungle_Island_-Miami-6a.jpg", "md": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Two_different_macaws_-Jungle_Island_-Miami-6a.jpg/960px-Two_different_macaws_-Jungle_Island_-Miami-6a.jpg", "sm": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Two_different_macaws_-Jungle_Island_-Miami-6a.jpg/500px-Two_different_macaws_-Jungle_Island_-Miami-6a.jpg", "by": "Keith Allison", "lic": "CC BY-SA 2.0", "page": "https://commons.wikimedia.org/wiki/File:Two_different_macaws_-Jungle_Island_-Miami-6a.jpg", "name": "Macaws at Jungle Island"};
@@ -61,10 +64,10 @@ var STOPS = {
   coopertown: {n:"Coopertown Airboat Tours", lat:25.76064, lng:-80.56124, ph:"airboat"},
   dinnerkey:  {n:"Dinner Key Marina, Coconut Grove", lat:25.72664, lng:-80.23253, ph:"snorkel"},
   zoo:        {n:"Zoo Miami", lat:25.61337, lng:-80.39992, ph:"zoo"},
-  vizcaya:    {n:"Vizcaya Museum & Gardens", lat:25.74470, lng:-80.21158, ph:"vizcaya"},
+  vizcaya:    {n:"Vizcaya Museum & Gardens", lat:25.74470, lng:-80.21158, ph:"vizcaya2"},
   havana:     {n:"Little Havana · Domino Park", lat:25.76549, lng:-80.21937, ph:"havana"},
   southpointe:{n:"South Pointe Park", lat:25.76592, lng:-80.13345, ph:"pier"},
-  ocean:      {n:"Ocean Drive & Art Deco district", lat:25.78029, lng:-80.13034, ph:"deco"},
+  ocean:      {n:"Ocean Drive & Art Deco district", lat:25.78029, lng:-80.13034, ph:"decoNight"},
   espanola:   {n:"Española Way", lat:25.78686, lng:-80.13297, ph:"espanola"},
   bayside:    {n:"Bayside Marketplace · Big Bus stop 1", lat:25.77824, lng:-80.18710, ph:"bayside"},
   frost:      {n:"Frost Science Museum", lat:25.78524, lng:-80.18815, ph:"frost"},
@@ -143,7 +146,7 @@ var D = {
       B("Evening","Dinner and an easy night","")
     ], bring:["Warm layer","Sunglasses","Hats"],
     legs:[L_(["home1","dinnerkey"],"drive"), L_(["dinnerkey","home1"],"drive")], links:[]},
-  vizcaya: {key:"vizcaya", label:"Vizcaya", theme:"Culture & coast", c:1, photo:"vizcaya", place:"Vizcaya · Little Havana",
+  vizcaya: {key:"vizcaya", label:"Vizcaya", theme:"Culture & coast", c:1, photo:"vizcaya2", place:"Vizcaya · Little Havana",
     title:"Vizcaya, Little Havana _& move to South Beach_", sum:"Moving day: one last morning with the car, then the beach week begins.",
     start:"home1", end:"home2",
     blocks:[
@@ -155,7 +158,7 @@ var D = {
     ],
     legs:[L_(["home1","vizcaya"],"drive"), L_(["vizcaya","havana"],"drive"), L_(["havana","mia"],"drive"), L_(["mia","home2"],"uber"), L_(["home2","southpointe"],"walk"), L_(["southpointe","home2"],"walk")],
     links:[["Vizcaya tickets","https://vizcaya.org/"]]},
-  deco: {key:"deco", label:"Art Deco", theme:"Beach day", c:2, photo:"deco", place:"Ocean Drive",
+  deco: {key:"deco", label:"Art Deco", theme:"Beach day", c:2, photo:"decoNight", place:"Ocean Drive",
     title:"Art Deco walk _& beach_", sum:"A walk among the Art Deco facades, then a long beach afternoon.",
     start:"home2", end:"home2",
     blocks:[
@@ -165,7 +168,7 @@ var D = {
     ],
     legs:[L_(["home2","ocean"],"walk"), L_(["ocean","espanola"],"walk"), L_(["espanola","home2"],"walk")],
     links:[["Art Deco walking tour","https://feverup.com/m/172735"]]},
-  cityDry: {key:"city", label:"City day", theme:"City day · Big Bus", c:2, photo:"frost", place:"Wynwood · Downtown",
+  cityDry: {key:"city", label:"City day", theme:"City day · Big Bus", c:2, photo:"wynwoodWalls", place:"Wynwood · Downtown",
     title:"City day: _Wynwood, Bayside & Frost_", sum:"Our mainland day on the Big Bus Red Loop, on the least beachy day of the week.",
     start:"home2", end:"home2", loop:BIGBUS_LOOP,
     blocks:[
@@ -317,11 +320,11 @@ var MOMENTS = [
     story:"An open-air airboat ride across the Everglades sawgrass at Coopertown, on the drive back east from Shark Valley. No reservation needed; the last boat leaves at 4:30 PM."},
   {ph:"snorkel", day:2, place:"Biscayne", small:"Weather permitting", t:"Snorkeling in _Biscayne Bay_", more:"Snorkel + island visit",
     story:"Biscayne National Park is about 95 percent water. We take a boat from Coconut Grove to snorkel shallow reefs and visit an island. If the wind picks up, we switch to Zoo Miami or a no-swim cruise."},
-  {ph:"vizcaya", day:3, place:"Coconut Grove", small:"Opens 9:30 AM", t:"Vizcaya _Museum & Gardens_", more:"Vizcaya Museum & Gardens",
+  {ph:"vizcaya2", day:3, place:"Coconut Grove", small:"Opens 9:30 AM", t:"Vizcaya _Museum & Gardens_", more:"Vizcaya Museum & Gardens",
     story:"An Italian Renaissance–style villa and formal gardens on Biscayne Bay, built about a century ago. We arrive at opening, 9:30 AM, before the move to the beach."},
   {ph:"havana", day:3, place:"Little Havana", small:"Lunch stop", t:"Little Havana _& Calle Ocho_", more:"Lunch on Calle Ocho",
     story:"Domino Park, tiny cups of Cuban coffee and a long lunch on Calle Ocho, the heart of Little Havana, before the car goes back."},
-  {ph:"deco", day:"deco", place:"Ocean Drive", small:"Free, on foot", t:"Ocean Drive _Art Deco_", more:"Ocean Drive walk",
+  {ph:"decoNight", day:"deco", place:"Ocean Drive", small:"Free, on foot", t:"Ocean Drive _Art Deco_", more:"Ocean Drive walk",
     story:"Ocean Drive's pastel hotels, neon signs and porthole windows line up along the beach. We walk it on our first South Beach morning, then come back for the evening glow."},
   {ph:"wynwood", day:"city", place:"Wynwood", small:"Free for kids 12 and under", t:"Wynwood _Walls_", more:"Wynwood Walls",
     story:"An outdoor gallery of huge murals by street artists from around the world, reached by open-top bus on our city day. Free for kids 12 and under."},
@@ -337,7 +340,7 @@ function renderMoments() {
   $("#moments-grid").innerHTML = MOMENTS.slice(0, 6).map(function (m, i) {
     var p = PHOTOS[m.ph], di = momentDay(m);
     return '<button class="moment" type="button" data-m="' + i + '" aria-label="' + esc(plain(m.t)) + ', ' + DATES[di].d + '">' +
-      '<img src="' + (p.md || p.src) + '" alt="' + esc(p.name) + '" loading="lazy">' +
+      '<img src="' + (p.md || p.src) + '" alt="' + esc(p.name) + '" loading="lazy"' + (p.pos ? ' style="object-position:' + p.pos + '"' : '') + '>' +
       '<span class="m-tag">' + DATES[di].d + ' · ' + esc(m.place) + '</span>' +
       '<span class="m-cap"><small>' + esc(m.small) + '</small><strong>' + fmt(m.t) + '</strong>' +
       '<span class="m-more">' + esc(m.more) + '<span class="plus" aria-hidden="true">+</span></span></span></button>';
@@ -405,7 +408,7 @@ $("#tabs").addEventListener("keydown", function (e) {
 function renderDay(animate) {
   var d = days()[sel], st = stopsOf(d), p = PHOTOS[d.photo];
   var fig = $("#media-photo");
-  fig.innerHTML = '<img class="' + (animate && !reduced ? "fade-in" : "") + '" src="' + (p.big || p.src) + '" alt="' + esc(p.name) + '">' +
+  fig.innerHTML = '<img class="' + (animate && !reduced ? "fade-in" : "") + '" src="' + (p.big || p.src) + '" alt="' + esc(p.name) + '"' + (p.pos ? ' style="object-position:' + p.pos + '"' : '') + '>' +
     '<figcaption><span class="place-tag">' + esc(d.place) + '</span><a class="photo-credit" href="' + p.page + '" target="_blank" rel="noopener">Photo: ' + esc(p.by) + ', ' + esc(p.lic) + '</a></figcaption>';
 
   var h = '<div class="anim">';
