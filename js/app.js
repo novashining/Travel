@@ -41,6 +41,7 @@ var PHOTOS = {
   espanola:{src:"assets/img/espanola.webp", by:"Phillip Pessar", lic:"CC BY 4.0", page:"https://commons.wikimedia.org/wiki/File:Espanola_Way_South_Beach%2C_Miami_Beach_Florida_January_2026_-_04.jpg", name:"Española Way"},
   havana:  {src:"assets/img/havana.webp", by:"Infrogmation of New Orleans", lic:"CC BY-SA 3.0", page:"https://commons.wikimedia.org/wiki/File:Little_Havana_Dominos_Park.JPG", name:"Domino Park, Little Havana"},
   pier:    {src:"assets/img/pier.webp", by:"William Finn", lic:"Pexels License", page:"https://www.pexels.com/photo/aerial-view-of-miami-beach-and-south-pointe-pier-38894658/", name:"South Pointe pier from above"},
+  oceanAerial:{src:"assets/img/ocean-drive-night-aerial.webp", by:"Shared by Eric", lic:"", page:"assets/img/ocean-drive-night-aerial.webp", name:"Neon Ocean Drive over Lummus Park at night", pos:"62% 50%"},
   svbike:  {src:"assets/img/shark-valley-bike.webp", by:"NPS / Everglades National Park", lic:"Public domain", page:"https://commons.wikimedia.org/wiki/File:Shark_Valley_Tram_and_Bicycle_Road_%284%29%2C_NPSPhoto_%289243576524%29.jpg", name:"Biking the Shark Valley loop"},
   svtower: {src:"assets/img/shark-valley-tower.webp", by:"Milan Boers", lic:"CC BY 2.0", page:"https://commons.wikimedia.org/wiki/File:Shark_Valley_Observation_Tower.jpg", name:"Shark Valley observation tower"},
   garden:  {src:"assets/img/garden.webp", by:"Daderot", lic:"Public domain", page:"https://commons.wikimedia.org/wiki/File:Miami_Beach_Botanical_Garden_-_IMG_8018.JPG", name:"Miami Beach Botanical Garden"}
@@ -160,7 +161,7 @@ var D = {
     ],
     legs:[L_(["home1","vizcaya"],"drive"), L_(["vizcaya","havana"],"drive"), L_(["havana","mia"],"drive"), L_(["mia","home2"],"uber"), L_(["home2","southpointe"],"walk"), L_(["southpointe","home2"],"walk")],
     links:[["Vizcaya tickets","https://vizcaya.org/"]]},
-  deco: {key:"deco", label:"Art Deco", theme:"Beach day", c:2, photo:"southBeachAerial", place:"Ocean Drive · South Beach",
+  deco: {key:"deco", label:"Art Deco", theme:"Beach day", c:2, photo:"oceanAerial", place:"Ocean Drive · South Beach",
     title:"Art Deco walk _& beach_", sum:"A walk among the Art Deco facades, then a long beach afternoon.",
     start:"home2", end:"home2",
     blocks:[
@@ -411,7 +412,7 @@ function renderDay(animate) {
   var d = days()[sel], st = stopsOf(d), p = PHOTOS[d.photo];
   var fig = $("#media-photo");
   fig.innerHTML = '<img class="' + (animate && !reduced ? "fade-in" : "") + '" src="' + (p.big || p.src) + '" alt="' + esc(p.name) + '"' + (p.pos ? ' style="object-position:' + p.pos + '"' : '') + '>' +
-    '<figcaption><span class="place-tag">' + esc(d.place) + '</span><a class="photo-credit" href="' + p.page + '" target="_blank" rel="noopener">Photo: ' + esc(p.by) + ', ' + esc(p.lic) + '</a></figcaption>';
+    '<figcaption><span class="place-tag">' + esc(d.place) + '</span><a class="photo-credit" href="' + p.page + '" target="_blank" rel="noopener">Photo: ' + esc(p.by) + (p.lic ? ', ' + esc(p.lic) : '') + '</a></figcaption>';
 
   var h = '<div class="anim">';
   h += '<div class="day-meta"><p class="eyebrow">Day ' + (sel + 1) + ' · ' + DATES[sel].long + '</p><span class="theme' + (d.c === 1 ? " c" : "") + '">' + esc(d.theme) + '</span></div>';
@@ -854,7 +855,7 @@ Object.keys(D).forEach(function (k) { used[D[k].photo] = 1; });
 MOMENTS.forEach(function (m) { used[m.ph] = 1; });
 Object.keys(STOPS).forEach(function (k) { if (STOPS[k].ph) used[STOPS[k].ph] = 1; });
 $("#credits").innerHTML = Object.keys(PHOTOS).filter(function (k) { return used[k]; }).map(function (k) {
-  var p = PHOTOS[k]; return '<li><a href="' + p.page + '" target="_blank" rel="noopener">' + esc(p.name) + '</a>: ' + esc(p.by) + ', ' + esc(p.lic) + '</li>';
+  var p = PHOTOS[k]; return '<li><a href="' + p.page + '" target="_blank" rel="noopener">' + esc(p.name) + '</a>: ' + esc(p.by) + (p.lic ? ', ' + esc(p.lic) : '') + '</li>';
 }).join("");
 
 /* ================= Start ================= */
