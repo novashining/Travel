@@ -102,7 +102,7 @@ var D = {
       B("Midnight","New Year's Eve","A late dinner near the hotel, then ring in 2027. Local fireworks if any are announced.")
     ],
     legs:[L_(["fll","home1"],"drive")], links:[]},
-  everglades: {key:"everglades", label:"Everglades", theme:"Wild Florida", c:1, photo:"svbike", place:"Everglades National Park",
+  everglades: {key:"everglades", label:"Everglades", theme:"Wild Florida", c:1, photo:"everglades", place:"Everglades National Park",
     title:"Everglades: _Shark Valley & airboat_", sum:"Our big nature day. We start early, before Shark Valley gets busy.",
     start:"home1", end:"home1",
     blocks:[
