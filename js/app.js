@@ -90,7 +90,7 @@ function B(when, what, txt, stop) { return {when:when, what:what, txt:txt || "",
 function L_(p, m) { return {p:p, m:m}; }   // a leg: list of stop keys + mode (drive, uber, walk, bus, trolley, opt)
 var D = {
   arrive: {key:"arrive", label:"Arrive", theme:"Arrival", c:1, photo:"skylineSunset", place:"Hello, Miami",
-    title:"Touch down, _slow down._", sum:"Land, pick up the car and settle into Kendall as the year turns over.",
+    title:"Arrive in _Miami_", sum:"Land, pick up the car and settle into Kendall as the year turns over.",
     start:"mia", end:"home1",
     blocks:[
       B("Daytime","Fly into Miami (MIA)","Pick up the rental car at the airport's rental car center.","mia"),
@@ -99,7 +99,7 @@ var D = {
     ],
     legs:[L_(["mia","home1"],"drive")], links:[]},
   everglades: {key:"everglades", label:"Everglades", theme:"Wild Florida", c:1, photo:"everglades", place:"Everglades National Park",
-    title:"New year, _new neighbors._", sum:"Our big nature day. We start early, before Shark Valley gets busy.",
+    title:"Everglades: _Shark Valley & airboat_", sum:"Our big nature day. We start early, before Shark Valley gets busy.",
     start:"home1", end:"home1",
     blocks:[
       B("Before leaving","Buy the National Parks pass","Digital America the Beautiful pass on Recreation.gov. The buyer needs photo ID in the car."),
@@ -110,7 +110,7 @@ var D = {
     legs:[L_(["home1","shark"],"drive"), L_(["shark","coopertown"],"drive"), L_(["coopertown","home1"],"drive")],
     links:[["Shark Valley tram & bikes","https://www.sharkvalleytramtours.com/"],["National Parks pass","https://www.nps.gov/planyourvisit/passes.htm"]]},
   snorkel: {key:"snorkel", label:"Biscayne", theme:"Ocean day", c:1, photo:"snorkel", place:"Biscayne National Park",
-    title:"Masks on, _reef below._", sum:"Snorkeling and an island visit in a national park that's about 95 percent water.",
+    title:"Biscayne _snorkel trip_", sum:"Snorkeling and an island visit in a national park that's about 95 percent water.",
     start:"home1", end:"home1",
     blocks:[
       B("Booked time","Snorkel & island trip","Leaves from Dinner Key Marina in Coconut Grove. The departure time is on our booking; ages 8+, snorkel vests provided.","dinnerkey"),
@@ -121,7 +121,7 @@ var D = {
     legs:[L_(["home1","dinnerkey"],"drive"), L_(["dinnerkey","home1"],"drive")],
     links:[["Biscayne snorkel trip","https://www.biscaynenationalparkinstitute.org/snorkel-and-island-visit-from-coconut-grove/"]]},
   zoo: {key:"zoo", label:"Zoo Miami", theme:"Plan B · Wildlife", c:1, photo:"zoo", place:"Zoo Miami",
-    title:"Flamingos, _not reefs._", sum:"Our land-based backup if the ocean has other plans.",
+    title:"Zoo Miami _(Plan B)_", sum:"Our land-based backup if the ocean has other plans.",
     start:"home1", end:"home1",
     blocks:[
       B("Morning","Zoo Miami","A big open-air zoo. Rent a Safari Cycle to cover more ground (an adult has to drive it).","zoo"),
@@ -131,7 +131,7 @@ var D = {
     legs:[L_(["home1","zoo"],"drive"), L_(["zoo","home1"],"drive")],
     links:[["Zoo Miami tickets","https://shop.zoomiami.org/mainstore"]]},
   cruise: {key:"cruise", label:"On the bay", theme:"Plan B · No swim", c:1, photo:"mangrove", place:"Biscayne Bay",
-    title:"The bay, _from the deck._", sum:"A boat day without getting wet, for a cool or windy morning.",
+    title:"Biscayne Bay _cruise (Plan B)_", sum:"A boat day without getting wet, for a cool or windy morning.",
     start:"home1", end:"home1",
     blocks:[
       B("Morning","Biscayne Bay cruise","A boat trip on the bay with no snorkeling. Confirm the departure point when booking.","dinnerkey"),
@@ -140,7 +140,7 @@ var D = {
     ], bring:["Warm layer","Sunglasses","Hats"],
     legs:[L_(["home1","dinnerkey"],"drive"), L_(["dinnerkey","home1"],"drive")], links:[]},
   vizcaya: {key:"vizcaya", label:"Vizcaya", theme:"Culture & coast", c:1, photo:"vizcaya", place:"Vizcaya · Little Havana",
-    title:"Gardens, cafecito _& the coast._", sum:"Moving day: one last morning with the car, then the beach week begins.",
+    title:"Vizcaya, Little Havana _& move to South Beach_", sum:"Moving day: one last morning with the car, then the beach week begins.",
     start:"home1", end:"home2",
     blocks:[
       B("9:30 AM","Vizcaya Museum & Gardens","Check out first; the bags stay in the trunk. A villa and formal gardens on Biscayne Bay.","vizcaya"),
@@ -152,7 +152,7 @@ var D = {
     legs:[L_(["home1","vizcaya"],"drive"), L_(["vizcaya","havana"],"drive"), L_(["havana","mia"],"drive"), L_(["mia","home2"],"uber"), L_(["home2","southpointe"],"walk"), L_(["southpointe","home2"],"walk")],
     links:[["Vizcaya tickets","https://vizcaya.org/"]]},
   deco: {key:"deco", label:"Art Deco", theme:"Beach day", c:2, photo:"deco", place:"Ocean Drive",
-    title:"Pastel mornings, _salt afternoons._", sum:"A walk among the Art Deco facades, then a long beach afternoon.",
+    title:"Art Deco walk _& beach_", sum:"A walk among the Art Deco facades, then a long beach afternoon.",
     start:"home2", end:"home2",
     blocks:[
       B("Morning","Ocean Drive & the Art Deco district","On our own, or with the official Art Deco walking tour. About 15 minutes on foot.","ocean"),
@@ -162,7 +162,7 @@ var D = {
     legs:[L_(["home2","ocean"],"walk"), L_(["ocean","espanola"],"walk"), L_(["espanola","home2"],"walk")],
     links:[["Art Deco walking tour","https://feverup.com/m/172735"]]},
   cityDry: {key:"city", label:"City day", theme:"City day · Big Bus", c:2, photo:"frost", place:"Wynwood · Downtown",
-    title:"Murals, sharks _& city light._", sum:"Our mainland day on the Big Bus Red Loop, on the least beachy day of the week.",
+    title:"City day: _Wynwood, Bayside & Frost_", sum:"Our mainland day on the Big Bus Red Loop, on the least beachy day of the week.",
     start:"home2", end:"home2", loop:BIGBUS_LOOP,
     blocks:[
       B("9:10 AM","Walk to Big Bus stop 2","555 Washington Ave, in front of CVS, about 5 minutes from the hotel.","bb_sb"),
@@ -179,7 +179,7 @@ var D = {
           L_(["home2","jungle"],"opt"), L_(["jungle","home2"],"opt")],
     links:[["Big Bus","https://www.bigbustours.com/en/miami/miami-bus-tours"],["Big Bus stops","https://www.bigbustours.com/en/miami/find-a-bus-stop-miami"],["Wynwood Walls","https://thewynwoodwalls.com/admissions"],["Frost Science","https://www.frostscience.org/"],["Luminosa","https://feverup.com/m/781881"]]},
   cityWet: {key:"city", label:"City day", theme:"Rainy-day plan", c:2, photo:"frost", place:"Frost Science",
-    title:"Rain outside, _oceans inside._", sum:"Skip the open-top bus; the museum carries the day.",
+    title:"Rainy city day: _Frost Science_", sum:"Skip the open-top bus; the museum carries the day.",
     start:"home2", end:"home2",
     blocks:[
       B("Morning","Uber to Downtown","About 20 minutes from South Beach."),
@@ -190,7 +190,7 @@ var D = {
     legs:[L_(["home2","frost"],"uber"), L_(["frost","bayside"],"walk"), L_(["bayside","home2"],"uber"), L_(["home2","jungle"],"opt"), L_(["jungle","home2"],"opt")],
     links:[["Frost Science","https://www.frostscience.org/"]]},
   garden: {key:"garden", label:"Gardens", theme:"Beach day · Trolley", c:2, photo:"garden", place:"Lincoln Road · Gardens",
-    title:"Garden paths, _then the sand._", sum:"A free trolley ride up Washington Avenue, a garden morning, then back for the beach.",
+    title:"Trolley to Lincoln Road _& the Botanical Garden_", sum:"A free trolley ride up Washington Avenue, a garden morning, then back for the beach.",
     start:"home2", end:"home2",
     blocks:[
       B("Morning","Trolley north from 4th St","The free South Beach Loop stops at Washington Ave & 4th St, a block from the hotel; about every 20 minutes.","tr_4th"),
@@ -206,7 +206,7 @@ var D = {
           L_(["memorial","tr_17"],"walk"), L_(["tr_17","tr_4th"],"trolley"), L_(["tr_4th","home2"],"walk")],
     links:[["South Beach trolley","https://www.miamibeachfl.gov/city-hall/transportation/trolley/south-beach-trolley/"]]},
   home: {key:"home", label:"Homeward", theme:"Homeward", c:2, photo:"pier", place:"One last look",
-    title:"One more _barefoot walk._", sum:"An easy last morning by the water.",
+    title:"Check out _& fly home_", sum:"An easy last morning by the water.",
     start:"home2", end:"mia",
     blocks:[
       B("By 11 AM","Check out","The hotel holds our bags.","home2"),
@@ -302,21 +302,21 @@ $$(".sec-head, .beach, .city > *, .planner, .wx-grid > *, .closing > *").forEach
 
 /* ================= Moments + dialog ================= */
 var MOMENTS = [
-  {ph:"gator", day:1, place:"Everglades", small:"Start the year a little wild", t:"Alligators, _before breakfast._", more:"Shark Valley loop",
+  {ph:"gator", day:1, place:"Everglades", small:"Bike or tram, 15-mile loop", t:"Alligators at _Shark Valley_", more:"Shark Valley loop",
     story:"We bike or ride the tram around Shark Valley's 15-mile loop, where alligators sun themselves a few feet from the path. Wading birds, sawgrass to the horizon, and the observation tower at the halfway point."},
-  {ph:"airboat", day:1, place:"Everglades", small:"Hold on to your hats", t:"Skimming the _river of grass._", more:"Coopertown airboat",
+  {ph:"airboat", day:1, place:"Everglades", small:"No reservation needed", t:"Everglades _airboat ride_", more:"Coopertown airboat",
     story:"An open-air airboat ride across the Everglades sawgrass at Coopertown, on the drive back east from Shark Valley. No reservation needed; the last boat leaves at 4:30 PM."},
-  {ph:"snorkel", day:2, place:"Biscayne", small:"If the ocean plays along", t:"A park that's _mostly water._", more:"Snorkel + island visit",
+  {ph:"snorkel", day:2, place:"Biscayne", small:"Weather permitting", t:"Snorkeling in _Biscayne Bay_", more:"Snorkel + island visit",
     story:"Biscayne National Park is about 95 percent water. We take a boat from Coconut Grove to snorkel shallow reefs and visit an island. If the wind picks up, we switch to Zoo Miami or a no-swim cruise."},
-  {ph:"vizcaya", day:3, place:"Coconut Grove", small:"A century-old daydream", t:"A villa _on the bay._", more:"Vizcaya Museum & Gardens",
+  {ph:"vizcaya", day:3, place:"Coconut Grove", small:"Opens 9:30 AM", t:"Vizcaya _Museum & Gardens_", more:"Vizcaya Museum & Gardens",
     story:"An Italian Renaissance–style villa and formal gardens on Biscayne Bay, built about a century ago. We arrive at opening, 9:30 AM, before the move to the beach."},
-  {ph:"havana", day:3, place:"Little Havana", small:"Cafecito o'clock", t:"Dominoes _& Cuban coffee._", more:"Lunch on Calle Ocho",
+  {ph:"havana", day:3, place:"Little Havana", small:"Lunch stop", t:"Little Havana _& Calle Ocho_", more:"Lunch on Calle Ocho",
     story:"Domino Park, tiny cups of Cuban coffee and a long lunch on Calle Ocho, the heart of Little Havana, before the car goes back."},
-  {ph:"deco", day:"deco", place:"Ocean Drive", small:"Pastel everything", t:"Art Deco _at golden hour._", more:"Ocean Drive walk",
+  {ph:"deco", day:"deco", place:"Ocean Drive", small:"Free, on foot", t:"Ocean Drive _Art Deco_", more:"Ocean Drive walk",
     story:"Ocean Drive's pastel hotels, neon signs and porthole windows line up along the beach. We walk it on our first South Beach morning, then come back for the evening glow."},
-  {ph:"wynwood", day:"city", place:"Wynwood", small:"Bring the camera", t:"Walls that _talk back._", more:"Wynwood Walls",
+  {ph:"wynwood", day:"city", place:"Wynwood", small:"Free for kids 12 and under", t:"Wynwood _Walls_", more:"Wynwood Walls",
     story:"An outdoor gallery of huge murals by street artists from around the world, reached by open-top bus on our city day. Free for kids 12 and under."},
-  {ph:"frost", day:"city", place:"Downtown", small:"Look up", t:"Sharks _overhead._", more:"Frost Science",
+  {ph:"frost", day:"city", place:"Downtown", small:"Aquarium & planetarium", t:"Frost _Science Museum_", more:"Frost Science",
     story:"At Frost Science you look up through a giant lens at sharks and rays swimming overhead. Add the planetarium, then Bayside for a late lunch by the water."}
 ];
 function momentDay(m) {
@@ -783,7 +783,7 @@ $$("#bk-filters button").forEach(function (b) { b.addEventListener("click", func
 bkUpdate();
 
 var KEYDATES = [
-  {due:"2026-11-30T23:59:00-05:00", label:"Late November", t:"Book the snorkel trip and the car", m:"These three can sell out over the holidays."},
+  {due:"2026-11-30T23:59:00-05:00", label:"Late November", t:"Book the snorkel trip and the car", m:"Both can sell out over the holidays."},
   {due:"2026-12-12T23:59:00-05:00", label:"Early December", t:"Book Shark Valley and Vizcaya", m:"Also look for New Year's Eve fireworks near Kendall."},
   {due:"2026-12-22T23:59:00-05:00", label:"Mid December", t:"Buy Wynwood, Big Bus and Frost tickets", m:"Plus Luminosa if we want it. Pick the city day first."},
   {due:"2026-12-30T23:59:00-05:00", label:"Dec 29–30", t:"Check the marine forecast", m:"Use the snorkel check above, or the wind forecast for Biscayne Bay."},
